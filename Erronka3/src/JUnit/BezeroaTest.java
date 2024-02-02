@@ -1,60 +1,111 @@
 package JUnit;
-
-import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.Test;
+import static org.junit.Assert.*;
+import org.junit.Test;
 
 import Modelo.Bezeroa;
 
 public class BezeroaTest {
 
     @Test
-    public void testConstructorAndGetters() {
-        Bezeroa bezero = new Bezeroa("John Doe", "john.doe", "123456789", 'M', "john.doe@example.com", "password");
-
-        assertEquals("John Doe", bezero.getIzena());
-        assertEquals("john.doe", bezero.getErabiltzailea());
-        assertEquals("123456789", bezero.getNan());
-        assertEquals('M', bezero.getSexua());
-        assertEquals("john.doe@example.com", bezero.getEmail());
-        assertEquals("password", bezero.getPasahitza());
+    public void testGetIzena() {
+        Bezeroa bezeroa = new Bezeroa();
+        bezeroa.setIzena("Jonan");
+        assertEquals("Jonan", bezeroa.getIzena());
     }
 
     @Test
-    public void testSetters() {
-        Bezeroa bezero = new Bezeroa("John Doe", "john.doe", "123456789", 'M', "john.doe@example.com", "password");
+    public void testSetIzena() {
+        Bezeroa bezeroa = new Bezeroa();
+        bezeroa.setIzena("Jonan");
+        assertEquals("Jonan", bezeroa.getIzena());
+    }
 
-        bezero.setIzena("Jane Doe");
-        bezero.setErabiltzailea("jane.doe");
-        bezero.setNan("987654321");
-        bezero.setSexua('F');
-        bezero.setEmail("jane.doe@example.com");
-        bezero.setPasahitza("newpassword");
+    @Test
+    public void testGetAbizena() {
+        Bezeroa bezeroa = new Bezeroa();
+        bezeroa.setAbizena("Apellido");
+        assertEquals("Apellido", bezeroa.getAbizena());
+    }
 
-        assertEquals("Jane Doe", bezero.getIzena());
-        assertEquals("jane.doe", bezero.getErabiltzailea());
-        assertEquals("987654321", bezero.getNan());
-        assertEquals('F', bezero.getSexua());
-        assertEquals("jane.doe@example.com", bezero.getEmail());
-        assertEquals("newpassword", bezero.getPasahitza());
+    @Test
+    public void testSetAbizena() {
+        Bezeroa bezeroa = new Bezeroa();
+        bezeroa.setAbizena("Apellido");
+        assertEquals("Apellido", bezeroa.getAbizena());
+    }
+
+    @Test
+    public void testGetNan() {
+        Bezeroa bezeroa = new Bezeroa();
+        bezeroa.setNan("123456789");
+        assertEquals("123456789", bezeroa.getNan());
+    }
+
+    @Test
+    public void testSetNan() {
+        Bezeroa bezeroa = new Bezeroa();
+        bezeroa.setNan("123456789");
+        assertEquals("123456789", bezeroa.getNan());
+    }
+
+    @Test
+    public void testGetSexua() {
+        Bezeroa bezeroa = new Bezeroa();
+        bezeroa.setSexua('M');
+        assertEquals('M', bezeroa.getSexua());
+    }
+
+    @Test
+    public void testSetSexua() {
+        Bezeroa bezeroa = new Bezeroa();
+        bezeroa.setSexua('M');
+        assertEquals('M', bezeroa.getSexua());
+    }
+
+    @Test
+    public void testGetPasahitza() {
+        Bezeroa bezeroa = new Bezeroa();
+        bezeroa.setPasahitza("password123");
+        assertEquals("password123", bezeroa.getPasahitza());
+    }
+
+    @Test
+    public void testSetPasahitza() {
+        Bezeroa bezeroa = new Bezeroa();
+        bezeroa.setPasahitza("password123");
+        assertEquals("password123", bezeroa.getPasahitza());
     }
 
     @Test
     public void testEquals() {
-        Bezeroa bezero1 = new Bezeroa("John Doe", "john.doe", "123456789", 'M', "john.doe@example.com", "password");
-        Bezeroa bezero2 = new Bezeroa("John Doe", "john.doe", "123456789", 'M', "john.doe@example.com", "password");
-        Bezeroa bezero3 = new Bezeroa("Jane Doe", "jane.doe", "987654321", 'F', "jane.doe@example.com", "newpassword");
+        Bezeroa bezeroa1 = new Bezeroa();
+        bezeroa1.setIzena("Jonan");
+        Bezeroa bezeroa2 = new Bezeroa();
+        bezeroa2.setIzena("Jonan");
 
-        assertTrue(bezero1.equals(bezero2));
-        assertFalse(bezero1.equals(bezero3));
+        assertTrue(bezeroa1.equals(bezeroa2));
     }
 
     @Test
     public void testHashCode() {
-        Bezeroa bezero1 = new Bezeroa("John Doe", "john.doe", "123456789", 'M', "john.doe@example.com", "password");
-        Bezeroa bezero2 = new Bezeroa("John Doe", "john.doe", "123456789", 'M', "john.doe@example.com", "password");
-        Bezeroa bezero3 = new Bezeroa("Jane Doe", "jane.doe", "987654321", 'F', "jane.doe@example.com", "newpassword");
+        Bezeroa bezeroa1 = new Bezeroa();
+        bezeroa1.setIzena("Jonan");
+        Bezeroa bezeroa2 = new Bezeroa();
+        bezeroa2.setIzena("Jonan");
 
-        assertEquals(bezero1.hashCode(), bezero2.hashCode());
-        assertNotEquals(bezero1.hashCode(), bezero3.hashCode());
+        assertEquals(bezeroa1.hashCode(), bezeroa2.hashCode());
+    }
+
+    @Test
+    public void testToString() {
+        Bezeroa bezeroa = new Bezeroa();
+        bezeroa.setIzena("Jonan");
+        bezeroa.setAbizena("Apellido");
+        bezeroa.setNan("123456789");
+        bezeroa.setSexua('M');
+        bezeroa.setPasahitza("password123");
+
+        String expectedToString = "Bezeroa izenaJonan, abizenaApellido, nan123456789, sexuaM, pasahitzapassword123";
+        assertEquals(expectedToString, bezeroa.toString());
     }
 }

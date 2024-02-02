@@ -51,9 +51,4 @@ public class Zinema {
 		return Objects.equals(helbidea, other.helbidea) && id_zine == other.id_zine
 				&& Objects.equals(izena, other.izena);
 	}
-    
-	
-
-
-
 }

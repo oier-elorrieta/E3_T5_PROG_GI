@@ -1,9 +1,66 @@
 package JUnit;
-
 import static org.junit.Assert.*;
 import org.junit.Test;
 
+import Modelo.Erosketak;
+
 public class ErosketakTest {
+
+    @Test
+    public void testDiruTotala() {
+        Erosketak erosketak = new Erosketak();
+        erosketak.setDiruTotala(100);
+        assertEquals(100, erosketak.getDiruTotala());
+    }
+
+    @Test
+    public void testSetDiruTotala() {
+        Erosketak erosketak = new Erosketak();
+        erosketak.setDiruTotala(200);
+        assertEquals(200, erosketak.getDiruTotala());
+    }
+
+    @Test
+    public void testKantitatea() {
+        Erosketak erosketak = new Erosketak();
+        erosketak.setKantitatea(5);
+        assertEquals(5, erosketak.getKantitatea());
+    }
+
+    @Test
+    public void testSetKantitatea() {
+        Erosketak erosketak = new Erosketak();
+        erosketak.setKantitatea(10);
+        assertEquals(10, erosketak.getKantitatea());
+    }
+
+    @Test
+    public void testId_erosketak() {
+        Erosketak erosketak = new Erosketak();
+        erosketak.setId_erosketak(1);
+        assertEquals(1, erosketak.getId_erosketak());
+    }
+
+    @Test
+    public void testSetId_erosketak() {
+        Erosketak erosketak = new Erosketak();
+        erosketak.setId_erosketak(2);
+        assertEquals(2, erosketak.getId_erosketak());
+    }
+
+    @Test
+    public void testId_bezeroa() {
+        Erosketak erosketak = new Erosketak();
+        erosketak.setId_bezeroa(1001);
+        assertEquals(1001, erosketak.getId_bezeroa());
+    }
+
+    @Test
+    public void testSetId_bezeroa() {
+        Erosketak erosketak = new Erosketak();
+        erosketak.setId_bezeroa(2002);
+        assertEquals(2002, erosketak.getId_bezeroa());
+    }
 
     @Test
     public void testEquals() {
@@ -11,23 +68,32 @@ public class ErosketakTest {
         erosketak1.setDiruTotala(100);
         erosketak1.setKantitatea(5);
         erosketak1.setId_erosketak(1);
-        erosketak1.setJatorria(1);
+        erosketak1.setId_bezeroa(1001);
 
         Erosketak erosketak2 = new Erosketak();
         erosketak2.setDiruTotala(100);
         erosketak2.setKantitatea(5);
         erosketak2.setId_erosketak(1);
-        erosketak2.setJatorria(1);
+        erosketak2.setId_bezeroa(1001);
 
-        Erosketak erosketak3 = new Erosketak();
-        erosketak3.setDiruTotala(150);
-        erosketak3.setKantitatea(3);
-        erosketak3.setId_erosketak(2);
-        erosketak3.setJatorria(2);
-
-        // Prueba de igualdad
         assertTrue(erosketak1.equals(erosketak2));
-        assertFalse(erosketak1.equals(erosketak3));
+    }
+
+    @Test
+    public void testNotEquals() {
+        Erosketak erosketak1 = new Erosketak();
+        erosketak1.setDiruTotala(100);
+        erosketak1.setKantitatea(5);
+        erosketak1.setId_erosketak(1);
+        erosketak1.setId_bezeroa(1001);
+
+        Erosketak erosketak2 = new Erosketak();
+        erosketak2.setDiruTotala(200);
+        erosketak2.setKantitatea(10);
+        erosketak2.setId_erosketak(2);
+        erosketak2.setId_bezeroa(2002);
+
+        assertFalse(erosketak1.equals(erosketak2));
     }
 
     @Test
@@ -36,25 +102,15 @@ public class ErosketakTest {
         erosketak1.setDiruTotala(100);
         erosketak1.setKantitatea(5);
         erosketak1.setId_erosketak(1);
-        erosketak1.setJatorria(1);
+        erosketak1.setId_bezeroa(1001);
 
         Erosketak erosketak2 = new Erosketak();
         erosketak2.setDiruTotala(100);
         erosketak2.setKantitatea(5);
         erosketak2.setId_erosketak(1);
-        erosketak2.setJatorria(1);
+        erosketak2.setId_bezeroa(1001);
 
-        Erosketak erosketak3 = new Erosketak();
-        erosketak3.setDiruTotala(150);
-        erosketak3.setKantitatea(3);
-        erosketak3.setId_erosketak(2);
-        erosketak3.setJatorria(2);
-
-        // Prueba de hashcode para objetos iguales
         assertEquals(erosketak1.hashCode(), erosketak2.hashCode());
-
-        // Asegurar que objetos diferentes tengan hashcodes diferentes
-        assertNotEquals(erosketak1.hashCode(), erosketak3.hashCode());
     }
 
     @Test
@@ -63,14 +119,9 @@ public class ErosketakTest {
         erosketak.setDiruTotala(100);
         erosketak.setKantitatea(5);
         erosketak.setId_erosketak(1);
-        erosketak.setJatorria(1);
+        erosketak.setId_bezeroa(1001);
 
-        String expectedString = "Erosketak [diruTotala=100, kantitatea=5, id_erosketak=1, jatorria=1]";
-        
-        // Prueba de toString
-        assertEquals(expectedString, erosketak.toString());
+        String expectedToString = "Erosketak diruTotala100, kantitatea5, id_erosketak1, id_bezeroa1001";
+        assertEquals(expectedToString, erosketak.toString());
     }
-
-    // Puedes agregar más casos de prueba según sea necesario.
 }
-

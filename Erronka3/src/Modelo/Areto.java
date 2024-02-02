@@ -5,6 +5,7 @@ import java.util.Objects;
 public class Areto {
 	private int id_areto;
 	private String izena;
+	private int zinema_id;
 
 	
 	public Areto(int id_areto, String izena, int eserlekuak) {
@@ -29,15 +30,17 @@ public class Areto {
 		this.izena = izena;
 	}
 
+	public int getZinema_id() {
+		return zinema_id;
+	}
 
-	@Override
-	public String toString() {
-		return "Areto id_areto " + id_areto + ", izena " + izena + ", eserlekuak " + "]";
+	public void setZinema_id(int zinema_id) {
+		this.zinema_id = zinema_id;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id_areto, izena);
+		return Objects.hash(id_areto, izena, zinema_id);
 	}
 
 	@Override
@@ -49,9 +52,12 @@ public class Areto {
 		if (getClass() != obj.getClass())
 			return false;
 		Areto other = (Areto) obj;
-		return id_areto == other.id_areto && Objects.equals(izena, other.izena);
+		return id_areto == other.id_areto && Objects.equals(izena, other.izena) && zinema_id == other.zinema_id;
 	}
-	
-	
+
+	@Override
+	public String toString() {
+		return "Areto id_areto" + id_areto + ", izena" + izena + ", zinema_id" + zinema_id;
+	}
 	
 }

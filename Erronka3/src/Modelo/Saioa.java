@@ -7,7 +7,7 @@ public class Saioa {
 	private int ordua;
 
 	public Saioa(int id_saioa) {
-		
+
 		this.id_saioa = id_saioa;
 	}
 
@@ -49,8 +49,4 @@ public class Saioa {
 		return "Saioa [id_saioa=" + id_saioa + ", ordua=" + ordua + "]";
 	}
 
-	
-	
-	
-	
 }

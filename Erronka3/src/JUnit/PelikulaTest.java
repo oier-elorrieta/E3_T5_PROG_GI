@@ -1,5 +1,4 @@
 package JUnit;
-
 import static org.junit.Assert.*;
 import org.junit.Test;
 
@@ -7,32 +6,100 @@ import Modelo.Pelikula;
 
 public class PelikulaTest {
 
-	@Test
-	public void testEquals() {
-		Pelikula pelikula1 = new Pelikula("Film1", 1, 120, "Action", 9.99);
-		Pelikula pelikula2 = new Pelikula("Film1", 1, 90, "Action", 8.99);
-		Pelikula pelikula3 = new Pelikula("Film2", 2, 150, "Comedy", 7.99);
+    @Test
+    public void testGetIzena() {
+        Pelikula pelikula = new Pelikula("Inception", 1, 150, "Sci-Fi", 9.99);
+        assertEquals("Inception", pelikula.getIzena());
+    }
 
-		assertTrue(pelikula1.equals(pelikula2));
-		assertFalse(pelikula1.equals(pelikula3));
-	}
+    @Test
+    public void testSetIzena() {
+        Pelikula pelikula = new Pelikula("Inception", 1, 150, "Sci-Fi", 9.99);
+        pelikula.setIzena("Interstellar");
+        assertEquals("Interstellar", pelikula.getIzena());
+    }
 
-	@Test
-	public void testHashCode() {
-		Pelikula pelikula1 = new Pelikula("Film1", 1, 120, "Action", 9.99);
-		Pelikula pelikula2 = new Pelikula("Film1", 1, 90, "Action", 8.99);
-		Pelikula pelikula3 = new Pelikula("Film2", 2, 150, "Comedy", 7.99);
+    @Test
+    public void testGetIdentifikatzailea() {
+        Pelikula pelikula = new Pelikula("Inception", 1, 150, "Sci-Fi", 9.99);
+        assertEquals(1, pelikula.getIdentifikatzailea());
+    }
 
-		assertEquals(pelikula1.hashCode(), pelikula2.hashCode());
+    @Test
+    public void testSetIdentifikatzailea() {
+        Pelikula pelikula = new Pelikula("Inception", 1, 150, "Sci-Fi", 9.99);
+        pelikula.setIdentifikatzailea(2);
+        assertEquals(2, pelikula.getIdentifikatzailea());
+    }
 
-		assertNotEquals(pelikula1.hashCode(), pelikula3.hashCode());
-	}
+    @Test
+    public void testGetIraupena() {
+        Pelikula pelikula = new Pelikula("Inception", 1, 150, "Sci-Fi", 9.99);
+        assertEquals(150, pelikula.getIraupena());
+    }
 
-	@Test
-	public void testToString() {
-		Pelikula pelikula = new Pelikula("Film1", 1, 120, "Action", 9.99);
-		String expectedString = "Pelikula izena Film1, identifikatzailea 1, iraupena 120, generoa Action, prezioa 9.99 ";
+    @Test
+    public void testSetIraupena() {
+        Pelikula pelikula = new Pelikula("Inception", 1, 150, "Sci-Fi", 9.99);
+        pelikula.setIraupena(180);
+        assertEquals(180, pelikula.getIraupena());
+    }
 
-		assertEquals(expectedString, pelikula.toString());
-	}
+    @Test
+    public void testGetGeneroa() {
+        Pelikula pelikula = new Pelikula("Inception", 1, 150, "Sci-Fi", 9.99);
+        assertEquals("Sci-Fi", pelikula.getGeneroa());
+    }
+
+    @Test
+    public void testSetGeneroa() {
+        Pelikula pelikula = new Pelikula("Inception", 1, 150, "Sci-Fi", 9.99);
+        pelikula.setGeneroa("Action");
+        assertEquals("Action", pelikula.getGeneroa());
+    }
+
+    @Test
+    public void testGetPrezioa() {
+        Pelikula pelikula = new Pelikula("Inception", 1, 150, "Sci-Fi", 9.99);
+        assertEquals(9.99, pelikula.getPrezioa(), 0.001);
+    }
+
+    @Test
+    public void testSetPrezioa() {
+        Pelikula pelikula = new Pelikula("Inception", 1, 150, "Sci-Fi", 9.99);
+        pelikula.setPrezioa(12.99);
+        assertEquals(12.99, pelikula.getPrezioa(), 0.001);
+    }
+
+    @Test
+    public void testEquals() {
+        Pelikula pelikula1 = new Pelikula("Inception", 1, 150, "Sci-Fi", 9.99);
+        Pelikula pelikula2 = new Pelikula("Inception", 1, 150, "Sci-Fi", 9.99);
+
+        assertTrue(pelikula1.equals(pelikula2));
+    }
+
+    @Test
+    public void testNotEquals() {
+        Pelikula pelikula1 = new Pelikula("Inception", 1, 150, "Sci-Fi", 9.99);
+        Pelikula pelikula2 = new Pelikula("Interstellar", 2, 180, "Sci-Fi", 12.99);
+
+        assertFalse(pelikula1.equals(pelikula2));
+    }
+
+    @Test
+    public void testHashCode() {
+        Pelikula pelikula1 = new Pelikula("Inception", 1, 150, "Sci-Fi", 9.99);
+        Pelikula pelikula2 = new Pelikula("Inception", 1, 150, "Sci-Fi", 9.99);
+
+        assertEquals(pelikula1.hashCode(), pelikula2.hashCode());
+    }
+
+    @Test
+    public void testToString() {
+        Pelikula pelikula = new Pelikula("Inception", 1, 150, "Sci-Fi", 9.99);
+
+        String expectedToString = "Pelikula izena Inception, identifikatzailea 1, iraupena 150, generoa Sci-Fi, prezioa 9.99 ";
+        assertEquals(expectedToString, pelikula.toString());
+    }
 }
