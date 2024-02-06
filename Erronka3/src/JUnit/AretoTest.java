@@ -1,79 +1,52 @@
 package JUnit;
+
 import static org.junit.Assert.*;
 import org.junit.Test;
 
 import Modelo.Areto;
+import Modelo.Saioa;
 
 public class AretoTest {
 
     @Test
-    public void testId_areto() {
-        Areto areto = new Areto(1, "A1", 101);
+    public void testGetId_areto() {
+        Areto areto = new Areto(1, "Areto1", new Saioa[5]);
         assertEquals(1, areto.getId_areto());
     }
 
     @Test
     public void testSetId_areto() {
-        Areto areto = new Areto(1, "A1", 101);
+        Areto areto = new Areto(1, "Areto1", new Saioa[5]);
         areto.setId_areto(2);
         assertEquals(2, areto.getId_areto());
     }
 
     @Test
-    public void testIzena() {
-        Areto areto = new Areto(1, "A1", 101);
-        assertEquals("A1", areto.getIzena());
+    public void testGetIzena() {
+        Areto areto = new Areto(1, "Areto1", new Saioa[5]);
+        assertEquals("Areto1", areto.getIzena());
     }
 
     @Test
     public void testSetIzena() {
-        Areto areto = new Areto(1, "A1", 101);
-        areto.setIzena("A2");
-        assertEquals("A2", areto.getIzena());
+        Areto areto = new Areto(1, "Areto1", new Saioa[5]);
+        areto.setIzena("Areto2");
+        assertEquals("Areto2", areto.getIzena());
     }
 
     @Test
-    public void testZinema_id() {
-        Areto areto = new Areto(1, "A1", 101);
-        assertEquals(101, areto.getZinema_id());
+    public void testGetSaioaList() {
+        Saioa[] saioaList = {new Saioa(1, "Saioa1"), new Saioa(2, "Saioa2")};
+        Areto areto = new Areto(1, "Areto1", saioaList);
+        assertArrayEquals(saioaList, areto.getSaioaList());
     }
 
     @Test
-    public void testSetZinema_id() {
-        Areto areto = new Areto(1, "A1", 101);
-        areto.setZinema_id(102);
-        assertEquals(102, areto.getZinema_id());
-    }
-
-    @Test
-    public void testEquals() {
-        Areto areto1 = new Areto(1, "A1", 101);
-        Areto areto2 = new Areto(1, "A1", 101);
-
-        assertTrue(areto1.equals(areto2));
-    }
-
-    @Test
-    public void testNotEquals() {
-        Areto areto1 = new Areto(1, "A1", 101);
-        Areto areto2 = new Areto(2, "A2", 102);
-
-        assertFalse(areto1.equals(areto2));
-    }
-
-    @Test
-    public void testHashCode() {
-        Areto areto1 = new Areto(1, "A1", 101);
-        Areto areto2 = new Areto(1, "A1", 101);
-
-        assertEquals(areto1.hashCode(), areto2.hashCode());
-    }
-
-    @Test
-    public void testToString() {
-        Areto areto = new Areto(1, "A1", 101);
-
-        String expectedToString = "Areto id_areto1, izenaA1, zinema_id101";
-        assertEquals(expectedToString, areto.toString());
+    public void testSetSaioaList() {
+        Saioa[] saioaList = {new Saioa(1, "Saioa1"), new Saioa(2, "Saioa2")};
+        Saioa[] newSaioaList = {new Saioa(3, "Saioa3"), new Saioa(4, "Saioa4")};
+        Areto areto = new Areto(1, "Areto1", saioaList);
+        areto.setSaioaList(newSaioaList);
+        assertArrayEquals(newSaioaList, areto.getSaioaList());
     }
 }

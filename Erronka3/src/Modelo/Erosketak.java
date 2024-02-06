@@ -10,7 +10,6 @@ public class Erosketak {
 	private int id_erosketak;
 
 	public Erosketak(int diruTotala, Sarrera[] sarreraList, int id_erosketak) {
-		super();
 		this.diruTotala = diruTotala;
 		SarreraList = sarreraList;
 		this.id_erosketak = id_erosketak;

@@ -7,7 +7,6 @@ public class Karteldegia {
 	Pelikula[] pelikulaList = new Pelikula[5];
 
 	public Karteldegia(Pelikula[] pelikulaList) {
-		super();
 		this.pelikulaList = pelikulaList;
 	}
 

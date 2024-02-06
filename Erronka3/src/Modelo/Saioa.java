@@ -14,12 +14,15 @@ public class Saioa {
 	Areto[] AretoaList = new Areto[5];
 	public Saioa(int id_saioa, LocalDate ordua, JDatePicker jDatePicker, Karteldegia[] karteldegiaList,
 			Areto[] aretoaList) {
-		super();
+
 		this.id_saioa = id_saioa;
 		this.ordua = ordua;
 		this.jDatePicker = jDatePicker;
 		this.karteldegiaList = karteldegiaList;
 		AretoaList = aretoaList;
+	}
+	public Saioa(int i, String string) {
+		// TODO Auto-generated constructor stub
 	}
 	public int getId_saioa() {
 		return id_saioa;
