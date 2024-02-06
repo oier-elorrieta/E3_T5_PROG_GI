@@ -1,48 +1,38 @@
 package Modelo;
 
+import java.util.Arrays;
 import java.util.Objects;
 
 public class Areto {
 	private int id_areto;
 	private String izena;
-	private int zinema_id;
-
-	
-	public Areto(int id_areto, String izena, int eserlekuak) {
-		this.id_areto = id_areto;
-		this.izena = izena;
-
-	}
-
+	Saioa[] SaioalistArray = new Saioa[5];
 	public int getId_areto() {
 		return id_areto;
 	}
-
 	public void setId_areto(int id_areto) {
 		this.id_areto = id_areto;
 	}
-
 	public String getIzena() {
 		return izena;
 	}
-
 	public void setIzena(String izena) {
 		this.izena = izena;
 	}
-
-	public int getZinema_id() {
-		return zinema_id;
+	public Saioa[] getSaioalistArray() {
+		return SaioalistArray;
 	}
-
-	public void setZinema_id(int zinema_id) {
-		this.zinema_id = zinema_id;
+	public void setSaioalistArray(Saioa[] saioalistArray) {
+		SaioalistArray = saioalistArray;
 	}
-
 	@Override
 	public int hashCode() {
-		return Objects.hash(id_areto, izena, zinema_id);
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + Arrays.hashCode(SaioalistArray);
+		result = prime * result + Objects.hash(id_areto, izena);
+		return result;
 	}
-
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -52,12 +42,16 @@ public class Areto {
 		if (getClass() != obj.getClass())
 			return false;
 		Areto other = (Areto) obj;
-		return id_areto == other.id_areto && Objects.equals(izena, other.izena) && zinema_id == other.zinema_id;
+		return Arrays.equals(SaioalistArray, other.SaioalistArray) && id_areto == other.id_areto
+				&& Objects.equals(izena, other.izena);
 	}
-
 	@Override
 	public String toString() {
-		return "Areto id_areto" + id_areto + ", izena" + izena + ", zinema_id" + zinema_id;
+		return "Areto [id_areto=" + id_areto + ", izena=" + izena + ", SaioalistArray="
+				+ Arrays.toString(SaioalistArray) + "]";
 	}
+
+	
+	
 	
 }
