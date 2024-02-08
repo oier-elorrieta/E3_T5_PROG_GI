@@ -59,9 +59,4 @@ public class Areto {
 	public String toString() {
 		return "Areto [id_areto=" + id_areto + ", izena=" + izena + ", SaioaList=" + Arrays.toString(SaioaList) + "]";
 	}
-	
-	
-	
-	
-	
 }

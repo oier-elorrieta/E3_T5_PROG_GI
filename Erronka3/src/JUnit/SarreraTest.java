@@ -1,106 +1,61 @@
 package JUnit;
 
 import static org.junit.Assert.*;
+
+import java.util.Arrays;
+
 import org.junit.Test;
+
+import Modelo.Saioa;
 import Modelo.Sarrera;
 
 public class SarreraTest {
 
     @Test
-    public void testGetId_sarrera() {
-        Sarrera sarrera = new Sarrera();
-        sarrera.setId_sarrera(1);
-        assertEquals(1, sarrera.getId_sarrera());
+    public void testGetMota() {
+        Saioa[] saioak = new Saioa[5];
+        Sarrera sarrera = new Sarrera("mota", saioak);
+        assertEquals("mota", sarrera.getMota());
     }
 
     @Test
-    public void testSetId_sarrera() {
-        Sarrera sarrera = new Sarrera();
-        sarrera.setId_sarrera(1);
-        assertEquals(1, sarrera.getId_sarrera());
+    public void testSetMota() {
+        Saioa[] saioak = new Saioa[5];
+        Sarrera sarrera = new Sarrera("mota", saioak);
+        sarrera.setMota("newMota");
+        assertEquals("newMota", sarrera.getMota());
     }
 
     @Test
-    public void testGetId_erosketak() {
-        Sarrera sarrera = new Sarrera();
-        sarrera.setId_erosketak(2);
-        assertEquals(2, sarrera.getId_erosketak());
+    public void testGetSaioalistArray() {
+        Saioa[] saioak = new Saioa[5];
+        Sarrera sarrera = new Sarrera("mota", saioak);
+        assertArrayEquals(saioak, sarrera.getSaioalistArray());
     }
 
     @Test
-    public void testSetId_erosketak() {
-        Sarrera sarrera = new Sarrera();
-        sarrera.setId_erosketak(2);
-        assertEquals(2, sarrera.getId_erosketak());
-    }
-
-    @Test
-    public void testGetId_saioa() {
-        Sarrera sarrera = new Sarrera();
-        sarrera.setId_saioa(3);
-        assertEquals(3, sarrera.getId_saioa());
-    }
-
-    @Test
-    public void testSetId_saioa() {
-        Sarrera sarrera = new Sarrera();
-        sarrera.setId_saioa(3);
-        assertEquals(3, sarrera.getId_saioa());
+    public void testSetSaioalistArray() {
+        Saioa[] saioak = new Saioa[5];
+        Sarrera sarrera = new Sarrera("mota", saioak);
+        Saioa[] newSaioak = new Saioa[3];
+        sarrera.setSaioalistArray(newSaioak);
+        assertArrayEquals(newSaioak, sarrera.getSaioalistArray());
     }
 
     @Test
     public void testEquals() {
-        Sarrera sarrera1 = new Sarrera();
-        sarrera1.setId_sarrera(1);
-        sarrera1.setId_erosketak(2);
-        sarrera1.setId_saioa(3);
-
-        Sarrera sarrera2 = new Sarrera();
-        sarrera2.setId_sarrera(1);
-        sarrera2.setId_erosketak(2);
-        sarrera2.setId_saioa(3);
-
+        Saioa[] saioak1 = new Saioa[5];
+        Saioa[] saioak2 = new Saioa[5];
+        Sarrera sarrera1 = new Sarrera("mota", saioak1);
+        Sarrera sarrera2 = new Sarrera("mota", saioak2);
         assertTrue(sarrera1.equals(sarrera2));
     }
 
     @Test
-    public void testNotEquals() {
-        Sarrera sarrera1 = new Sarrera();
-        sarrera1.setId_sarrera(1);
-        sarrera1.setId_erosketak(2);
-        sarrera1.setId_saioa(3);
-
-        Sarrera sarrera2 = new Sarrera();
-        sarrera2.setId_sarrera(4);
-        sarrera2.setId_erosketak(5);
-        sarrera2.setId_saioa(6);
-
-        assertFalse(sarrera1.equals(sarrera2));
-    }
-
-    @Test
-    public void testHashCode() {
-        Sarrera sarrera1 = new Sarrera();
-        sarrera1.setId_sarrera(1);
-        sarrera1.setId_erosketak(2);
-        sarrera1.setId_saioa(3);
-
-        Sarrera sarrera2 = new Sarrera();
-        sarrera2.setId_sarrera(1);
-        sarrera2.setId_erosketak(2);
-        sarrera2.setId_saioa(3);
-
-        assertEquals(sarrera1.hashCode(), sarrera2.hashCode());
-    }
-
-    @Test
     public void testToString() {
-        Sarrera sarrera = new Sarrera();
-        sarrera.setId_sarrera(1);
-        sarrera.setId_erosketak(2);
-        sarrera.setId_saioa(3);
-
-        String expectedToString = "Sarrera [id_sarrera=1, id_erosketak=2, id_saioa=3]";
-        assertEquals(expectedToString, sarrera.toString());
+        Saioa[] saioak = new Saioa[5];
+        Sarrera sarrera = new Sarrera("mota", saioak);
+        String expectedString = "Sarrera [mota=mota, SaioalistArray=" + Arrays.toString(saioak) + "]";
+        assertEquals(expectedString, sarrera.toString());
     }
 }

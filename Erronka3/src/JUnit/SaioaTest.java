@@ -1,68 +1,79 @@
 package JUnit;
+
 import static org.junit.Assert.*;
+import java.time.LocalDate;
+import java.util.Arrays;
+import org.jdatepicker.JDatePicker;
+import org.junit.Before;
 import org.junit.Test;
 
+import Modelo.Areto;
+import Modelo.Karteldegia;
 import Modelo.Saioa;
 
 public class SaioaTest {
 
+    private Saioa saioa;
+
+    @Before
+    public void setUp() {
+        // Crear objetos necesarios para el test
+        int id_saioa = 1;
+        LocalDate ordua = LocalDate.now();
+//        JDatePicker jDatePicker = new JDatePicker();
+        Karteldegia[] karteldegiaList = new Karteldegia[5];
+        Areto[] aretoaList = new Areto[5];
+        saioa = new Saioa(id_saioa, ordua, null, karteldegiaList, aretoaList);
+    }
+
     @Test
     public void testGetId_saioa() {
-        Saioa saioa = new Saioa(1);
         assertEquals(1, saioa.getId_saioa());
     }
 
     @Test
-    public void testSetId_saioa() {
-        Saioa saioa = new Saioa(1);
-        saioa.setId_saioa(2);
-        assertEquals(2, saioa.getId_saioa());
-    }
-
-    @Test
     public void testGetOrdua() {
-        Saioa saioa = new Saioa(1);
-        saioa.setOrdua(15);
-        assertEquals(15, saioa.getOrdua());
+        assertEquals(LocalDate.now(), saioa.getOrdua());
     }
 
     @Test
-    public void testSetOrdua() {
-        Saioa saioa = new Saioa(1);
-        saioa.setOrdua(15);
-        assertEquals(15, saioa.getOrdua());
+    public void testGetAndSetJDatePicker() {
+//        JDatePicker newDatePicker = new JDatePicker();
+        saioa.setjDatePicker(null);
+        assertEquals(null, saioa.getjDatePicker());
+    }
+
+    @Test
+    public void testGetAndSetKarteldegiaList() {
+        Karteldegia[] newKarteldegiaList = new Karteldegia[5];
+        saioa.setKarteldegiaList(newKarteldegiaList);
+        assertArrayEquals(newKarteldegiaList, saioa.getKarteldegiaList());
+    }
+
+    @Test
+    public void testGetAndSetAretoaList() {
+        Areto[] newAretoaList = new Areto[5];
+        saioa.setAretoaList(newAretoaList);
+        assertArrayEquals(newAretoaList, saioa.getAretoaList());
     }
 
     @Test
     public void testEquals() {
-        Saioa saioa1 = new Saioa(1);
-        Saioa saioa2 = new Saioa(1);
-
-        assertTrue(saioa1.equals(saioa2));
+        Saioa sameSaioa = new Saioa(1, LocalDate.now(), null, new Karteldegia[5], new Areto[5]);
+        assertTrue(saioa.equals(sameSaioa));
     }
 
     @Test
     public void testNotEquals() {
-        Saioa saioa1 = new Saioa(1);
-        Saioa saioa2 = new Saioa(2);
-
-        assertFalse(saioa1.equals(saioa2));
-    }
-
-    @Test
-    public void testHashCode() {
-        Saioa saioa1 = new Saioa(1);
-        Saioa saioa2 = new Saioa(1);
-
-        assertEquals(saioa1.hashCode(), saioa2.hashCode());
+        Saioa differentSaioa = new Saioa(2, LocalDate.now().plusDays(1), null, new Karteldegia[5], new Areto[5]);
+        assertFalse(saioa.equals(differentSaioa));
     }
 
     @Test
     public void testToString() {
-        Saioa saioa = new Saioa(1);
-        saioa.setOrdua(15);
-
-        String expectedToString = "Saioa [id_saioa=1, ordua=15]";
-        assertEquals(expectedToString, saioa.toString());
+        String expectedString = "Saioa [id_saioa=1, ordua=" + LocalDate.now() + ", jDatePicker=" + saioa.getjDatePicker()
+                + ", karteldegiaList=" + Arrays.toString(saioa.getKarteldegiaList()) + ", aretoaList="
+                + Arrays.toString(saioa.getAretoaList()) + "]";
+        assertEquals(expectedString, saioa.toString());
     }
 }

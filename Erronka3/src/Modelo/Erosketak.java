@@ -15,6 +15,10 @@ public class Erosketak {
 		this.id_erosketak = id_erosketak;
 	}
 
+	public Erosketak() {
+		
+	}
+
 	public int getDiruTotala() {
 		return diruTotala;
 	}
