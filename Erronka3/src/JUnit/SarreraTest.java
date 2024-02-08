@@ -1,8 +1,7 @@
 package JUnit;
 
-import static org.junit.Assert.*;
-
-import java.util.Arrays;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 import org.junit.Test;
 
@@ -12,50 +11,63 @@ import Modelo.Sarrera;
 public class SarreraTest {
 
     @Test
-    public void testGetMota() {
-        Saioa[] saioak = new Saioa[5];
-        Sarrera sarrera = new Sarrera("mota", saioak);
-        assertEquals("mota", sarrera.getMota());
+    public void testGetKantitatea() {
+        Saioa saioa = new Saioa(null, null, null, null);
+        Sarrera sarrera = new Sarrera(5, saioa);
+        assertEquals(5, sarrera.getKantitatea());
     }
 
     @Test
-    public void testSetMota() {
-        Saioa[] saioak = new Saioa[5];
-        Sarrera sarrera = new Sarrera("mota", saioak);
-        sarrera.setMota("newMota");
-        assertEquals("newMota", sarrera.getMota());
+    public void testSetKantitatea() {
+        Saioa saioa = new Saioa(null, null, null, null);
+        Sarrera sarrera = new Sarrera(0, saioa);
+        sarrera.setKantitatea(10);
+        assertEquals(10, sarrera.getKantitatea());
     }
 
     @Test
-    public void testGetSaioalistArray() {
-        Saioa[] saioak = new Saioa[5];
-        Sarrera sarrera = new Sarrera("mota", saioak);
-        assertArrayEquals(saioak, sarrera.getSaioalistArray());
+    public void testGetSaioa() {
+        Saioa saioa = new Saioa(null, null, null, null);
+        Sarrera sarrera = new Sarrera(0, saioa);
+        assertEquals(saioa, sarrera.getSaioa());
     }
 
     @Test
-    public void testSetSaioalistArray() {
-        Saioa[] saioak = new Saioa[5];
-        Sarrera sarrera = new Sarrera("mota", saioak);
-        Saioa[] newSaioak = new Saioa[3];
-        sarrera.setSaioalistArray(newSaioak);
-        assertArrayEquals(newSaioak, sarrera.getSaioalistArray());
+    public void testSetSaioa() {
+        Saioa saioa1 = new Saioa(null, null, null, null);
+        Saioa saioa2 = new Saioa(null, null, null, null);
+        Sarrera sarrera = new Sarrera(0, saioa1);
+        sarrera.setSaioa(saioa2);
+        assertEquals(saioa2, sarrera.getSaioa());
     }
 
     @Test
     public void testEquals() {
-        Saioa[] saioak1 = new Saioa[5];
-        Saioa[] saioak2 = new Saioa[5];
-        Sarrera sarrera1 = new Sarrera("mota", saioak1);
-        Sarrera sarrera2 = new Sarrera("mota", saioak2);
-        assertTrue(sarrera1.equals(sarrera2));
+        Saioa saioa1 = new Saioa(null, null, null, null);
+        Saioa saioa2 = new Saioa(null, null, null, null);
+        Sarrera sarrera1 = new Sarrera(5, saioa1);
+        Sarrera sarrera2 = new Sarrera(5, saioa1);
+        Sarrera sarrera3 = new Sarrera(10, saioa1);
+        Sarrera sarrera4 = new Sarrera(5, saioa2);
+
+        assertEquals(sarrera1, sarrera2);
+        assertNotEquals(sarrera1, sarrera3);
+        assertNotEquals(sarrera1, sarrera4);
+    }
+
+    @Test
+    public void testHashCode() {
+        Saioa saioa = new Saioa(null, null, null, null);
+        Sarrera sarrera1 = new Sarrera(5, saioa);
+        Sarrera sarrera2 = new Sarrera(5, saioa);
+
+        assertEquals(sarrera1.hashCode(), sarrera2.hashCode());
     }
 
     @Test
     public void testToString() {
-        Saioa[] saioak = new Saioa[5];
-        Sarrera sarrera = new Sarrera("mota", saioak);
-        String expectedString = "Sarrera [mota=mota, SaioalistArray=" + Arrays.toString(saioak) + "]";
-        assertEquals(expectedString, sarrera.toString());
+        Saioa saioa = new Saioa(null, null, null, null);
+        Sarrera sarrera = new Sarrera(5, saioa);
+        assertEquals("Sarrera [kantitatea=5, saioa=" + saioa + "]", sarrera.toString());
     }
 }

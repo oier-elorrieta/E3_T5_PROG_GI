@@ -7,78 +7,71 @@ import java.util.Objects;
 import org.jdatepicker.JDatePicker;
 
 public class Saioa {
-    private int id_saioa;
-    private LocalDate ordua;
-    private JDatePicker jDatePicker;
-    Karteldegia[] karteldegiaList = new Karteldegia[5];
-    Areto[] AretoaList = new Areto[5];
+	private LocalDate ordua;
+	private LocalDate date;
+	Filmak filma;
+	Areto Aretoa;
 
-    public Saioa(int id_saioa, LocalDate ordua, JDatePicker jDatePicker, Karteldegia[] karteldegiaList,
-            Areto[] aretoaList) {
+	public Saioa(LocalDate ordua, LocalDate date, Filmak filma, Areto aretoa) {
+		this.ordua = ordua;
+		this.date = date;
+		this.filma = filma;
+		Aretoa = aretoa;
+	}
 
-        this.id_saioa = id_saioa;
-        this.ordua = ordua;
-        this.jDatePicker = jDatePicker;
-        this.karteldegiaList = karteldegiaList;
-        AretoaList = aretoaList;
-    }
+	public LocalDate getOrdua() {
+		return ordua;
+	}
 
-    public int getId_saioa() {
-        return id_saioa;
-    }
+	public void setOrdua(LocalDate ordua) {
+		this.ordua = ordua;
+	}
 
-    public void setId_saioa(int id_saioa) {
-        this.id_saioa = id_saioa;
-    }
+	public LocalDate getDate() {
+		return date;
+	}
 
-    public LocalDate getOrdua() {
-        return ordua;
-    }
+	public void setDate(LocalDate date) {
+		this.date = date;
+	}
 
-    public void setOrdua(LocalDate ordua) {
-        this.ordua = ordua;
-    }
+	public Filmak getFilma() {
+		return filma;
+	}
 
-    public JDatePicker getjDatePicker() {
-        return jDatePicker;
-    }
+	public void setFilma(Filmak filma) {
+		this.filma = filma;
+	}
 
-    public void setjDatePicker(JDatePicker jDatePicker) {
-        this.jDatePicker = jDatePicker;
-    }
+	public Areto getAretoa() {
+		return Aretoa;
+	}
 
-    public Karteldegia[] getKarteldegiaList() {
-        return karteldegiaList;
-    }
+	public void setAretoa(Areto aretoa) {
+		Aretoa = aretoa;
+	}
 
-    public void setKarteldegiaList(Karteldegia[] karteldegiaList) {
-        this.karteldegiaList = karteldegiaList;
-    }
+	@Override
+	public int hashCode() {
+		return Objects.hash(Aretoa, date, filma, ordua);
+	}
 
-    public Areto[] getAretoaList() {
-        return AretoaList;
-    }
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Saioa other = (Saioa) obj;
+		return Objects.equals(Aretoa, other.Aretoa) && Objects.equals(date, other.date)
+				&& Objects.equals(filma, other.filma) && Objects.equals(ordua, other.ordua);
+	}
 
-    public void setAretoaList(Areto[] aretoaList) {
-        AretoaList = aretoaList;
-    }
+	@Override
+	public String toString() {
+		return "Saioa [ordua=" + ordua + ", date=" + date + ", filma=" + filma + ", Aretoa=" + Aretoa + "]";
+	}
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null || getClass() != obj.getClass())
-            return false;
-        Saioa other = (Saioa) obj;
-        return id_saioa == other.id_saioa && Objects.equals(ordua, other.ordua)
-                && Objects.equals(jDatePicker, other.jDatePicker) && Arrays.equals(karteldegiaList, other.karteldegiaList)
-                && Arrays.equals(AretoaList, other.AretoaList);
-    }
-
-    @Override
-    public String toString() {
-        return "Saioa [id_saioa=" + id_saioa + ", ordua=" + ordua + ", jDatePicker=" + jDatePicker
-                + ", karteldegiaList=" + Arrays.toString(karteldegiaList) + ", aretoaList="
-                + Arrays.toString(AretoaList) + "]";
-    }
 }

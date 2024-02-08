@@ -4,28 +4,34 @@ import java.util.Arrays;
 import java.util.Objects;
 
 public class Sarrera {
-	private String mota;
-	Saioa[] SaioalistArray = new Saioa[5];
+	private int kantitatea;
+	Saioa saioa;
+	
 
-	public Sarrera(String mota, Saioa[] saioalistArray) {
-		this.mota = mota;
-		SaioalistArray = saioalistArray;
+	public Sarrera(int kantitatea, Saioa saioa) {
+		this.kantitatea = kantitatea;
+		this.saioa = saioa;
 	}
 
-	public String getMota() {
-		return mota;
+	public int getKantitatea() {
+		return kantitatea;
 	}
 
-	public void setMota(String mota) {
-		this.mota = mota;
+	public void setKantitatea(int kantitatea) {
+		this.kantitatea = kantitatea;
 	}
 
-	public Saioa[] getSaioalistArray() {
-		return SaioalistArray;
+	public Saioa getSaioa() {
+		return saioa;
 	}
 
-	public void setSaioalistArray(Saioa[] saioalistArray) {
-		SaioalistArray = saioalistArray;
+	public void setSaioa(Saioa saioa) {
+		this.saioa = saioa;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(kantitatea, saioa);
 	}
 
 	@Override
@@ -37,12 +43,14 @@ public class Sarrera {
 		if (getClass() != obj.getClass())
 			return false;
 		Sarrera other = (Sarrera) obj;
-		return Arrays.equals(SaioalistArray, other.SaioalistArray) && Objects.equals(mota, other.mota);
+		return kantitatea == other.kantitatea && Objects.equals(saioa, other.saioa);
 	}
 
 	@Override
 	public String toString() {
-		return "Sarrera [mota=" + mota + ", SaioalistArray=" + Arrays.toString(SaioalistArray) + "]";
+		return "Sarrera [kantitatea=" + kantitatea + ", saioa=" + saioa + "]";
 	}
+
+	
 
 }

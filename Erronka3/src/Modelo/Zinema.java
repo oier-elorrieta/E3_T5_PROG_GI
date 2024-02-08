@@ -7,44 +7,55 @@ public class Zinema {
 	private int id_zine;
 	private String izena;
 	private String helbidea;
-	Saioa[] SaioalistArray = new Saioa[5];
-	Areto[] Aretolistarray = new Areto[5];
+	Saioa[] saioalist;
+	Areto[] aretolist;
+
 	public Zinema(int id_zine, String izena, String helbidea, Saioa[] saioalistArray, Areto[] aretolistarray) {
 		this.id_zine = id_zine;
 		this.izena = izena;
 		this.helbidea = helbidea;
-		SaioalistArray = saioalistArray;
-		Aretolistarray = aretolistarray;
+		saioalist = saioalistArray;
+		aretolist = aretolistarray;
 	}
+
 	public int getId_zine() {
 		return id_zine;
 	}
+
 	public void setId_zine(int id_zine) {
 		this.id_zine = id_zine;
 	}
+
 	public String getIzena() {
 		return izena;
 	}
+
 	public void setIzena(String izena) {
 		this.izena = izena;
 	}
+
 	public String getHelbidea() {
 		return helbidea;
 	}
+
 	public void setHelbidea(String helbidea) {
 		this.helbidea = helbidea;
 	}
+
 	public Saioa[] getSaioalistArray() {
-		return SaioalistArray;
+		return saioalist;
 	}
+
 	public void setSaioalistArray(Saioa[] saioalistArray) {
-		SaioalistArray = saioalistArray;
+		saioalist = saioalistArray;
 	}
+
 	public Areto[] getAretolistarray() {
-		return Aretolistarray;
+		return aretolist;
 	}
+
 	public void setAretolistarray(Areto[] aretolistarray) {
-		Aretolistarray = aretolistarray;
+		aretolist = aretolistarray;
 	}
 
 	@Override
@@ -56,17 +67,15 @@ public class Zinema {
 		if (getClass() != obj.getClass())
 			return false;
 		Zinema other = (Zinema) obj;
-		return Arrays.equals(Aretolistarray, other.Aretolistarray)
-				&& Arrays.equals(SaioalistArray, other.SaioalistArray) && Objects.equals(helbidea, other.helbidea)
-				&& id_zine == other.id_zine && Objects.equals(izena, other.izena);
+		return Arrays.equals(aretolist, other.aretolist) && Arrays.equals(saioalist, other.saioalist)
+				&& Objects.equals(helbidea, other.helbidea) && id_zine == other.id_zine
+				&& Objects.equals(izena, other.izena);
 	}
+
 	@Override
 	public String toString() {
 		return "Zinema [id_zine=" + id_zine + ", izena=" + izena + ", helbidea=" + helbidea + ", SaioalistArray="
-				+ Arrays.toString(SaioalistArray) + ", Aretolistarray=" + Arrays.toString(Aretolistarray) + "]";
+				+ Arrays.toString(saioalist) + ", Aretolistarray=" + Arrays.toString(aretolist) + "]";
 	}
-
-	
-	
 
 }

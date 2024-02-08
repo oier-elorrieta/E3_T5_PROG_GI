@@ -2,14 +2,14 @@ package Modelo;
 
 import java.util.Objects;
 
-public class Pelikula {
+public class Filmak {
 	private String izena;
 	private int id_peli;
 	private int iraupena;
 	private String generoa;
 	private double prezioa;
 
-	public Pelikula(String izena, int id_peli, int iraupena, String generoa, double prezioa) {
+	public Filmak(String izena, int id_peli, int iraupena, String generoa, double prezioa) {
 
 		this.izena = izena;
 		this.id_peli = id_peli;
@@ -58,8 +58,6 @@ public class Pelikula {
 		this.prezioa = prezioa;
 	}
 
-
-
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -68,7 +66,7 @@ public class Pelikula {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Pelikula other = (Pelikula) obj;
+		Filmak other = (Filmak) obj;
 		return Objects.equals(generoa, other.generoa) && id_peli == other.id_peli && iraupena == other.iraupena
 				&& Objects.equals(izena, other.izena)
 				&& Double.doubleToLongBits(prezioa) == Double.doubleToLongBits(other.prezioa);

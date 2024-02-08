@@ -9,7 +9,6 @@ public class Bezeroa {
 	private char sexua;
 	private String pasahitza;
 
-
 	public Bezeroa(String izena, String abizena, String nan, char sexua, String pasahitza) {
 		this.izena = izena;
 		this.abizena = abizena;

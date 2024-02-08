@@ -1,80 +1,68 @@
 package JUnit;
 
 import static org.junit.Assert.*;
-
-import java.util.Arrays;
-
 import org.junit.Test;
+
 import Modelo.Erosketak;
 import Modelo.Sarrera;
-import Modelo.Saioa;
 
 public class ErosketakTest {
 
     @Test
-    public void testConstructorAndGetters() {
-        int diruTotala = 100;
-        Sarrera[] sarreraList = {new Sarrera("mota1", new Saioa[5]), new Sarrera("mota2", new Saioa[5]),
-                new Sarrera("mota3", new Saioa[5]), new Sarrera("mota4", new Saioa[5]),
-                new Sarrera("mota5", new Saioa[5])};
-        int id_erosketak = 1;
-
-        Erosketak erosketak = new Erosketak(diruTotala, sarreraList, id_erosketak);
-
-        assertEquals(diruTotala, erosketak.getDiruTotala());
-        assertArrayEquals(sarreraList, erosketak.getSarreraList());
-        assertEquals(id_erosketak, erosketak.getId_erosketak());
+    public void testGetDiruTotala() {
+        Erosketak erosketak = new Erosketak(100, null, 1);
+        assertEquals(100, erosketak.getDiruTotala());
     }
 
     @Test
-    public void testSetters() {
+    public void testSetDiruTotala() {
         Erosketak erosketak = new Erosketak();
+        erosketak.setDiruTotala(200);
+        assertEquals(200, erosketak.getDiruTotala());
+    }
 
-        int diruTotala = 200;
-        erosketak.setDiruTotala(diruTotala);
-        assertEquals(diruTotala, erosketak.getDiruTotala());
+    @Test
+    public void testGetSarreraList() {
+        Sarrera[] sarreraList = {new Sarrera(1, null)};
+        Erosketak erosketak = new Erosketak(100, sarreraList, 1);
+        assertArrayEquals(sarreraList, erosketak.getSarreraList());
+    }
 
-        Sarrera[] sarreraList = {new Sarrera("mota1", new Saioa[5]), new Sarrera("mota2", new Saioa[5]),
-                new Sarrera("mota3", new Saioa[5]), new Sarrera("mota4", new Saioa[5]),
-                new Sarrera("mota5", new Saioa[5])};
+    @Test
+    public void testSetSarreraList() {
+        Sarrera[] sarreraList = {new Sarrera(1, null)};
+        Erosketak erosketak = new Erosketak();
         erosketak.setSarreraList(sarreraList);
         assertArrayEquals(sarreraList, erosketak.getSarreraList());
+    }
 
-        int id_erosketak = 2;
-        erosketak.setId_erosketak(id_erosketak);
-        assertEquals(id_erosketak, erosketak.getId_erosketak());
+    @Test
+    public void testGetId_erosketak() {
+        Erosketak erosketak = new Erosketak(100, null, 1);
+        assertEquals(1, erosketak.getId_erosketak());
+    }
+
+    @Test
+    public void testSetId_erosketak() {
+        Erosketak erosketak = new Erosketak();
+        erosketak.setId_erosketak(2);
+        assertEquals(2, erosketak.getId_erosketak());
     }
 
     @Test
     public void testEquals() {
-        int diruTotala = 100;
-        Sarrera[] sarreraList1 = {new Sarrera("mota1", new Saioa[5]), new Sarrera("mota2", new Saioa[5]),
-                new Sarrera("mota3", new Saioa[5]), new Sarrera("mota4", new Saioa[5]),
-                new Sarrera("mota5", new Saioa[5])};
-        Sarrera[] sarreraList2 = {new Sarrera("mota1", new Saioa[5]), new Sarrera("mota2", new Saioa[5]),
-                new Sarrera("mota3", new Saioa[5]), new Sarrera("mota4", new Saioa[5]),
-                new Sarrera("mota5", new Saioa[5])};
-        int id_erosketak = 1;
-
-        Erosketak erosketak1 = new Erosketak(diruTotala, sarreraList1, id_erosketak);
-        Erosketak erosketak2 = new Erosketak(diruTotala, sarreraList2, id_erosketak);
-
-        assertTrue(erosketak1.equals(erosketak2));
+        Sarrera[] sarreraList1 = {new Sarrera(1, null)};
+        Sarrera[] sarreraList2 = {new Sarrera(1, null)};
+        Erosketak erosketak1 = new Erosketak(100, sarreraList1, 1);
+        Erosketak erosketak2 = new Erosketak(100, sarreraList2, 1);
+        assertEquals(erosketak1, erosketak2);
     }
 
     @Test
     public void testToString() {
-        int diruTotala = 100;
-        Sarrera[] sarreraList = {new Sarrera("mota1", new Saioa[5]), new Sarrera("mota2", new Saioa[5]),
-                new Sarrera("mota3", new Saioa[5]), new Sarrera("mota4", new Saioa[5]),
-                new Sarrera("mota5", new Saioa[5])};
-        int id_erosketak = 1;
-
-        Erosketak erosketak = new Erosketak(diruTotala, sarreraList, id_erosketak);
-
-        String expectedToString = "Erosketak [diruTotala=" + diruTotala + ", SarreraList=" + Arrays.toString(sarreraList)
-                + ", id_erosketak=" + id_erosketak + "]";
-
-        assertEquals(expectedToString, erosketak.toString());
+        Sarrera[] sarreraList = {new Sarrera(1, null)};
+        Erosketak erosketak = new Erosketak(100, sarreraList, 1);
+        assertEquals("Erosketak [diruTotala=100, SarreraList=[Sarrera [kantitatea=1, saioalistArray=null]], id_erosketak=1]", erosketak.toString());
     }
 }
+

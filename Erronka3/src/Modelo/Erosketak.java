@@ -1,12 +1,13 @@
 package Modelo;
 
 import java.util.Arrays;
-import java.util.Objects;
 
 public class Erosketak {
-
+	
+	
+	Bezeroa bezeroa;
+	Sarrera[] SarreraList;
 	private int diruTotala;
-	Sarrera[] SarreraList = new Sarrera[5];
 	private int id_erosketak;
 
 	public Erosketak(int diruTotala, Sarrera[] sarreraList, int id_erosketak) {
