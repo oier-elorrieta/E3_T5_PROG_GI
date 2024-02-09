@@ -8,7 +8,7 @@ import org.junit.Test;
 import Modelo.Erosketa;
 import Modelo.Sarrera;
 
-public class ErosketakTest {
+public class ErosketaTest {
 
     @Test
     public void testGetDiruTotala() {

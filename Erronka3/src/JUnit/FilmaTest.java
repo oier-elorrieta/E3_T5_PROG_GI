@@ -8,7 +8,7 @@ import org.junit.Test;
 
 import Modelo.Filma;
 
-public class FilmakTest {
+public class FilmaTest {
 
     @Test
     public void testGetIzena() {
