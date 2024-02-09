@@ -9,10 +9,10 @@ import org.jdatepicker.JDatePicker;
 public class Saioa {
 	private LocalDate ordua;
 	private LocalDate date;
-	Filmak filma;
+	Filma filma;
 	Areto Aretoa;
 
-	public Saioa(LocalDate ordua, LocalDate date, Filmak filma, Areto aretoa) {
+	public Saioa(LocalDate ordua, LocalDate date, Filma filma, Areto aretoa) {
 		this.ordua = ordua;
 		this.date = date;
 		this.filma = filma;
@@ -35,11 +35,11 @@ public class Saioa {
 		this.date = date;
 	}
 
-	public Filmak getFilma() {
+	public Filma getFilma() {
 		return filma;
 	}
 
-	public void setFilma(Filmak filma) {
+	public void setFilma(Filma filma) {
 		this.filma = filma;
 	}
 

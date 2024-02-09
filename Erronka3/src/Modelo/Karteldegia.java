@@ -4,17 +4,17 @@ import java.util.Arrays;
 
 public class Karteldegia {
 
-	Filmak[] filmak;
+	Filma[] filmak;
 
-	public Karteldegia(Filmak[] filmak) {
+	public Karteldegia(Filma[] filmak) {
 		this.filmak = filmak;
 	}
 
-	public Filmak[] getFilmak() {
+	public Filma[] getFilmak() {
 		return filmak;
 	}
 
-	public void setFilmak(Filmak[] filmak) {
+	public void setFilmak(Filma[] filmak) {
 		this.filmak = filmak;
 	}
 

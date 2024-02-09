@@ -2,21 +2,21 @@ package Modelo;
 
 import java.util.Arrays;
 
-public class Erosketak {
+public class Erosketa {
 	
 	
 	Bezeroa bezeroa;
 	Sarrera[] SarreraList;
 	private int diruTotala;
-	private int id_erosketak;
+	private int id_erosketa;
 
-	public Erosketak(int diruTotala, Sarrera[] sarreraList, int id_erosketak) {
+	public Erosketa(int diruTotala, Sarrera[] sarreraList, int id_erosketak) {
 		this.diruTotala = diruTotala;
 		SarreraList = sarreraList;
-		this.id_erosketak = id_erosketak;
+		this.id_erosketa = id_erosketak;
 	}
 
-	public Erosketak() {
+	public Erosketa() {
 		
 	}
 
@@ -37,11 +37,11 @@ public class Erosketak {
 	}
 
 	public int getId_erosketak() {
-		return id_erosketak;
+		return id_erosketa;
 	}
 
 	public void setId_erosketak(int id_erosketak) {
-		this.id_erosketak = id_erosketak;
+		this.id_erosketa = id_erosketak;
 	}
 
 	@Override
@@ -52,15 +52,15 @@ public class Erosketak {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Erosketak other = (Erosketak) obj;
+		Erosketa other = (Erosketa) obj;
 		return Arrays.equals(SarreraList, other.SarreraList) && diruTotala == other.diruTotala
-				&& id_erosketak == other.id_erosketak;
+				&& id_erosketa == other.id_erosketa;
 	}
 
 	@Override
 	public String toString() {
 		return "Erosketak [diruTotala=" + diruTotala + ", SarreraList=" + Arrays.toString(SarreraList)
-				+ ", id_erosketak=" + id_erosketak + "]";
+				+ ", id_erosketak=" + id_erosketa + "]";
 	}
 
 }

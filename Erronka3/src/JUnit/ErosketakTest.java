@@ -1,69 +1,71 @@
 package JUnit;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
 
-import Modelo.Erosketak;
+import Modelo.Erosketa;
 import Modelo.Sarrera;
 
 public class ErosketakTest {
 
     @Test
     public void testGetDiruTotala() {
-        Erosketak erosketak = new Erosketak(100, null, 1);
-        assertEquals(100, erosketak.getDiruTotala());
+        Erosketa erosketa = new Erosketa(100, null, 1);
+        assertEquals(100, erosketa.getDiruTotala());
     }
 
     @Test
     public void testSetDiruTotala() {
-        Erosketak erosketak = new Erosketak();
-        erosketak.setDiruTotala(200);
-        assertEquals(200, erosketak.getDiruTotala());
+        Erosketa erosketa = new Erosketa();
+        erosketa.setDiruTotala(200);
+        assertEquals(200, erosketa.getDiruTotala());
     }
 
     @Test
     public void testGetSarreraList() {
         Sarrera[] sarreraList = {new Sarrera(1, null)};
-        Erosketak erosketak = new Erosketak(100, sarreraList, 1);
-        assertArrayEquals(sarreraList, erosketak.getSarreraList());
+        Erosketa erosketa = new Erosketa(100, sarreraList, 1);
+        assertArrayEquals(sarreraList, erosketa.getSarreraList());
     }
 
     @Test
     public void testSetSarreraList() {
         Sarrera[] sarreraList = {new Sarrera(1, null)};
-        Erosketak erosketak = new Erosketak();
-        erosketak.setSarreraList(sarreraList);
-        assertArrayEquals(sarreraList, erosketak.getSarreraList());
+        Erosketa erosketa = new Erosketa();
+        erosketa.setSarreraList(sarreraList);
+        assertArrayEquals(sarreraList, erosketa.getSarreraList());
     }
 
     @Test
     public void testGetId_erosketak() {
-        Erosketak erosketak = new Erosketak(100, null, 1);
-        assertEquals(1, erosketak.getId_erosketak());
+        Erosketa erosketa = new Erosketa(100, null, 1);
+        assertEquals(1, erosketa.getId_erosketak());
     }
 
     @Test
     public void testSetId_erosketak() {
-        Erosketak erosketak = new Erosketak();
-        erosketak.setId_erosketak(2);
-        assertEquals(2, erosketak.getId_erosketak());
+        Erosketa erosketa = new Erosketa();
+        erosketa.setId_erosketak(2);
+        assertEquals(2, erosketa.getId_erosketak());
     }
 
     @Test
     public void testEquals() {
         Sarrera[] sarreraList1 = {new Sarrera(1, null)};
         Sarrera[] sarreraList2 = {new Sarrera(1, null)};
-        Erosketak erosketak1 = new Erosketak(100, sarreraList1, 1);
-        Erosketak erosketak2 = new Erosketak(100, sarreraList2, 1);
-        assertEquals(erosketak1, erosketak2);
+        Erosketa erosketa1 = new Erosketa(100, sarreraList1, 1);
+        Erosketa erosketa2 = new Erosketa(100, sarreraList2, 1);
+        assertEquals(erosketa1, erosketa2);
     }
 
 
       	@Test
         public void testToString() {
             Sarrera[] sarreraList = {new Sarrera(1, null)};
-            Erosketak erosketak = new Erosketak(100, sarreraList, 1);
-            assertEquals("Erosketak [diruTotala=100, SarreraList=[Sarrera [kantitatea=1, saioa=null]], id_erosketak=1]", erosketak.toString());
+            Erosketa erosketa = new Erosketa(100, sarreraList, 1);
+            assertEquals("Erosketak [diruTotala=100, SarreraList=[Sarrera [kantitatea=1, saioa=null]], id_erosketak=1]", erosketa.toString());
         }
     }
 
