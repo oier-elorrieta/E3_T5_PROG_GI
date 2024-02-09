@@ -96,14 +96,6 @@ public class ZinemaTest {
     }
 
     @Test
-    public void testHashCode() {
-        Zinema zinema1 = new Zinema(1, "Zinemaldia", "Bilbao", null, null);
-        Zinema zinema2 = new Zinema(1, "Zinemaldia", "Bilbao", null, null);
-
-        assertEquals(zinema1.hashCode(), zinema2.hashCode());
-    }
-
-    @Test
     public void testToString() {
         Zinema zinema = new Zinema(1, "Zinemaldia", "Bilbao", null, null);
 

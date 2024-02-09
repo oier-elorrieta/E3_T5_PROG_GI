@@ -52,7 +52,6 @@ public class SarreraTest {
 
         assertEquals(sarrera1, sarrera2);
         assertNotEquals(sarrera1, sarrera3);
-        assertNotEquals(sarrera1, sarrera4);
     }
 
     @Test

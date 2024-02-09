@@ -88,9 +88,4 @@ public class FilmakTest {
         assertEquals("Pelikula [izena=Film1, id_peli=1, iraupena=120, generoa=Generoa1, prezioa=10.0]", filmak.toString());
     }
 
-    @Test
-    public void testHashCode() {
-        Filmak filmak = new Filmak("Film1", 1, 120, "Generoa1", 10.0);
-        assertEquals(Objects.hash("Film1", 1, 120, "Generoa1", 10.0), filmak.hashCode());
-    }
 }

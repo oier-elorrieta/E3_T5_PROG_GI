@@ -58,11 +58,12 @@ public class ErosketakTest {
         assertEquals(erosketak1, erosketak2);
     }
 
-    @Test
-    public void testToString() {
-        Sarrera[] sarreraList = {new Sarrera(1, null)};
-        Erosketak erosketak = new Erosketak(100, sarreraList, 1);
-        assertEquals("Erosketak [diruTotala=100, SarreraList=[Sarrera [kantitatea=1, saioalistArray=null]], id_erosketak=1]", erosketak.toString());
+
+      	@Test
+        public void testToString() {
+            Sarrera[] sarreraList = {new Sarrera(1, null)};
+            Erosketak erosketak = new Erosketak(100, sarreraList, 1);
+            assertEquals("Erosketak [diruTotala=100, SarreraList=[Sarrera [kantitatea=1, saioa=null]], id_erosketak=1]", erosketak.toString());
+        }
     }
-}
 

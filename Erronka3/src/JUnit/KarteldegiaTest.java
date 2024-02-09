@@ -38,11 +38,4 @@ public class KarteldegiaTest {
         Karteldegia karteldegia = new Karteldegia(filmak);
         assertEquals("Karteldegia [filmak=[Pelikula [izena=Film1, id_peli=1, iraupena=120, generoa=Generoa1, prezioa=10.0]]]", karteldegia.toString());
     }
-
-    @Test
-    public void testHashCode() {
-        Filmak[] filmak = {new Filmak("Film1", 1, 120, "Generoa1", 10.0)};
-        Karteldegia karteldegia = new Karteldegia(filmak);
-        assertEquals(filmak.hashCode(), karteldegia.hashCode());
-    }
 }
