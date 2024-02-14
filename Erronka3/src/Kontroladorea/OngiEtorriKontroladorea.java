@@ -1,8 +1,12 @@
 package Kontroladorea;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
 import Vista.OngiEtorri;
 
-public class Kontroladorea {
+public class OngiEtorriKontroladorea {
 
 	public static void main(String[] args) {
 	
@@ -12,7 +16,9 @@ public class Kontroladorea {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
+		
+		
 	}
+
 
 }

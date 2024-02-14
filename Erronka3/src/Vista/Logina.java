@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -14,6 +15,12 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import Kontroladorea.LoginaKontroladorea;
+import java.sql.Statement;
 
 public class Logina extends JFrame {
 
@@ -21,8 +28,6 @@ public class Logina extends JFrame {
 	private JPanel contentPane;
 	private JTextField textErabiltzailea;
 	private JPasswordField pasahitzaField;
-	public String erabiltzailea = "User234";
-	public String pasahitza = "admin-123";
 
 	/**
 	 * Launch the application.
@@ -31,19 +36,19 @@ public class Logina extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Logina frame = new Logina();
+					Logina frame = new Logina(null);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
 		});
-		
 	}
+		
 	/**
 	 * Create the frame.
 	 */
-	public Logina() {
+	public Logina(Connection con) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -81,7 +86,14 @@ public class Logina extends JFrame {
 		JButton btnOndo = new JButton("Ondo");
 		btnOndo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (textErabiltzailea.equals(erabiltzailea) && pasahitzaField.equals(pasahitza)) {
+				
+
+				try {
+				Statement sta = con.createStatement();
+				String sqlKon = "SELECT erabiltzailea, pasahitza from Bezeroa";
+				ResultSet res = sta.executeQuery(sqlKon);
+				
+					if (textErabiltzailea.equals(sqlKon) && pasahitzaField.equals(sqlKon)) {
 					System.out.println("Login ondo dago");
 					
 					zinemak frame = new zinemak();
@@ -91,8 +103,16 @@ public class Logina extends JFrame {
 					 JOptionPane.showMessageDialog(null, "Erabiltzaile edo pasahitza txarto daude", "Errorea", JOptionPane.ERROR_MESSAGE);
 					datuakEzabatu (textErabiltzailea,pasahitzaField);
 				}
+					
+					res.close();
+					sta.close();
 				
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
 			}
+			}
+				
 		});
 		btnOndo.setBounds(95, 227, 89, 23);
 		contentPane.add(btnOndo);
