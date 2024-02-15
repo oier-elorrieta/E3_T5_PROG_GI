@@ -15,14 +15,13 @@ public class BezeroaDAO {
 
     public Bezeroa[] getAllBezeroak() {
 
-<<<<<<< HEAD
         Bezeroa[] listaBezeroak = null;
         
-=======
+
         Bezeroa[] bezeroList = null;
 
         Bezeroa[] bezeroak = null;
->>>>>>> 80b249fc3844014a6d151dd7609e530685b645d3
+
 
         int count = 0;
 
@@ -36,16 +35,16 @@ public class BezeroaDAO {
                 }
             }
 
-<<<<<<< HEAD
+
             listaBezeroak = new Bezeroa[count];
             
-=======
+
 
             bezeroList = new Bezeroa[count];
 
             bezeroak = new Bezeroa[count];
 
->>>>>>> 80b249fc3844014a6d151dd7609e530685b645d3
+
 
             String kontsulta = "SELECT * FROM BEZEROA";
             try (PreparedStatement pstmt = con.prepareStatement(kontsulta)) {
@@ -68,15 +67,15 @@ public class BezeroaDAO {
                         
                 
 
-<<<<<<< HEAD
-=======
+
+
                         Bezeroa bezeroa = new Bezeroa(izena, abizena, nan, sexua, pasahitza, erabiltzailea);
 
                         bezeroList[index] = bezeroa;
 
                         bezeroak[index] = bezeroa;
 
->>>>>>> 80b249fc3844014a6d151dd7609e530685b645d3
+
                         index++;
                     }
                 }
@@ -85,14 +84,14 @@ public class BezeroaDAO {
             e.printStackTrace();
         }
 
-<<<<<<< HEAD
+ 
         return listaBezeroak;
 
 
      
     }
 }
-=======
+
 
         return bezeroList;
     }
@@ -104,4 +103,4 @@ public class BezeroaDAO {
     }
 }
 
->>>>>>> 80b249fc3844014a6d151dd7609e530685b645d3
+ 
