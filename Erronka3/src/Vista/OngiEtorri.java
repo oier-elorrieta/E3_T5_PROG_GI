@@ -9,6 +9,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JProgressBar;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
@@ -85,13 +88,14 @@ public class OngiEtorri extends JFrame {
                                     System.out.println("Algo va mal");
                                 }
                             }
-                            Logina frame = new Logina();
-                            frame.setVisible(true);
-                            dispose();
+                            
                         }
                     }
                 }).start();
             }
         });
+        Logina frame = new Logina();
+        frame.setVisible(true);
+        dispose();
     }
 }

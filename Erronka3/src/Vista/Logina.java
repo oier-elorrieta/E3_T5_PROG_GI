@@ -19,7 +19,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import Kontroladorea.LoginaKontroladorea;
 import java.sql.Statement;
 
 public class Logina extends JFrame {
@@ -36,7 +35,7 @@ public class Logina extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Logina frame = new Logina(null);
+					Logina frame = new Logina();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -48,7 +47,7 @@ public class Logina extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Logina(Connection con) {
+	public Logina() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -87,30 +86,58 @@ public class Logina extends JFrame {
 		btnOndo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-
 				try {
+					
+					Class.forName("com.mysql.cj.jdbc.Driver");
+					
+					// Konexioa sortu
+					String url = "jdbc:mysql://localhost:3307/db_elorrietazinemaT5";
+					String user = "root";
+					String pass = "";
+					
+					Connection con = DriverManager.getConnection(url, user, pass);
+		            
+		            
+		        
+				
+			
 				Statement sta = con.createStatement();
 				String sqlKon = "SELECT erabiltzailea, pasahitza from Bezeroa";
 				ResultSet res = sta.executeQuery(sqlKon);
 				
-					if (textErabiltzailea.equals(sqlKon) && pasahitzaField.equals(sqlKon)) {
-					System.out.println("Login ondo dago");
+				do {
+				 
+			            String dbErabiltzailea = res.getString("erabiltzailea");
+			            String dbPasahitza = res.getString("pasahitza");
+			            
+			            
+
+			            if (dbErabiltzailea.equals(textErabiltzailea) && dbPasahitza.equals(pasahitzaField)) {
+			                System.out.println("Login ondo dago");
+
+			                Zinemak frame = new Zinemak();
+			                frame.setVisible(true);
+			                dispose();
+			            } else {
+			                JOptionPane.showMessageDialog(null, "Erabiltzaile edo pasahitza txarto daude", "Errorea", JOptionPane.ERROR_MESSAGE);
+			                datuakEzabatu(textErabiltzailea, pasahitzaField);
+			            }
+			            {
+			        }
+				
+				 
 					
-					zinemak frame = new zinemak();
-					frame.setVisible(true);
-					dispose();
-				}else {
-					 JOptionPane.showMessageDialog(null, "Erabiltzaile edo pasahitza txarto daude", "Errorea", JOptionPane.ERROR_MESSAGE);
-					datuakEzabatu (textErabiltzailea,pasahitzaField);
-				}
 					
 					res.close();
 					sta.close();
+					con.close();
 				
-			} catch (SQLException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
+				} while (res.next());
+				
+				
+				} catch (Exception e1) {
+		            e1.printStackTrace();
+		        }
 			}
 				
 		});

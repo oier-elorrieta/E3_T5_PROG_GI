@@ -8,13 +8,15 @@ public class Bezeroa {
 	private String nan;
 	private char sexua;
 	private String pasahitza;
+	private String Erabiltzailea;
 
-	public Bezeroa(String izena, String abizena, String nan, char sexua, String pasahitza) {
+	public Bezeroa(String izena, String abizena, String nan, char sexua, String pasahitza, String Erabiltzailea) {
 		this.izena = izena;
 		this.abizena = abizena;
 		this.nan = nan;
 		this.sexua = sexua;
 		this.pasahitza = pasahitza;
+		this.Erabiltzailea = Erabiltzailea;
 	}
 
 	public String getIzena() {
@@ -48,6 +50,14 @@ public class Bezeroa {
 	public void setSexua(char sexua) {
 		this.sexua = sexua;
 	}
+	
+	public String getErabiltzailea () {
+		return Erabiltzailea;
+	}
+	
+	public void setErabiltzailea (String Erabiltzailea) {
+		this.Erabiltzailea = Erabiltzailea;
+	}
 
 	public String getPasahitza() {
 		return pasahitza;
@@ -59,8 +69,10 @@ public class Bezeroa {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(abizena, izena, nan, pasahitza, sexua);
+		return Objects.hash(Erabiltzailea, abizena, izena, nan, pasahitza, sexua);
 	}
+
+	
 
 	@Override
 	public boolean equals(Object obj) {
@@ -71,14 +83,16 @@ public class Bezeroa {
 		if (getClass() != obj.getClass())
 			return false;
 		Bezeroa other = (Bezeroa) obj;
-		return Objects.equals(abizena, other.abizena) && Objects.equals(izena, other.izena)
-				&& Objects.equals(nan, other.nan) && Objects.equals(pasahitza, other.pasahitza) && sexua == other.sexua;
+		return Objects.equals(Erabiltzailea, other.Erabiltzailea) && Objects.equals(abizena, other.abizena)
+				&& Objects.equals(izena, other.izena) && Objects.equals(nan, other.nan)
+				&& Objects.equals(pasahitza, other.pasahitza) && sexua == other.sexua;
 	}
-
+	
 	@Override
 	public String toString() {
-		return "Bezeroa izena" + izena + ", abizena" + abizena + ", nan" + nan + ", sexua" + sexua + ", pasahitza"
-				+ pasahitza;
+		return "Bezeroa [izena=" + izena + ", abizena=" + abizena + ", nan=" + nan + ", sexua=" + sexua + ", pasahitza="
+				+ pasahitza + ", Erabiltzailea=" + Erabiltzailea + "]";
 	}
+
 
 }
