@@ -1,4 +1,4 @@
-package Vista;
+	package Vista;
 
 import java.awt.EventQueue;
 

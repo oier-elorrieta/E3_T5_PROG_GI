@@ -20,9 +20,15 @@ public class DatuBase {
             con.close();
 
             BezeroaDAO bezeroaDAO = new BezeroaDAO();
+<<<<<<< HEAD
             Bezeroa[] bezeroList = bezeroaDAO.getAllBezeroak();
 
             for (Bezeroa bezeroa : bezeroList) {
+=======
+            Bezeroa[] bezeroak = bezeroaDAO.getAllBezeroak();
+
+            for (Bezeroa bezeroa : bezeroak) {
+>>>>>>> 0a58d5c628c7a3d9cfb5354262ceeed0b485befc
                 System.out.println("Izena: " + bezeroa.getIzena());
                 System.out.println("Abizena: " + bezeroa.getAbizena());
                 System.out.println("NAN: " + bezeroa.getNan());
@@ -39,4 +45,8 @@ public class DatuBase {
             e.printStackTrace();
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 0a58d5c628c7a3d9cfb5354262ceeed0b485befc
