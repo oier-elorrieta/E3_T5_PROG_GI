@@ -41,7 +41,6 @@ public class Zinemak extends JFrame {
 	 * Create the frame.
 	 */
 	public Zinemak() {
-		setIconImage(Toolkit.getDefaultToolkit().getImage(Zinemak.class.getResource("/Irudiak/Logo150.png")));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPaneZinemak = new JPanel();
@@ -98,6 +97,17 @@ public class Zinemak extends JFrame {
 		btnElorrieta.setBackground(SystemColor.activeCaption);
 		btnElorrieta.setBounds(129, 119, 179, 28);
 		contentPaneZinemak.add(btnElorrieta);
+		
+		JButton btnAmaitu = new JButton("Amaitu");
+		btnAmaitu.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				OngiEtorri ongiEtorri = new OngiEtorri();
+				ongiEtorri.setVisible(true);
+			}
+		});
+		btnAmaitu.setBounds(341, 232, 85, 21);
+		contentPaneZinemak.add(btnAmaitu);
 		
        
     

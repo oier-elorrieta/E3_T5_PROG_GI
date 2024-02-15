@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import DAO.AretoDAO;
 import DAO.BezeroaDAO;
 
 public class DatuBase {
@@ -20,15 +21,12 @@ public class DatuBase {
             con.close();
 
             BezeroaDAO bezeroaDAO = new BezeroaDAO();
-<<<<<<< HEAD
+
             Bezeroa[] bezeroList = bezeroaDAO.getAllBezeroak();
 
             for (Bezeroa bezeroa : bezeroList) {
-=======
-            Bezeroa[] bezeroak = bezeroaDAO.getAllBezeroak();
 
-            for (Bezeroa bezeroa : bezeroak) {
->>>>>>> 0a58d5c628c7a3d9cfb5354262ceeed0b485befc
+
                 System.out.println("Izena: " + bezeroa.getIzena());
                 System.out.println("Abizena: " + bezeroa.getAbizena());
                 System.out.println("NAN: " + bezeroa.getNan());
@@ -37,6 +35,16 @@ public class DatuBase {
                 System.out.println("Pasahitza: " + bezeroa.getPasahitza());
                 System.out.println("---------------------------------------------");
             }
+            
+            AretoDAO aretoDAO = new AretoDAO();
+            
+            Areto[] listaAreto = aretoDAO.getAllAretoak();
+            
+            for (Areto areto : listaAreto) {
+            	System.out.println("Izena: " + areto.getIzena());
+                System.out.println("Aretoaren identifikazioa: " + areto.getId_areto());
+            }
+ 
         
 
         } catch (SQLException e) {
@@ -45,8 +53,5 @@ public class DatuBase {
             e.printStackTrace();
         }
     }
-<<<<<<< HEAD
+
 }
-=======
-}
->>>>>>> 0a58d5c628c7a3d9cfb5354262ceeed0b485befc

@@ -14,52 +14,46 @@ public class BezeroaDAO {
     private String pass = "";
 
     public Bezeroa[] getAllBezeroak() {
-<<<<<<< HEAD
-        Bezeroa[] bezeroList = null;
-=======
-        Bezeroa[] bezeroak = null;
->>>>>>> 0a58d5c628c7a3d9cfb5354262ceeed0b485befc
+
+        Bezeroa[] listaBezeroak = null;
+        
+
         int count = 0;
 
         try (Connection con = DriverManager.getConnection(url, user, pass)) {
-            String countSql = "SELECT COUNT(*) AS total FROM BEZEROA";
-            try (PreparedStatement countPstmt = con.prepareStatement(countSql)) {
-                try (ResultSet countRs = countPstmt.executeQuery()) {
-                    if (countRs.next()) {
-                        count = countRs.getInt("total");
+            String sql = "SELECT COUNT(*) AS total FROM BEZEROA";
+            try (PreparedStatement sta = con.prepareStatement(sql)) {
+                try (ResultSet res = sta.executeQuery()) {
+                    if (res.next()) {
+                        count = res.getInt("total");
                     }
                 }
             }
 
-<<<<<<< HEAD
-            bezeroList = new Bezeroa[count];
-=======
-            bezeroak = new Bezeroa[count];
->>>>>>> 0a58d5c628c7a3d9cfb5354262ceeed0b485befc
+            listaBezeroak = new Bezeroa[count];
+            
 
-            String sql = "SELECT * FROM BEZEROA";
-            try (PreparedStatement pstmt = con.prepareStatement(sql)) {
+            String kontsulta = "SELECT * FROM BEZEROA";
+            try (PreparedStatement pstmt = con.prepareStatement(kontsulta)) {
                 try (ResultSet rs = pstmt.executeQuery()) {
                     int index = 0;
                     while (rs.next()) {
-                        int bezeroId = rs.getInt("Bezero_id");
-                        String izena = rs.getString("izena");
-                        String abizena = rs.getString("abizena");
-                        String nan = rs.getString("NAN");
-                        String sexua = rs.getString("Generoa");
+                        String nombre = rs.getString("izena");
+                        String apellido = rs.getString("abizena");
+                        String dni = rs.getString("NAN");
+                        String genero = rs.getString("Generoa");
                         String email = rs.getString("Email");
-                        String telefonoa = rs.getString("telefonoa");
-                        String erabiltzailea = rs.getString("erabiltzailea");
-                        String pasahitza = rs.getString("pasahitza");
-                        String jaioData = rs.getString("jaio_data");
+                        String telefono = rs.getString("telefonoa");
+                        String usuario = rs.getString("erabiltzailea");
+                        String contraseña = rs.getString("pasahitza");
+                        String fechaNacimiento = rs.getString("jaio_data");
 
+                        Bezeroa bezeroa = new Bezeroa(nombre, apellido, dni, genero, contraseña, usuario);
 
-                        Bezeroa bezeroa = new Bezeroa(izena, abizena, nan, sexua, pasahitza, erabiltzailea);
-<<<<<<< HEAD
-                        bezeroList[index] = bezeroa;
-=======
-                        bezeroak[index] = bezeroa;
->>>>>>> 0a58d5c628c7a3d9cfb5354262ceeed0b485befc
+                        listaBezeroak[index] = bezeroa;
+                        
+                
+
                         index++;
                     }
                 }
@@ -68,14 +62,9 @@ public class BezeroaDAO {
             e.printStackTrace();
         }
 
-<<<<<<< HEAD
-        return bezeroList;
-    }
+        return listaBezeroak;
 
-}
-		
-=======
-        return bezeroak;
+
+     
     }
 }
->>>>>>> 0a58d5c628c7a3d9cfb5354262ceeed0b485befc

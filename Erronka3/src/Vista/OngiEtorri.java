@@ -4,6 +4,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import Modelo.Zinema;
+
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.JProgressBar;
@@ -94,7 +96,7 @@ public class OngiEtorri extends JFrame {
                 }).start();
             }
         });
-        Logina frame = new Logina();
+        Zinemak frame = new Zinemak();
         frame.setVisible(true);
         dispose();
     }

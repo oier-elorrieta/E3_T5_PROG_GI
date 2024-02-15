@@ -1,10 +1,13 @@
-	package Vista;
+package Vista;
 
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import DAO.BezeroaDAO;
+import Modelo.Bezeroa;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -86,59 +89,20 @@ public class Logina extends JFrame {
 		btnOndo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				try {
-					
-					Class.forName("com.mysql.cj.jdbc.Driver");
-					
-					// Konexioa sortu
-					String url = "jdbc:mysql://localhost:3307/db_elorrietazinemaT5";
-					String user = "root";
-					String pass = "";
-					
-					Connection con = DriverManager.getConnection(url, user, pass);
-		            
-		            
-		        
-				
-			
-				Statement sta = con.createStatement();
-				String sqlKon = "SELECT erabiltzailea, pasahitza from Bezeroa";
-				ResultSet res = sta.executeQuery(sqlKon);
-				
-				do {
+				/// Bezeroa bezeroa = new Bezeroa(getIzena, getAbizena, getNan, getSexua, getErabiltzailea);
 				 
-			            String dbErabiltzailea = res.getString("erabiltzailea");
-			            String dbPasahitza = res.getString("pasahitza");
-			            
-			            
+	          //  String erabiltzailea = textErabiltzailea.getText();
+	          //  String pasahitza = new String(pasahitzaField.getPassword());
 
-			            if (dbErabiltzailea.equals(textErabiltzailea) && dbPasahitza.equals(pasahitzaField)) {
-			                System.out.println("Login ondo dago");
-
-			                Zinemak frame = new Zinemak();
-			                frame.setVisible(true);
-			                dispose();
-			            } else {
-			                JOptionPane.showMessageDialog(null, "Erabiltzaile edo pasahitza txarto daude", "Errorea", JOptionPane.ERROR_MESSAGE);
-			                datuakEzabatu(textErabiltzailea, pasahitzaField);
-			            }
-			            {
-			        }
-				
-				 
-					
-					
-					res.close();
-					sta.close();
-					con.close();
-				
-				} while (res.next());
-				
-				
-				} catch (Exception e1) {
-		            e1.printStackTrace();
-		        }
-			}
+	           
+	         //   if (erabiltzailea.equals(bezeroList.getErabiltzailea()) && pasahitza.equals(bezeroa.getPasahitza())) {
+	          //      Zinemak zinemak = new Zinemak();
+				//	zinemak.setVisible(true);
+	          //  } else {
+	          //      JOptionPane.showMessageDialog(null, "Erabiltzailea edo pasahitza txarto daude");
+	                datuakEzabatu (textErabiltzailea,pasahitzaField);
+	           // }
+	        }
 				
 		});
 		btnOndo.setBounds(95, 227, 89, 23);
