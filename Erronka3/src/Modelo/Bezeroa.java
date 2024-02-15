@@ -1,3 +1,4 @@
+
 package Modelo;
 
 import java.util.Objects;
@@ -6,11 +7,11 @@ public class Bezeroa {
 	private String izena;
 	private String abizena;
 	private String nan;
-	private char sexua;
+	private String sexua;
 	private String pasahitza;
 	private String Erabiltzailea;
 
-	public Bezeroa(String izena, String abizena, String nan, char sexua, String pasahitza, String Erabiltzailea) {
+	public Bezeroa(String izena, String abizena, String nan, String sexua, String pasahitza, String Erabiltzailea) {
 		this.izena = izena;
 		this.abizena = abizena;
 		this.nan = nan;
@@ -43,11 +44,11 @@ public class Bezeroa {
 		this.nan = nan;
 	}
 
-	public char getSexua() {
+	public String getSexua() {
 		return sexua;
 	}
 
-	public void setSexua(char sexua) {
+	public void setSexua(String sexua) {
 		this.sexua = sexua;
 	}
 	
