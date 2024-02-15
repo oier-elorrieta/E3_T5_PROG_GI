@@ -14,11 +14,11 @@ public class BezeroaDAO {
     private String pass = "";
 
     public Bezeroa[] getAllBezeroak() {
-<<<<<<< HEAD
+
         Bezeroa[] bezeroList = null;
-=======
+
         Bezeroa[] bezeroak = null;
->>>>>>> 0a58d5c628c7a3d9cfb5354262ceeed0b485befc
+
         int count = 0;
 
         try (Connection con = DriverManager.getConnection(url, user, pass)) {
@@ -31,11 +31,11 @@ public class BezeroaDAO {
                 }
             }
 
-<<<<<<< HEAD
+
             bezeroList = new Bezeroa[count];
-=======
+
             bezeroak = new Bezeroa[count];
->>>>>>> 0a58d5c628c7a3d9cfb5354262ceeed0b485befc
+
 
             String sql = "SELECT * FROM BEZEROA";
             try (PreparedStatement pstmt = con.prepareStatement(sql)) {
@@ -55,11 +55,11 @@ public class BezeroaDAO {
 
 
                         Bezeroa bezeroa = new Bezeroa(izena, abizena, nan, sexua, pasahitza, erabiltzailea);
-<<<<<<< HEAD
+
                         bezeroList[index] = bezeroa;
-=======
+
                         bezeroak[index] = bezeroa;
->>>>>>> 0a58d5c628c7a3d9cfb5354262ceeed0b485befc
+
                         index++;
                     }
                 }
@@ -68,14 +68,14 @@ public class BezeroaDAO {
             e.printStackTrace();
         }
 
-<<<<<<< HEAD
+
         return bezeroList;
     }
 
 }
 		
-=======
+
         return bezeroak;
     }
 }
->>>>>>> 0a58d5c628c7a3d9cfb5354262ceeed0b485befc
+
