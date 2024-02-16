@@ -14,13 +14,10 @@ public class BezeroaDAO {
     private String pass = "";
 
     public Bezeroa[] getAllBezeroak() {
-
-        Bezeroa[] listaBezeroak = null;
         
 
         Bezeroa[] bezeroList = null;
 
-        Bezeroa[] bezeroak = null;
 
 
         int count = 0;
@@ -35,14 +32,8 @@ public class BezeroaDAO {
                 }
             }
 
-
-            listaBezeroak = new Bezeroa[count];
-            
-
-
             bezeroList = new Bezeroa[count];
 
-            bezeroak = new Bezeroa[count];
 
 
 
@@ -51,30 +42,21 @@ public class BezeroaDAO {
                 try (ResultSet rs = pstmt.executeQuery()) {
                     int index = 0;
                     while (rs.next()) {
-                        String nombre = rs.getString("izena");
-                        String apellido = rs.getString("abizena");
-                        String dni = rs.getString("NAN");
-                        String genero = rs.getString("Generoa");
-                        String email = rs.getString("Email");
-                        String telefono = rs.getString("telefonoa");
-                        String usuario = rs.getString("erabiltzailea");
-                        String contraseña = rs.getString("pasahitza");
-                        String fechaNacimiento = rs.getString("jaio_data");
+                        String izena = rs.getString("izena");
+                        String abizena = rs.getString("abizena");
+                        String NAN = rs.getString("NAN");
+                        String Generoa = rs.getString("Generoa");
+                        String erabiltzailea = rs.getString("erabiltzailea");
+                        String pasahitza = rs.getString("pasahitza");
 
-                        Bezeroa bezeroa = new Bezeroa(nombre, apellido, dni, genero, contraseña, usuario);
+                        Bezeroa bezeroa = new Bezeroa(izena,abizena,NAN,Generoa,erabiltzailea, pasahitza);
 
-                        listaBezeroak[index] = bezeroa;
-                        
-                
-
-
-
-                        Bezeroa bezeroa = new Bezeroa(izena, abizena, nan, sexua, pasahitza, erabiltzailea);
+          
+                     
 
                         bezeroList[index] = bezeroa;
 
-                        bezeroak[index] = bezeroa;
-
+       
 
                         index++;
                     }
@@ -85,21 +67,9 @@ public class BezeroaDAO {
         }
 
  
-        return listaBezeroak;
-
-
-     
-    }
-}
-
 
         return bezeroList;
-    }
-
-}
-		
-
-        return bezeroak;
+ 
     }
 }
 

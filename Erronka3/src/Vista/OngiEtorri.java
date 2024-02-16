@@ -92,12 +92,13 @@ public class OngiEtorri extends JFrame {
                             }
                             
                         }
+                        Zinemak frame = new Zinemak();
+                        frame.setVisible(true);
+                        dispose();
                     }
                 }).start();
             }
         });
-        Zinemak frame = new Zinemak();
-        frame.setVisible(true);
-        dispose();
+        
     }
 }
