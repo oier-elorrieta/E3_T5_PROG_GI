@@ -14,16 +14,7 @@ public class BezeroaDAO {
     private String pass = "";
 
     public Bezeroa[] getAllBezeroak() {
-<<<<<<< HEAD
-        
-
         Bezeroa[] bezeroList = null;
-
-
-
-=======
-        Bezeroa[] bezeroList = null;
->>>>>>> 441dd3a9d562def824d8d2d0e686383e73b4aeaf
         int count = 0;
 
         try (Connection con = DriverManager.getConnection(url, user, pass)) {
@@ -38,32 +29,6 @@ public class BezeroaDAO {
 
             bezeroList = new Bezeroa[count];
 
-<<<<<<< HEAD
-
-
-
-            String kontsulta = "SELECT * FROM BEZEROA";
-            try (PreparedStatement pstmt = con.prepareStatement(kontsulta)) {
-                try (ResultSet rs = pstmt.executeQuery()) {
-                    int index = 0;
-                    while (rs.next()) {
-                        String izena = rs.getString("izena");
-                        String abizena = rs.getString("abizena");
-                        String NAN = rs.getString("NAN");
-                        String Generoa = rs.getString("Generoa");
-                        String erabiltzailea = rs.getString("erabiltzailea");
-                        String pasahitza = rs.getString("pasahitza");
-
-                        Bezeroa bezeroa = new Bezeroa(izena,abizena,NAN,Generoa,erabiltzailea, pasahitza);
-
-          
-                     
-
-                        bezeroList[index] = bezeroa;
-
-       
-
-=======
             String sql = "SELECT * FROM BEZEROA";
             try (PreparedStatement pstmt = con.prepareStatement(sql)) {
                 try (ResultSet rs = pstmt.executeQuery()) {
@@ -81,7 +46,6 @@ public class BezeroaDAO {
 
                         Bezeroa bezeroa = new Bezeroa(izena, abizena, nan, sexua, pasahitza, erabiltzailea);
                         bezeroList[index] = bezeroa;
->>>>>>> 441dd3a9d562def824d8d2d0e686383e73b4aeaf
                         index++;
                     }
                 }
@@ -90,17 +54,6 @@ public class BezeroaDAO {
             e.printStackTrace();
         }
 
-<<<<<<< HEAD
- 
-
-        return bezeroList;
- 
-    }
-}
-
- 
-=======
         return bezeroList;
     }
 }
->>>>>>> 441dd3a9d562def824d8d2d0e686383e73b4aeaf

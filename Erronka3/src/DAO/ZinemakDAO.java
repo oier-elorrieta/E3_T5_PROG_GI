@@ -42,7 +42,7 @@ public Zinema[] getAllZinemak() {
                     int id_zine = rs.getInt("zinema_id");
                     String izena = rs.getString("izena");
                     String helbidea = rs.getString("helbidea");
-                    
+                    AretoDAO[] 
                     
 
                     Zinema zinema = new Zinema(id_zine,izena,helbidea,null ,null);

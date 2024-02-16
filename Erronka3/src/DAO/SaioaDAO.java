@@ -1,8 +1,4 @@
 package DAO;
-
-<<<<<<< HEAD
-public class SaioaDAO {
-=======
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -15,11 +11,12 @@ import Modelo.Areto;
 import Modelo.Filma;
 
 public class SaioaDAO {
+
     private String url = "jdbc:mysql://localhost:3307/db_elorrietazinemaT5";
     private String user = "root";
     private String pass = "";
-
-    public Saioa[] getAllSaioak() {
+    
+public Saioa[] getAllSaioak() {
         Saioa[] saioaList = null;
         int count = 0;
 
@@ -104,6 +101,6 @@ public class SaioaDAO {
         }
         return areto;
     }
->>>>>>> 441dd3a9d562def824d8d2d0e686383e73b4aeaf
 
 }
+
