@@ -59,8 +59,8 @@ public class Erosketa {
 
 	@Override
 	public String toString() {
-		return "Erosketak [diruTotala=" + diruTotala + ", SarreraList=" + Arrays.toString(SarreraList)
-				+ ", id_erosketak=" + id_erosketa + "]";
+		return "Erosketak diruTotala " + diruTotala + ", SarreraList " + Arrays.toString(SarreraList)
+				+ ", id_erosketak " + id_erosketa + "";
 	}
 
 }

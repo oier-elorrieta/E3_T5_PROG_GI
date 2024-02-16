@@ -99,7 +99,7 @@ public class ZinemaTest {
     public void testToString() {
         Zinema zinema = new Zinema(1, "Zinemaldia", "Bilbao", null, null);
 
-        String expectedToString = "Zinema [id_zine=1, izena=Zinemaldia, helbidea=Bilbao, SaioalistArray=null, Aretolistarray=null]";
+        String expectedToString = "Zinema id_zine 1, izena Zinemaldia, helbidea Bilbao, Saioalist null, Aretolist null";
         assertEquals(expectedToString, zinema.toString());
     }
 }

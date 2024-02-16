@@ -40,7 +40,7 @@ public class Karteldegia {
 
 	@Override
 	public String toString() {
-		return "Karteldegia [filmak=" + Arrays.toString(filmak) + "]";
+		return "Karteldegia filmak " + Arrays.toString(filmak) + " ";
 	}
 
 }

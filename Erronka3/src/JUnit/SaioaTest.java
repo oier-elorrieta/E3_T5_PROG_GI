@@ -111,7 +111,7 @@ public class SaioaTest {
         Filma filma = new Filma("Izena", 1, 120, "Generoa", 10.0);
         Areto aretoa = new Areto(1, "Areto Izena");
         Saioa saioa = new Saioa(LocalDate.of(2024, 2, 8), LocalDate.of(2024, 2, 8), filma, aretoa);
-        assertEquals("Saioa [ordua=2024-02-08, date=2024-02-08, filma=" + filma + ", Aretoa=" + aretoa + "]",
+        assertEquals("Saioa ordua 2024-02-08, date 2024-02-08, filma " + filma + ", Aretoa " + aretoa + "",
                 saioa.toString());
     }
 }
