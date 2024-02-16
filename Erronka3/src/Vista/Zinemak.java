@@ -10,14 +10,12 @@ import javax.swing.JButton;
 import javax.swing.JRadioButton;
 import java.awt.SystemColor;
 import java.awt.Color;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import com.toedter.calendar.JCalendar;
-import com.toedter.calendar.JDayChooser;
-import com.toedter.calendar.JDateChooser;
-import javax.swing.JEditorPane;
-import java.awt.Panel;
-import javax.swing.UIManager;
+import org.jdatepicker.JDatePicker;
+
 public class Zinemak extends JFrame {
 
 	private static final long serialVersionUID = 1L;
@@ -26,7 +24,18 @@ public class Zinemak extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Zinemak frame = new Zinemak();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
 
 	/**
 	 * Create the frame.
@@ -36,10 +45,9 @@ public class Zinemak extends JFrame {
 		setBounds(100, 100, 450, 300);
 		contentPaneZinemak = new JPanel();
 		contentPaneZinemak.setBorder(new EmptyBorder(5, 5, 5, 5));
+
 		setContentPane(contentPaneZinemak);
 		contentPaneZinemak.setLayout(null);
-		
-		
 		
 		JButton btnBasauri = new JButton("Basauri zinema");
 		btnBasauri.addActionListener(new ActionListener() {
@@ -51,7 +59,7 @@ public class Zinemak extends JFrame {
 		});
 		btnBasauri.setForeground(new Color(0, 0, 0));
 		btnBasauri.setBackground(new Color(153, 180, 209));
-		btnBasauri.setBounds(39, 60, 129, 28);
+		btnBasauri.setBounds(39, 80, 129, 28);
 		contentPaneZinemak.add(btnBasauri);
 		
 		JButton btnIdeal = new JButton("Ideal zinema");
@@ -60,7 +68,7 @@ public class Zinemak extends JFrame {
 			}
 		});
 		btnIdeal.setBackground(SystemColor.activeCaption);
-		btnIdeal.setBounds(272, 12, 129, 26);
+		btnIdeal.setBounds(272, 43, 129, 26);
 		contentPaneZinemak.add(btnIdeal);
 		
 		JButton btnPortugalete = new JButton("Portugalete zinema");
@@ -69,7 +77,7 @@ public class Zinemak extends JFrame {
 			}
 		});
 		btnPortugalete.setBackground(SystemColor.activeCaption);
-		btnPortugalete.setBounds(39, 11, 129, 28);
+		btnPortugalete.setBounds(39, 41, 129, 28);
 		contentPaneZinemak.add(btnPortugalete);
 		
 		JButton btnGazteiz = new JButton("Gazteiz Zinema");
@@ -78,7 +86,7 @@ public class Zinemak extends JFrame {
 			}
 		});
 		btnGazteiz.setBackground(SystemColor.activeCaption);
-		btnGazteiz.setBounds(272, 61, 129, 26);
+		btnGazteiz.setBounds(272, 81, 129, 26);
 		contentPaneZinemak.add(btnGazteiz);
 		
 		JButton btnElorrieta = new JButton("Elorrieta Errekamari zinema");
@@ -87,7 +95,7 @@ public class Zinemak extends JFrame {
 			}
 		});
 		btnElorrieta.setBackground(SystemColor.activeCaption);
-		btnElorrieta.setBounds(129, 99, 179, 28);
+		btnElorrieta.setBounds(129, 119, 179, 28);
 		contentPaneZinemak.add(btnElorrieta);
 		
 		JButton btnAmaitu = new JButton("Amaitu");
@@ -101,49 +109,6 @@ public class Zinemak extends JFrame {
 		btnAmaitu.setBounds(341, 232, 85, 21);
 		contentPaneZinemak.add(btnAmaitu);
 		
-		
-		JButton btnBasauri_1 = new JButton("Basauri zinema");
-		btnBasauri_1.setForeground(Color.BLACK);
-		btnBasauri_1.setBackground(UIManager.getColor("InternalFrame.activeTitleBackground"));
-		btnBasauri_1.setBounds(39, 60, 129, 28);
-		contentPaneZinemak.add(btnBasauri_1);
-		
-		JButton btnIdeal_1 = new JButton("Ideal zinema");
-		btnIdeal_1.setBackground(SystemColor.activeCaption);
-		btnIdeal_1.setBounds(272, 12, 129, 26);
-		contentPaneZinemak.add(btnIdeal_1);
-		
-		JButton btnPortugalete_1 = new JButton("Portugalete zinema");
-		btnPortugalete_1.setBackground(SystemColor.activeCaption);
-		btnPortugalete_1.setBounds(39, 11, 129, 28);
-		contentPaneZinemak.add(btnPortugalete_1);
-		
-		JButton btnGazteiz_1 = new JButton("Gazteiz Zinema");
-		btnGazteiz_1.setBackground(SystemColor.activeCaption);
-		btnGazteiz_1.setBounds(272, 61, 129, 26);
-		contentPaneZinemak.add(btnGazteiz_1);
-		
-		JButton btnElorrieta_1 = new JButton("Elorrieta Errekamari zinema");
-		btnElorrieta_1.setBackground(SystemColor.activeCaption);
-		btnElorrieta_1.setBounds(129, 99, 179, 28);
-		contentPaneZinemak.add(btnElorrieta_1);
-		
-		JButton btnAmaitu_1 = new JButton("Amaitu");
-		btnAmaitu_1.setBounds(341, 232, 85, 21);
-		contentPaneZinemak.add(btnAmaitu_1);
-		
-		JDayChooser dayChooser = new JDayChooser();
-        dayChooser.setBounds(139, 138, 168, 133);
-        contentPaneZinemak.add(dayChooser);
-        
-		 JButton boton = new JButton("Data");
-	        boton.addActionListener(e -> {
-	            System.out.println("Fecha seleccionada: " + dayChooser.getDay());
-	        });
-
-	        contentPaneZinemak.add(boton);
-	        
-	        
        
     
 	}

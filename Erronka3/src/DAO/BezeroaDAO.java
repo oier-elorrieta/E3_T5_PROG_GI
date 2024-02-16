@@ -1,7 +1,6 @@
 package DAO;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,15 +8,17 @@ import java.sql.SQLException;
 import Modelo.Bezeroa;
 
 public class BezeroaDAO {
-    private String url = "jdbc:mysql://localhost:3307/db_elorrietazinemaT5";
-    private String user = "root";
-    private String pass = "";
+    private KonexioaBD konexioaBD;
+
+    public BezeroaDAO() {
+        konexioaBD = new KonexioaBD();
+    }
 
     public Bezeroa[] getAllBezeroak() {
         Bezeroa[] bezeroList = null;
         int count = 0;
 
-        try (Connection con = DriverManager.getConnection(url, user, pass)) {
+        try (Connection con = konexioaBD.getConnection()) {
             String countSql = "SELECT COUNT(*) AS total FROM BEZEROA";
             try (PreparedStatement countPstmt = con.prepareStatement(countSql)) {
                 try (ResultSet countRs = countPstmt.executeQuery()) {
@@ -42,8 +43,6 @@ public class BezeroaDAO {
                         String erabiltzailea = rs.getString("erabiltzailea");
                         String pasahitza = rs.getString("pasahitza");
 
-
-
                         Bezeroa bezeroa = new Bezeroa(izena, abizena, nan, sexua, pasahitza, erabiltzailea);
                         bezeroList[index] = bezeroa;
                         index++;
@@ -52,7 +51,8 @@ public class BezeroaDAO {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        }
+        } finally {
+            konexioaBD.desconectar();         }
 
         return bezeroList;
     }
