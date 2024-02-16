@@ -91,8 +91,8 @@ public class Bezeroa {
 	
 	@Override
 	public String toString() {
-		return "Bezeroa [izena=" + izena + ", abizena=" + abizena + ", nan=" + nan + ", sexua=" + sexua + ", pasahitza="
-				+ pasahitza + ", Erabiltzailea=" + Erabiltzailea + "]";
+		return "Bezeroa izena " + izena + ", abizena " + abizena + ", nan " + nan + ", sexua " + sexua + ", pasahitza "
+				+ pasahitza + ", Erabiltzailea " + Erabiltzailea + " ";
 	}
 
 

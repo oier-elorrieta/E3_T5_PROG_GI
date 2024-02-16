@@ -45,7 +45,7 @@ public Zinema[] getAllZinemak() {
                     
                     
 
-                    Zinema zinema = new Zinema(id_zine,izena,helbidea);
+                    Zinema zinema = new Zinema(id_zine,izena,helbidea,null ,null);
 
                     ListaZinema[index] = zinema;
                     

@@ -74,8 +74,8 @@ public class Filma {
 
 	@Override
 	public String toString() {
-		return "Pelikula [izena=" + izena + ", id_peli=" + id_peli + ", iraupena=" + iraupena + ", generoa=" + generoa
-				+ ", prezioa=" + prezioa + "]";
+		return "Pelikula izena " + izena + ", id_peli " + id_peli + ", iraupena " + iraupena + ", generoa " + generoa
+				+ ", prezioa " + prezioa + "";
 	}
 
 }

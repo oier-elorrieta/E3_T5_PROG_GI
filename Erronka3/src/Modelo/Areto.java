@@ -46,7 +46,7 @@ public class Areto {
 
 	@Override
 	public String toString() {
-		return "Areto [id_areto=" + id_areto + ", izena=" + izena + "]";
+		return "Areto id_areto " + id_areto + ", izena " + izena + "";
 	}
 
 }

@@ -74,8 +74,8 @@ public class Zinema {
 
 	@Override
 	public String toString() {
-		return "Zinema [id_zine=" + id_zine + ", izena=" + izena + ", helbidea=" + helbidea + ", SaioalistArray="
-				+ Arrays.toString(saioalist) + ", Aretolistarray=" + Arrays.toString(aretolist) + "]";
+		return "Zinema id_zine " + id_zine + ", izena " + izena + ", helbidea " + helbidea + ", Saioalist "
+				+ Arrays.toString(saioalist) + ", Aretolist " + Arrays.toString(aretolist) + "";
 	}
 
 }

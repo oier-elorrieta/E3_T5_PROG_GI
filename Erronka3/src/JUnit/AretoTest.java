@@ -36,7 +36,7 @@ public class AretoTest {
     @Test
     public void testToString() {
         Areto areto = new Areto(1, "A1");
-        assertEquals("Areto [id_areto=1, izena=A1]", areto.toString());
+        assertEquals("Areto id_areto 1, izena A1", areto.toString());
     }
 
     @Test

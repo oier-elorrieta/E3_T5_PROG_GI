@@ -65,7 +65,7 @@ public class ErosketaTest {
         public void testToString() {
             Sarrera[] sarreraList = {new Sarrera(1, null)};
             Erosketa erosketa = new Erosketa(100, sarreraList, 1);
-            assertEquals("Erosketak [diruTotala=100, SarreraList=[Sarrera [kantitatea=1, saioa=null]], id_erosketak=1]", erosketa.toString());
+            assertEquals("Erosketak diruTotala 100, SarreraList , id_erosketak 1", erosketa.toString());
         }
     }
 

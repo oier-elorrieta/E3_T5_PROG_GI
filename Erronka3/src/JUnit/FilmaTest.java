@@ -85,7 +85,7 @@ public class FilmaTest {
     @Test
     public void testToString() {
         Filma filmak = new Filma("Film1", 1, 120, "Generoa1", 10.0);
-        assertEquals("Pelikula [izena=Film1, id_peli=1, iraupena=120, generoa=Generoa1, prezioa=10.0]", filmak.toString());
+        assertEquals("Pelikula izena Film1, id_peli 1, iraupena 120, generoa Generoa1, prezioa 10.0", filmak.toString());
     }
 
 }

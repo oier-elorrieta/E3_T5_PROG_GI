@@ -89,6 +89,6 @@ public class BezeroaTest {
     @Test
     public void testToString() {
         Bezeroa bezeroa = new Bezeroa("Izena", "Abizena", "12345678A", "Gizona", "password", "erabiltzailea1");
-        assertEquals("Bezeroa [izena=Izena, abizena=Abizena, nan=12345678A, sexua=Gizona, pasahitza=password, Erabiltzailea=erabiltzailea1]", bezeroa.toString());
+        assertEquals("Bezeroa izena Izena, abizena Abizena, nan 12345678A, sexua Gizona, pasahitza password, Erabiltzailea erabiltzailea1 ", bezeroa.toString());
     }
 }
