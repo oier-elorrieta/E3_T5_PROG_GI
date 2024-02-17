@@ -17,19 +17,21 @@ public class DatuBase {
             String pass = "";
 
             Connection con = DriverManager.getConnection(url, user, pass);
-            con.close();
+            
 
             BezeroaDAO bezeroaDAO = new BezeroaDAO();
             Bezeroa[] bezeroak = bezeroaDAO.getAllBezeroak();
 
         System.out.println(bezeroak[1]);
         
-            
+        con.close();  
 
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
+        
+        
     }
 }

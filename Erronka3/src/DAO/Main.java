@@ -3,21 +3,29 @@ package DAO;
 import Modelo.Bezeroa;
 import Modelo.Zinema;
 
+import Modelo.Areto;
+import Modelo.Saioa;
+
 public class Main {
 
     public static void main(String[] args) {
         ZinemakDAO dao = new ZinemakDAO();
         Zinema[] zinemaList = dao.getAllZinemak();
-        BezeroaDAO dao1 = new BezeroaDAO();
-        Bezeroa[] bezeroList = dao1.getAllBezeroak();
+       BezeroaDAO dao1 = new BezeroaDAO();
+       Bezeroa[] bezeroList = dao1.getAllBezeroak();
+  //      AretoDAO dao2 = new AretoDAO();
+  //      Areto[] aretoList = dao2.getAllAretoak();
+  //      SaioaDAO dao3 = new SaioaDAO();
+   //     Saioa[] saioaList = dao3.getAllSaioak();
         
         for (Zinema zinema : zinemaList) {
             System.out.println("zinema_id: " + zinema.getId_zine());
             System.out.println("Izena " + zinema.getIzena());
-            System.out.println("email " + zinema.getHelbidea());
-            // Aquí puedes imprimir los datos de Saioa y Areto si los tienes implementados
-            System.out.println("-----------------------------");
-        }
+          System.out.println("email " + zinema.getHelbidea());
+       //     System.out.println("Aretoak" + aretoList);
+        //    System.out.println("Saioak: " + saioaList);
+           System.out.println("-----------------------------");
+       }
    
     }
 }

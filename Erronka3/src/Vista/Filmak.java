@@ -1,61 +1,84 @@
 package Vista;
 
+import java.awt.EventQueue;
 import java.awt.Font;
 
-import javax.swing.*;
-
-import java.awt.event.ActionEvent;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import java.awt.SystemColor;
 import java.awt.event.ActionListener;
-import java.nio.file.DirectoryStream.Filter;
+import java.util.List;
+import java.awt.event.ActionEvent;
+import javax.swing.JToggleButton;
+import Modelo.Kontsultak;
+import Modelo.Filma;
 
-public class Filmak{
-    public Filmak() {
-    	JPanel panel = new JPanel();
-        JButton btnIrudia = new JButton("");
-        btnIrudia.setBounds(60, 0, 402, 517);
-        btnIrudia.setIcon(new ImageIcon(Filmak.class.getResource("Irudiak/Pelis/9.jpg")));
-        btnIrudia.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-            }
-        });
-        panel.setLayout(null);
-        panel.add(btnIrudia);
+public class Filmak extends JFrame {
+
+	private static final long serialVersionUID = 1L;
+	private JPanel contentPane;
+	public Kontsultak FilmaAukeratu[];
+	public List<Filma> filmak;
+	public String pelikula1;
+	public String pelikula2;
+	public String pelikula3;
+	public String pelikula4;
+	public String pelikula5;
+
+	public Filmak() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 450, 300);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
         
-        JPanel panel_1 = new JPanel();
-        panel_1.setBounds(654, 108, 487, 363);
-        panel.add(panel_1);
-        panel_1.setLayout(null);
+    
+		contentPane.setBounds(654, 108, 487, 363);
+		contentPane.setLayout(null);
+		
+		JButton btnAtzeraFilmak = new JButton("Atzera");
+		btnAtzeraFilmak.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Zinemak zinemak = new Zinemak();
+				zinemak.setVisible(true);
+				dispose();
+			}
+		});
+		btnAtzeraFilmak.setBackground(SystemColor.activeCaption);
+		btnAtzeraFilmak.setBounds(10, 10, 85, 21);
+		contentPane.add(btnAtzeraFilmak);
+		
+		JToggleButton tglbtnPelikula1 = new JToggleButton(pelikula1);
+		tglbtnPelikula1.setBounds(25, 50, 136, 47);
+		contentPane.add(tglbtnPelikula1);
+		
+		JToggleButton tglbtnPelikula2 = new JToggleButton(pelikula2);
+		tglbtnPelikula2.setBounds(35, 135, 126, 43);
+		contentPane.add(tglbtnPelikula2);
+		
+		JToggleButton tglbtnPelikula3 = new JToggleButton(pelikula3);
+		tglbtnPelikula3.setBounds(259, 50, 124, 47);
+		contentPane.add(tglbtnPelikula3);
+		
+		JToggleButton tglbtnPelikula4 = new JToggleButton(pelikula4);
+		tglbtnPelikula4.setBounds(259, 138, 142, 40);
+		contentPane.add(tglbtnPelikula4);
+		
+		JToggleButton tglbtnpelikula5 = new JToggleButton(pelikula5);
+		tglbtnpelikula5.setBounds(150, 202, 124, 40);
+		contentPane.add(tglbtnpelikula5);
+		
+				System.out.println(FilmaAukeratu);
+					
+					
+					
+					
+				
         
-        JLabel lblTtituloa = new JLabel();
-        lblTtituloa.setFont(new Font("Tahoma", Font.PLAIN, 23));
-        lblTtituloa.setBounds(32, 11, 95, 77);
-        lblTtituloa.setText("Tituloa");
-        panel_1.add(lblTtituloa);
-        
-        JLabel lblIraupena = new JLabel("Iraupena");
-        lblIraupena.setFont(new Font("Tahoma", Font.PLAIN, 23));
-        lblIraupena.setBounds(32, 136, 95, 57);
-        panel_1.add(lblIraupena);
-        
-        JLabel lblGeneroa = new JLabel("Generoa");
-        lblGeneroa.setFont(new Font("Tahoma", Font.PLAIN, 23));
-        lblGeneroa.setBounds(32, 250, 95, 57);
-        panel_1.add(lblGeneroa);
-        
-        JLabel lblTituloaejemplo = new JLabel();
-        lblTituloaejemplo.setText("TituloaEjemplo");
-        lblTituloaejemplo.setFont(new Font("Tahoma", Font.PLAIN, 23));
-        lblTituloaejemplo.setBounds(158, 11, 319, 77);
-        panel_1.add(lblTituloaejemplo);
-        
-        JLabel lblIraupenaejemplo = new JLabel("IraupenaEjemplo");
-        lblIraupenaejemplo.setFont(new Font("Tahoma", Font.PLAIN, 23));
-        lblIraupenaejemplo.setBounds(158, 136, 319, 57);
-        panel_1.add(lblIraupenaejemplo);
-        
-        JLabel lblGeneroaejemplo = new JLabel("GeneroaEjemplo");
-        lblGeneroaejemplo.setFont(new Font("Tahoma", Font.PLAIN, 23));
-        lblGeneroaejemplo.setBounds(158, 250, 319, 57);
-        panel_1.add(lblGeneroaejemplo);
-    }
+       
+	}
 }

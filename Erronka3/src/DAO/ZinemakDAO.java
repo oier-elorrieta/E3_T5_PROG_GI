@@ -49,7 +49,7 @@ public class ZinemakDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            konexioaBD.desconectar(); // Asegurarse de cerrar la conexión al final
+            konexioaBD.desconectar(); 
         }
 
         return zinemaList;

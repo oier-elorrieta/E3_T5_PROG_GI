@@ -46,7 +46,7 @@ public class OngiEtorri extends JFrame {
       
         lblLogoa = new JLabel("");
         lblLogoa.setBounds(26, 0, 548, 292);
-        lblLogoa.setIcon(new ImageIcon("C:\\Users\\in1dm3-d\\Desktop\\E3_T5_PROG_GI\\Erronka3\\src\\Irudiak\\elorrietaB.png"));
+        lblLogoa.setIcon(new ImageIcon("../Irudiak/elorrietaB.png"));
         Irudia.add(lblLogoa);
 
      
@@ -92,12 +92,13 @@ public class OngiEtorri extends JFrame {
                             }
                             
                         }
+                        Zinemak frame = new Zinemak();
+                        frame.setVisible(true);
+                        dispose();
                     }
                 }).start();
             }
         });
-        Zinemak frame = new Zinemak();
-        frame.setVisible(true);
-        dispose();
+        
     }
 }
