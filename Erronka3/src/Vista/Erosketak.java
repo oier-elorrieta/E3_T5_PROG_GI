@@ -34,7 +34,7 @@ public class Erosketak {
 
         erosketaTaula.setDefaultEditor(Object.class, null);
 
-        JFrame frame = new JFrame("Datos del Cliente");
+        JFrame frame = new JFrame("Bezeroaren datuak");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(400, 263);
 
