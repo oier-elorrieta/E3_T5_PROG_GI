@@ -2,7 +2,10 @@ package JUnit;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
+
 import java.time.LocalDate;
+import java.time.LocalTime;
+
 import org.junit.Test;
 
 import Modelo.Areto;
@@ -15,41 +18,51 @@ public class SaioaTest {
     public void testGetOrdua() {
         Filma filma = new Filma("Izena", 1, 120, "Generoa", 10.0);
         Areto aretoa = new Areto(1, "Areto Izena");
-        Saioa saioa = new Saioa(LocalDate.of(2024, 2, 8), LocalDate.of(2024, 2, 8), filma, aretoa);
-        assertEquals(LocalDate.of(2024, 2, 8), saioa.getOrdua());
+        LocalTime ordua = LocalTime.of(10, 30);
+        LocalDate date = LocalDate.of(2024, 2, 8);
+        Saioa saioa = new Saioa(ordua, date, filma, aretoa);
+        assertEquals(ordua, saioa.getOrdua());
     }
 
     @Test
     public void testSetOrdua() {
         Filma filma = new Filma("Izena", 1, 120, "Generoa", 10.0);
         Areto aretoa = new Areto(1, "Areto Izena");
-        Saioa saioa = new Saioa(null, null, filma, aretoa);
-        saioa.setOrdua(LocalDate.of(2024, 2, 8));
-        assertEquals(LocalDate.of(2024, 2, 8), saioa.getOrdua());
+        LocalTime ordua = LocalTime.of(10, 30);
+        LocalDate date = LocalDate.of(2024, 2, 8);
+        Saioa saioa = new Saioa(null, date, filma, aretoa);
+        saioa.setOrdua(ordua);
+        assertEquals(ordua, saioa.getOrdua());
     }
 
     @Test
     public void testGetDate() {
         Filma filma = new Filma("Izena", 1, 120, "Generoa", 10.0);
         Areto aretoa = new Areto(1, "Areto Izena");
-        Saioa saioa = new Saioa(LocalDate.of(2024, 2, 8), LocalDate.of(2024, 2, 8), filma, aretoa);
-        assertEquals(LocalDate.of(2024, 2, 8), saioa.getDate());
+        LocalTime ordua = LocalTime.of(10, 30);
+        LocalDate date = LocalDate.of(2024, 2, 8);
+        Saioa saioa = new Saioa(ordua, date, filma, aretoa);
+        assertEquals(date, saioa.getDate());
     }
 
     @Test
     public void testSetDate() {
         Filma filma = new Filma("Izena", 1, 120, "Generoa", 10.0);
         Areto aretoa = new Areto(1, "Areto Izena");
-        Saioa saioa = new Saioa(null, null, filma, aretoa);
-        saioa.setDate(LocalDate.of(2024, 2, 8));
-        assertEquals(LocalDate.of(2024, 2, 8), saioa.getDate());
+        LocalTime ordua = LocalTime.of(10, 30);
+        LocalDate date = LocalDate.of(2024, 2, 8);
+        Saioa saioa = new Saioa(ordua, null, filma, aretoa);
+        saioa.setDate(date);
+        assertEquals(date, saioa.getDate());
     }
 
     @Test
     public void testGetFilma() {
         Filma filma = new Filma("Izena", 1, 120, "Generoa", 10.0);
         Areto aretoa = new Areto(1, "Areto Izena");
-        Saioa saioa = new Saioa(LocalDate.of(2024, 2, 8), LocalDate.of(2024, 2, 8), filma, aretoa);
+        LocalTime ordua = LocalTime.of(10, 30);
+        LocalDate date = LocalDate.of(2024, 2, 8);
+        Saioa saioa = new Saioa(ordua, date, filma, aretoa);
         assertEquals(filma, saioa.getFilma());
     }
 
@@ -58,7 +71,9 @@ public class SaioaTest {
         Filma filma1 = new Filma("Izena", 1, 120, "Generoa", 10.0);
         Filma filma2 = new Filma("Beste Izena", 2, 90, "Beste Generoa", 8.0);
         Areto aretoa = new Areto(1, "Areto Izena");
-        Saioa saioa = new Saioa(LocalDate.of(2024, 2, 8), LocalDate.of(2024, 2, 8), filma1, aretoa);
+        LocalTime ordua = LocalTime.of(10, 30);
+        LocalDate date = LocalDate.of(2024, 2, 8);
+        Saioa saioa = new Saioa(ordua, date, filma1, aretoa);
         saioa.setFilma(filma2);
         assertEquals(filma2, saioa.getFilma());
     }
@@ -67,7 +82,9 @@ public class SaioaTest {
     public void testGetAretoa() {
         Filma filma = new Filma("Izena", 1, 120, "Generoa", 10.0);
         Areto aretoa = new Areto(1, "Areto Izena");
-        Saioa saioa = new Saioa(LocalDate.of(2024, 2, 8), LocalDate.of(2024, 2, 8), filma, aretoa);
+        LocalTime ordua = LocalTime.of(10, 30);
+        LocalDate date = LocalDate.of(2024, 2, 8);
+        Saioa saioa = new Saioa(ordua, date, filma, aretoa);
         assertEquals(aretoa, saioa.getAretoa());
     }
 
@@ -76,20 +93,25 @@ public class SaioaTest {
         Filma filma = new Filma("Izena", 1, 120, "Generoa", 10.0);
         Areto aretoa1 = new Areto(1, "Areto Izena");
         Areto aretoa2 = new Areto(2, "Beste Areto Izena");
-        Saioa saioa = new Saioa(LocalDate.of(2024, 2, 8), LocalDate.of(2024, 2, 8), filma, aretoa1);
+        LocalTime ordua = LocalTime.of(10, 30);
+        LocalDate date = LocalDate.of(2024, 2, 8);
+        Saioa saioa = new Saioa(ordua, date, filma, aretoa1);
         saioa.setAretoa(aretoa2);
         assertEquals(aretoa2, saioa.getAretoa());
     }
-@Test
+
+    @Test
     public void testEquals() {
         Filma filma1 = new Filma("Izena", 1, 120, "Generoa", 10.0);
         Filma filma2 = new Filma("Beste Izena", 2, 90, "Beste Generoa", 8.0);
         Areto aretoa1 = new Areto(1, "Areto Izena");
         Areto aretoa2 = new Areto(2, "Beste Areto Izena");
-        Saioa saioa1 = new Saioa(LocalDate.of(2024, 2, 8), LocalDate.of(2024, 2, 8), filma1, aretoa1);
-        Saioa saioa2 = new Saioa(LocalDate.of(2024, 2, 8), LocalDate.of(2024, 2, 8), filma1, aretoa1);
-        Saioa saioa3 = new Saioa(LocalDate.of(2024, 2, 8), LocalDate.of(2024, 2, 8), filma2, aretoa1);
-        Saioa saioa4 = new Saioa(LocalDate.of(2024, 2, 8), LocalDate.of(2024, 2, 8), filma1, aretoa2);
+        LocalTime ordua = LocalTime.of(10, 30);
+        LocalDate date = LocalDate.of(2024, 2, 8);
+        Saioa saioa1 = new Saioa(ordua, date, filma1, aretoa1);
+        Saioa saioa2 = new Saioa(ordua, date, filma1, aretoa1);
+        Saioa saioa3 = new Saioa(ordua, date, filma2, aretoa1);
+        Saioa saioa4 = new Saioa(ordua, date, filma1, aretoa2);
 
         assertEquals(saioa1, saioa2);
         assertNotEquals(saioa1, saioa3);
@@ -100,8 +122,10 @@ public class SaioaTest {
     public void testHashCode() {
         Filma filma = new Filma("Izena", 1, 120, "Generoa", 10.0);
         Areto aretoa = new Areto(1, "Areto Izena");
-        Saioa saioa1 = new Saioa(LocalDate.of(2024, 2, 8), LocalDate.of(2024, 2, 8), filma, aretoa);
-        Saioa saioa2 = new Saioa(LocalDate.of(2024, 2, 8), LocalDate.of(2024, 2, 8), filma, aretoa);
+        LocalTime ordua = LocalTime.of(10, 30);
+        LocalDate date = LocalDate.of(2024, 2, 8);
+        Saioa saioa1 = new Saioa(ordua, date, filma, aretoa);
+        Saioa saioa2 = new Saioa(ordua, date, filma, aretoa);
 
         assertEquals(saioa1.hashCode(), saioa2.hashCode());
     }
@@ -110,9 +134,9 @@ public class SaioaTest {
     public void testToString() {
         Filma filma = new Filma("Izena", 1, 120, "Generoa", 10.0);
         Areto aretoa = new Areto(1, "Areto Izena");
-        Saioa saioa = new Saioa(LocalDate.of(2024, 2, 8), LocalDate.of(2024, 2, 8), filma, aretoa);
-        assertEquals("Saioa ordua 2024-02-08, date 2024-02-08, filma " + filma + ", Aretoa " + aretoa + "",
-                saioa.toString());
+        LocalTime ordua = LocalTime.of(10, 30);
+        LocalDate date = LocalDate.of(2024, 2, 8);
+        Saioa saioa = new Saioa(ordua, date, filma, aretoa);
+        assertEquals("Saioa [ordua=10:30, date=2024-02-08, filma=" + filma + ", aretoa=" + aretoa + "]", saioa.toString());
     }
 }
-

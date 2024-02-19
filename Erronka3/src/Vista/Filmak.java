@@ -16,6 +16,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JToggleButton;
 import Modelo.Kontsultak;
 import Modelo.Filma;
+import javax.swing.JScrollPane;
 
 public class Filmak extends JFrame {
 
@@ -51,6 +52,10 @@ public class Filmak extends JFrame {
 		btnAtzeraFilmak.setBackground(SystemColor.activeCaption);
 		btnAtzeraFilmak.setBounds(10, 10, 85, 21);
 		contentPane.add(btnAtzeraFilmak);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(0, 0, 2, 2);
+		contentPane.add(scrollPane);
 		
 		JToggleButton tglbtnPelikula1 = new JToggleButton(pelikula1);
 		tglbtnPelikula1.setBounds(25, 50, 136, 47);

@@ -37,15 +37,22 @@ public class ZinemakDAO {
                     while (rs.next()) {
                         int id_zine = rs.getInt("zinema_id");
                         String izena = rs.getString("izena");
-                        String helbidea = rs.getString("helbidea");
+                        
 
-                        Zinema zinema = new Zinema(id_zine, izena, helbidea, null, null);
+                        Zinema zinema = new Zinema(id_zine, izena, null, null, null);
 
                         zinemaList[index] = zinema;
                         index++;
                     }
                 }
             }
+
+            // Print the retrieved data
+            System.out.println("Total number of cinemas: " + count);
+            for (Zinema zinema : zinemaList) {
+                System.out.println(zinema);
+            }
+
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {

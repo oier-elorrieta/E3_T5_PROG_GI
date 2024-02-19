@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 import Modelo.Saioa;
 import Modelo.Areto;
@@ -38,12 +39,12 @@ public class SaioaDAO {
                 try (ResultSet rs = pstmt.executeQuery()) {
                     int index = 0;
                     while (rs.next()) {
-                        LocalDate ordua = rs.getDate("ordutegia").toLocalDate();
+                    	LocalTime ordua = rs.getTime("ordutegia").toLocalTime();
                         LocalDate date = rs.getDate("eguna").toLocalDate();
                         int filmaId = rs.getInt("filma_id"); 
                         int aretoId = rs.getInt("aretoa_id"); 
-                        Filma filma = getFilmaById(filmaId, con); // Pasamos la conexión
-                        Areto areto = getAretoById(aretoId, con); // Pasamos la conexión
+                        Filma filma = getFilmaById(filmaId, con);
+                        Areto areto = getAretoById(aretoId, con); 
 
                         Saioa saioa = new Saioa(ordua, date, filma, areto);
                         saioaList[index] = saioa;
@@ -54,14 +55,14 @@ public class SaioaDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            konexioaBD.desconectar(); // Asegurarse de cerrar la conexión al final
-        }
+            konexioaBD.desconectar(); 
+            }
 
         return saioaList;
     }
 
-    private Filma getFilmaById(int id, Connection con) { // Añadimos la conexión como parámetro
-        Filma filma = null;
+    private Filma getFilmaById(int id, Connection con) {      
+    	Filma filma = null;
         String sql = "SELECT * FROM FILMA WHERE filma_id = ?";
         try (PreparedStatement pstmt = con.prepareStatement(sql)) {
             pstmt.setInt(1, id);
