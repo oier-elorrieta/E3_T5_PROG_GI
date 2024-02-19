@@ -3,19 +3,19 @@ package Modelo;
 import java.util.Objects;
 
 public class Areto {
-	private int id_areto;
+	private String id_areto;
 	private String izena;
 
-	public Areto(int id_areto, String izena) {
+	public Areto(String id_areto, String izena) {
 		this.id_areto = id_areto;
 		this.izena = izena;
 	}
 
-	public int getId_areto() {
+	public String getId_areto() {
 		return id_areto;
 	}
 
-	public void setId_areto(int id_areto) {
+	public void setId_areto(String id_areto) {
 		this.id_areto = id_areto;
 	}
 

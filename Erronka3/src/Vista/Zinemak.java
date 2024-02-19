@@ -17,6 +17,7 @@ public class Zinemak extends JFrame {
 	 */
 	private static final long serialVersionUID = 1557861239751784319L;
 	private JPanel contentPaneZinemak;
+	public String aukeratuZinema;
 
     public Zinemak() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -24,20 +25,20 @@ public class Zinemak extends JFrame {
         contentPaneZinemak = new JPanel();
         contentPaneZinemak.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPaneZinemak);
-        contentPaneZinemak.setLayout(new GridLayout(0, 1, 0, 10)); // Use a grid layout to arrange buttons vertically
+        contentPaneZinemak.setLayout(new GridLayout(0, 1, 0, 10));
 
-        // Use ZinemakDAO to get cinema names
+        
         ZinemakDAO zinemakDAO = new ZinemakDAO();
         Zinema[] zinemakList = zinemakDAO.getAllZinemak();
 
-        // If zinemakList is not null, create buttons for each cinema
+
         if (zinemakList != null) {
             for (Zinema zinema : zinemakList) {
                 if (zinema != null) { // Check if zinema is not null
-                    JButton btnCinema = new JButton(zinema.getIzena()); // Assuming getIzena() returns cinema name
+                    JButton btnCinema = new JButton(zinema.getIzena());
                     btnCinema.addActionListener(new ActionListener() {
                         public void actionPerformed(ActionEvent e) {
-                            String aukeratuZinema = zinema.getIzena(); // Assuming getIzena() returns cinema name
+                            aukeratuZinema = zinema.getIzena();
                             FilmakAtala();
                         }
                     });

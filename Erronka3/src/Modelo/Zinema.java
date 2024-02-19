@@ -4,25 +4,25 @@ import java.util.Arrays;
 import java.util.Objects;
 
 public class Zinema {
-	private int id_zine;
+	private String id_zine;
 	private String izena;
 	private String helbidea;
 	Saioa[] saioalist;
 	Areto[] aretolist;
 
-	public Zinema(int id_zine, String izena, String helbidea, Saioa[] saioalistArray, Areto[] aretolistarray) {
+	public Zinema(String id_zine, String izena, String helbidea, Saioa[] saioalist, Areto[] aretolist) {
 		this.id_zine = id_zine;
 		this.izena = izena;
 		this.helbidea = helbidea;
-		saioalist = saioalistArray;
-		aretolist = aretolistarray;
+		this.saioalist = saioalist;
+		this.aretolist = aretolist;
 	}
 
-	public int getId_zine() {
+	public String getId_zine() {
 		return id_zine;
 	}
 
-	public void setId_zine(int id_zine) {
+	public void setId_zine(String id_zine) {
 		this.id_zine = id_zine;
 	}
 
@@ -46,16 +46,16 @@ public class Zinema {
 		return saioalist;
 	}
 
-	public void setSaioalistArray(Saioa[] saioalistArray) {
-		saioalist = saioalistArray;
+	public void setSaioalistArray(Saioa[] saioalist) {
+		this.saioalist = saioalist;
 	}
 
 	public Areto[] getAretolistarray() {
 		return aretolist;
 	}
 
-	public void setAretolistarray(Areto[] aretolistarray) {
-		aretolist = aretolistarray;
+	public void setAretolistarray(Areto[] aretolist) {
+		this.aretolist = aretolist;
 	}
 
 	@Override
@@ -73,9 +73,11 @@ public class Zinema {
 	}
 
 	@Override
-	public String toString() {
+	public  String toString() {
 		return "Zinema id_zine " + id_zine + ", izena " + izena + ", helbidea " + helbidea + ", Saioalist "
 				+ Arrays.toString(saioalist) + ", Aretolist " + Arrays.toString(aretolist) + "";
 	}
+
+	
 
 }

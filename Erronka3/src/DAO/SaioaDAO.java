@@ -42,7 +42,7 @@ public class SaioaDAO {
                     	LocalTime ordua = rs.getTime("ordutegia").toLocalTime();
                         LocalDate date = rs.getDate("eguna").toLocalDate();
                         int filmaId = rs.getInt("filma_id"); 
-                        int aretoId = rs.getInt("aretoa_id"); 
+                        String aretoId = rs.getString("aretoa_id"); 
                         Filma filma = getFilmaById(filmaId, con);
                         Areto areto = getAretoById(aretoId, con); 
 
@@ -83,14 +83,14 @@ public class SaioaDAO {
         return filma;
     }
 
-    private Areto getAretoById(int id, Connection con) { // Añadimos la conexión como parámetro
+    private Areto getAretoById(String aretoId, Connection con) {
         Areto areto = null;
         String sql = "SELECT * FROM ARETOA WHERE aretoa_id = ?";
         try (PreparedStatement pstmt = con.prepareStatement(sql)) {
-            pstmt.setInt(1, id);
+            pstmt.setString(1, aretoId);
             try (ResultSet rs = pstmt.executeQuery()) {
                 if (rs.next()) {
-                    int areto_id = rs.getInt("aretoa_id");
+                	String areto_id = rs.getString("aretoa_id");
                     String izena = rs.getString("izena");
 
                     areto = new Areto(areto_id, izena);

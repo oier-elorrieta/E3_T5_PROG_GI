@@ -35,9 +35,9 @@ public class AretoDAO {
                 try (ResultSet rs = pstmt.executeQuery()) {
                     int index = 0;
                     while (rs.next()) {
-                        int id_areto = rs.getInt("aretoa_id");
+                    	String id_areto = rs.getString("aretoa_id");
                         String izena = rs.getString("izena");
-
+                        
                         Areto areto = new Areto(id_areto, izena);
 
                         aretoList[index] = areto;
