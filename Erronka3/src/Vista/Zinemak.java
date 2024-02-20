@@ -39,7 +39,9 @@ public class Zinemak extends JFrame {
                     btnCinema.addActionListener(new ActionListener() {
                         public void actionPerformed(ActionEvent e) {
                             aukeratuZinema = zinema.getId_zine();
+                            System.out.println(aukeratuZinema);
                             FilmakAtala();
+                            
                         }
                     });
                     contentPaneZinemak.add(btnCinema);

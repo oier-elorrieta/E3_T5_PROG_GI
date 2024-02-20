@@ -6,8 +6,8 @@ public class Areto {
 	private String id_areto;
 	private String izena;
 
-	public Areto(String id_areto, String izena) {
-		this.id_areto = id_areto;
+	public Areto(String i, String izena) {
+		this.id_areto = i;
 		this.izena = izena;
 	}
 

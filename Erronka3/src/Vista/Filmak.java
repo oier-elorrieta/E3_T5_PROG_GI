@@ -27,100 +27,80 @@ import Modelo.Zinema;
 import Modelo.Filma;
 import javax.swing.JScrollPane;
 
+
 public class Filmak extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPaneFilmak;
-	public List<Filma> filmak;
-	public Zinemak aukeratuZinema;
-	public Kontsultak Filmak;
-	public Kontsultak FilmakZ1[];
-	public KonexioaBD konexioaBD;
+	private Kontsultak kontsulta;
 
 	public Filmak() {
+        kontsulta = new Kontsultak(new KonexioaBD());
+
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPaneFilmak = new JPanel();
 		contentPaneFilmak.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPaneFilmak);
-        
-    
-		contentPaneFilmak.setBounds(654, 108, 487, 363);
 		contentPaneFilmak.setLayout(null);
-		
-	
-		Kontsultak kontsulta = new Kontsultak();
-        String[] filmakZ1 = kontsulta.FilmakZinemaZ1();
-        
-		try (Connection con = konexioaBD.getConnection()) {
-	
-	        for (String film : filmakZ1) {
-	            if (film != null) {
-	                System.out.println(film);
-	            }
-	        }
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-			
-//		 SaioaDAO saioaDAO = new SaioaDAO();
-//		 Saioa[] saioaList = saioaDAO.getAllSaioak();
-//		 
-//		 ZinemakDAO zinemakDAO = new ZinemakDAO();
-//	        Zinema[] zinemakList = zinemakDAO.getAllZinemak();
-//	        
-//	        FilmaDAO filmaDAO = new FilmaDAO();
-//	        List<Filma> filma = filmaDAO.getAllFilmak();
-//
-//
-//	        if (zinemakList != null) {
-//	            for ( Zinema saioalist: zinemakList ) {
-//	                if ( aukeratuZinema != null) { // Check if zinema is not null
-//	                	List<Filma> filmakZinemaren = (List<Filma>)filma; // Asume que hay un método getFilmak en Zinemak
-//
-//	                    if (filmakZinemaren != null) {
-//	                        for (Filma aukeratuFilma : filmakZinemaren) {
-//	                            JButton btnPelikula = new JButton(aukeratuFilma.getIzena());
-//	                            btnPelikula.addActionListener(new ActionListener() {
-//	                                public void actionPerformed(ActionEvent e) {
-//	                                    // Realizar acciones al hacer clic en una película
-//	                                    String aukeratuPelikula = aukeratuFilma.getIzena();
-//	                                }
-//	                            });
-//	                            contentPaneFilmak.add(btnPelikula);
-//	                        }
-//	                    }
-//	                }
-//	            }
-//	            Saioak saioak = new Saioak();
-//				saioak.setVisible(true);
-//				dispose();
-//	        }
-//	                            
-			                        
-				
-			    
-			
-			JButton btnAtzeraFilmak = new JButton("Atzera");
-			btnAtzeraFilmak.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					Zinemak zinemak = new Zinemak();
-					zinemak.setVisible(true);
-					dispose();
-				}
-			});
-			btnAtzeraFilmak.setBackground(SystemColor.activeCaption);
-			btnAtzeraFilmak.setBounds(10, 10, 85, 21);
-			contentPaneFilmak.add(btnAtzeraFilmak);
 
-						
-						
-						
-						
-					
-			
-      
+		JButton btnAtzeraFilmak = new JButton("Atzera");
+		btnAtzeraFilmak.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Zinemak zinemak = new Zinemak();
+				zinemak.setVisible(true);
+				dispose();
+			}
+		});
+		btnAtzeraFilmak.setBackground(SystemColor.activeCaption);
+		btnAtzeraFilmak.setBounds(10, 10, 85, 21);
+		contentPaneFilmak.add(btnAtzeraFilmak);
+
+		 
+	         
+
+		String[] filmakZ1 = kontsulta.FilmakZinemaZ1();
+		for (String film : filmakZ1) {
+			if (film != null) {
+				System.out.println(film);
+			}
+		}
+	}
 }
-	
-}
+
+
+//SaioaDAO saioaDAO = new SaioaDAO();
+//Saioa[] saioaList = saioaDAO.getAllSaioak();
+//
+//ZinemakDAO zinemakDAO = new ZinemakDAO();
+//   Zinema[] zinemakList = zinemakDAO.getAllZinemak();
+//   
+//   FilmaDAO filmaDAO = new FilmaDAO();
+//   List<Filma> filma = filmaDAO.getAllFilmak();
+//
+//
+//   if (zinemakList != null) {
+//       for ( Zinema saioalist: zinemakList ) {
+//           if ( aukeratuZinema != null) { // Check if zinema is not null
+//           	List<Filma> filmakZinemaren = (List<Filma>)filma; // Asume que hay un método getFilmak en Zinemak
+//
+//               if (filmakZinemaren != null) {
+//                   for (Filma aukeratuFilma : filmakZinemaren) {
+//                       JButton btnPelikula = new JButton(aukeratuFilma.getIzena());
+//                       btnPelikula.addActionListener(new ActionListener() {
+//                           public void actionPerformed(ActionEvent e) {
+//                               // Realizar acciones al hacer clic en una película
+//                               String aukeratuPelikula = aukeratuFilma.getIzena();
+//                           }
+//                       });
+//                       contentPaneFilmak.add(btnPelikula);
+//                   }
+//               }
+//           }
+//       }
+//       Saioak saioak = new Saioak();
+//		saioak.setVisible(true);
+//		dispose();
+//   }
+//                       
+	              
