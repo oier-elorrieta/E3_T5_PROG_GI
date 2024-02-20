@@ -36,8 +36,8 @@
 
 				<includes>
 
+					<include>Irudiak/Pelis/*.png</include>
 					<include>Irudiak/Pelis/*.jpg</include>
-
 			
 				</includes>
 
