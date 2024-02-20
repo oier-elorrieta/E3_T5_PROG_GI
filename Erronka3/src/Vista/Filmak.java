@@ -34,6 +34,7 @@ public class Filmak extends JFrame {
 	private JPanel contentPaneFilmak;
 	private Kontsultak kontsulta;
 
+
 	public Filmak() {
         kontsulta = new Kontsultak(new KonexioaBD());
 
@@ -59,14 +60,24 @@ public class Filmak extends JFrame {
 		 
 	         
 
-		String[] filmakZ1 = kontsulta.FilmakZinemaZ1();
-		for (String film : filmakZ1) {
-			if (film != null) {
-				System.out.println(film);
+		String[] filmakZinema = kontsulta.FilmakZinema();
+		
+			for (int i = 0; i > filmakZinema.length; i++ ) {
+				
+				JButton btnCinema = new JButton(filmakZinema[i]);
+                btnCinema.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                    	 Saioak saioak = new Saioak();
+                		saioak.setVisible(true);
+                		dispose();
+                        
+                    }
+                });
+                contentPaneFilmak.add(btnCinema);
+            }
+
 			}
-		}
 	}
-}
 
 
 //SaioaDAO saioaDAO = new SaioaDAO();
@@ -98,9 +109,7 @@ public class Filmak extends JFrame {
 //               }
 //           }
 //       }
-//       Saioak saioak = new Saioak();
-//		saioak.setVisible(true);
-//		dispose();
+//      
 //   }
 //                       
 	              
