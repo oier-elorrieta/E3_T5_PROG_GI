@@ -12,12 +12,9 @@ import java.awt.event.ActionListener;
 
 public class Zinemak extends JFrame {
 
-    /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1557861239751784319L;
-	private JPanel contentPaneZinemak;
-	public String aukeratuZinema;
+    private static final long serialVersionUID = 1557861239751784319L;
+    private JPanel contentPaneZinemak;
+    public String selectedZinema;
 
     public Zinemak() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -34,12 +31,12 @@ public class Zinemak extends JFrame {
 
         if (zinemakList != null) {
             for (Zinema zinema : zinemakList) {
-                if (zinema != null) { // Check if zinema is not null
+                if (zinema != null) { 
                     JButton btnCinema = new JButton(zinema.getIzena());
                     btnCinema.addActionListener(new ActionListener() {
                         public void actionPerformed(ActionEvent e) {
-                            aukeratuZinema = zinema.getId_zine();
-                            System.out.println(aukeratuZinema);
+                            selectedZinema = zinema.getId_zine();
+                            System.out.println(selectedZinema);
                             FilmakAtala();
                             
                         }
@@ -60,8 +57,9 @@ public class Zinemak extends JFrame {
     }
 
     public void FilmakAtala() {
-        Filmak filmak = new Filmak();
+        Filmak filmak = new Filmak(selectedZinema);
         filmak.setVisible(true);
         dispose();
     }
+
 }
