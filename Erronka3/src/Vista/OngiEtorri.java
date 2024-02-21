@@ -4,6 +4,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import DAO.ZinemakDAO;
+import Kontroladorea.Kontroladorea;
+import Modelo.Saioa;
 import Modelo.Zinema;
 
 import javax.swing.JLabel;
@@ -29,7 +32,7 @@ public class OngiEtorri extends JFrame {
     public int tiempoCarga = 0;
 	public static int barraBat = 0;
 
-    public OngiEtorri() {
+    public OngiEtorri(Zinema[] zinemakList, Saioa[] saioaList) {
     	
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 600, 380);
@@ -92,7 +95,7 @@ public class OngiEtorri extends JFrame {
                             }
                             
                         }
-                        Zinemak frame = new Zinemak();
+                        Zinemak frame = new Zinemak(zinemakList,saioaList);
                         frame.setVisible(true);
                         dispose();
                     }
