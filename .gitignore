@@ -1,6 +1,0 @@
-/.metadata/
-# Ignorar todos los archivos y carpetas
-/*
-
-# Excepto la carpeta "src"
-!src/
