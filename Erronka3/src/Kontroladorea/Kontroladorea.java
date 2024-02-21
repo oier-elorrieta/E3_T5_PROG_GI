@@ -10,12 +10,10 @@ public class Kontroladorea {
 
     public static void main(String[] args) {
         ZinemakDAO zinemakDAO = new ZinemakDAO();
-        SaioaDAO  saioaDAO = new SaioaDAO();
         Zinema[] zinemakList = zinemakDAO.getAllZinemak();
-        Saioa[] saioaList = saioaDAO.getAllSaioak();
     
         try {
-            OngiEtorri frame = new OngiEtorri(zinemakList, saioaList);
+            OngiEtorri frame = new OngiEtorri(zinemakList);
             frame.setVisible(true);
         } catch (Exception e) {
             e.printStackTrace();

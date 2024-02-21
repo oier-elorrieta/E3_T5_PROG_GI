@@ -32,7 +32,7 @@ public class OngiEtorri extends JFrame {
     public int tiempoCarga = 0;
 	public static int barraBat = 0;
 
-    public OngiEtorri(Zinema[] zinemakList, Saioa[] saioaList) {
+    public OngiEtorri(Zinema[] zinemakList) {
     	
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 600, 380);
@@ -95,7 +95,7 @@ public class OngiEtorri extends JFrame {
                             }
                             
                         }
-                        Zinemak frame = new Zinemak(zinemakList,saioaList);
+                        Zinemak frame = new Zinemak(zinemakList);
                         frame.setVisible(true);
                         dispose();
                     }

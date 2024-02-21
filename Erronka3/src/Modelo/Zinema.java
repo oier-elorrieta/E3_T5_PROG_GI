@@ -1,5 +1,6 @@
 package Modelo;
 
+import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Objects;
 
@@ -58,25 +59,31 @@ public class Zinema {
 		this.aretolist = aretolist;
 	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Zinema other = (Zinema) obj;
-		return Arrays.equals(aretolist, other.aretolist) && Arrays.equals(saioalist, other.saioalist)
-				&& Objects.equals(helbidea, other.helbidea) && id_zine == other.id_zine
-				&& Objects.equals(izena, other.izena);
-	}
+	   public String[] getClosestMovies(Saioa[] saioak) {
+	        LocalDate today = LocalDate.now();
+	        int numClosestMovies = 0;
 
-	@Override
-	public  String toString() {
-		return "Zinema id_zine " + id_zine + ", izena " + izena + ", helbidea " + helbidea + ", Saioalist "
-				+ Arrays.toString(saioalist) + ", Aretolist " + Arrays.toString(aretolist) + "";
-	}
+	        // Contar el número de películas más cercanas al día actual
+	        for (Saioa saioa : saioak) {
+	            if (saioa.getDate().isAfter(today)) {
+	                numClosestMovies++;
+	            }
+	        }
+
+	        // Crear un array para almacenar las películas más cercanas
+	        String[] closestMovies = new String[numClosestMovies];
+	        int index = 0;
+
+	        // Iterar sobre las sesiones del cine y añadir las películas más cercanas al día actual
+	        for (Saioa saioa : saioak) {
+	            if (saioa.getDate().isAfter(today)) {
+	                closestMovies[index] = saioa.getFilma().getIzena();
+	                index++;
+	            }
+	        }
+
+	        return closestMovies;
+	    }
 
 	
 

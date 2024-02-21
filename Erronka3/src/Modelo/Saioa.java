@@ -54,21 +54,20 @@ public class Saioa {
         return Objects.hash(aretoa, date, filma, ordua);
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        Saioa other = (Saioa) obj;
-        return Objects.equals(aretoa, other.aretoa) && Objects.equals(date, other.date)
-                && Objects.equals(filma, other.filma) && Objects.equals(ordua, other.ordua);
+    public void  saioakAtera() {
+    	
+    	
+    	
+    	 System.out.println("Saioa informazioa:");
+    	    System.out.println("Ordua: " + ordua);
+    	    System.out.println("Data: " + date);
+    	    System.out.println("Filma: " + filma.getIzena());
+    	    System.out.println("Aretoa: " + aretoa.getIzena());
+    	
     }
 
-    @Override
-    public String toString() {
-        return "Saioa [ordua=" + ordua + ", date=" + date + ", filma=" + filma + ", aretoa=" + aretoa + "]";
-    }
+	@Override
+	public String toString() {
+		return "Saioa [ordua=" + ordua + ", date=" + date + ", filma=" + filma + ", aretoa=" + aretoa + "]";
+	}
 }
