@@ -53,9 +53,15 @@ public class Filmak extends JFrame {
                 public void actionPerformed(ActionEvent e) {
                     System.out.println("Has seleccionado la película: " + closestMovies[index]);
                     // Aquí puedes abrir la pantalla de Saioak con la película seleccionada
+<<<<<<< HEAD
                      Saioak saioa = new Saioak(closestMovies[index], zinemakList);  
                      saioa.setVisible(true);
                      dispose();
+=======
+                    // Saioak saioa = new Saioak(closestMovies[index]);  
+                    // saioa.setVisible(true);
+                    // dispose();
+>>>>>>> 1fa3c6d9ebcb81e580fd599279e058d5d559be2c
                 }
             });
             btnPelikula.setBounds(10, 50 + i * 30, 150, 25);
