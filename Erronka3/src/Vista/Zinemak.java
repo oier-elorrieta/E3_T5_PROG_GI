@@ -3,8 +3,6 @@ package Vista;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
-import DAO.ZinemakDAO;
-import Kontroladorea.Kontroladorea;
 import Modelo.Saioa;
 import Modelo.Zinema;
 
@@ -16,48 +14,55 @@ public class Zinemak extends JFrame {
 
     private static final long serialVersionUID = 1557861239751784319L;
     private JPanel contentPaneZinemak;
-    public String selectedZinema;
-    
+    private Zinema[] zinemakList;
 
-    public Zinemak(Zinema[] zinemakList, Saioa[] saioaList) {
+
+    public Zinemak(Zinema[] zinemakList) {
+        this.zinemakList = zinemakList;
+
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 450, 300);
         contentPaneZinemak = new JPanel();
         contentPaneZinemak.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPaneZinemak);
         contentPaneZinemak.setLayout(new GridLayout(0, 1, 0, 10));
-        
-        
-        if (zinemakList != null) {
-            for (Zinema zinema : zinemakList) {
-                if (zinema != null) { 
-                    JButton btnCinema = new JButton(zinema.getIzena());
-                    btnCinema.addActionListener(new ActionListener() {
-                        public void actionPerformed(ActionEvent e) {
-                            selectedZinema = zinema.getId_zine();
-                            System.out.println(selectedZinema);
-                            FilmakAtala();
-                            
-                        }
-                    });
-                    contentPaneZinemak.add(btnCinema);
+
+        for (Zinema zinema : zinemakList) {
+            JButton btnCinema = new JButton(zinema.getIzena());
+            btnCinema.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    String zinemaAukeraID = zinema.getId_zine();
+                    System.out.println(zinemaAukeraID);
+                    filmakZerrenda(zinemaAukeraID);
                 }
-            }
+            });
+            contentPaneZinemak.add(btnCinema);
         }
 
         JButton btnAmaitu = new JButton("Amaitu");
         btnAmaitu.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                OngiEtorri ongiEtorri = new OngiEtorri(zinemakList,saioaList);
+                OngiEtorri ongiEtorri = new OngiEtorri(zinemakList);
                 ongiEtorri.setVisible(true);
             }
         });
         contentPaneZinemak.add(btnAmaitu);
     }
 
-    public void FilmakAtala() {
-        Filmak filmak = new Filmak(selectedZinema);
-        filmak.setVisible(true);
-        dispose();
+    public void filmakZerrenda(String zinemaAukeraID) {
+        Zinema zinemaAukera = null;
+        for (Zinema zinema : zinemakList) {
+            if (zinema.getId_zine().equals(zinemaAukeraID)) {
+                zinemaAukera = zinema;
+                break;
+            }
+        }
+        if (zinemaAukera != null) {
+            Filmak filmak = new Filmak(zinemaAukera, zinemakList);
+            filmak.setVisible(true);
+            dispose();
+        } else {
+            System.out.println("Ez dago zinema hori");
+        }
     }
 }
