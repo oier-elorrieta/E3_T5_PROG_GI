@@ -58,33 +58,6 @@ public class Zinema {
         this.aretolist = aretolist;
     }
 
-<<<<<<< HEAD
-	   public String[] getClosestMovies(Saioa[] saioak) {
-	        LocalDate today = LocalDate.now();
-	        int numClosestMovies = 0;
-
-	        // Contar el número de películas más cercanas al día actual
-	        for (Saioa saioa : saioak) {
-	            if (saioa.getDate().isAfter(today)) {
-	                numClosestMovies++;
-	            }
-	        }
-
-	        // Crear un array para almacenar las películas más cercanas
-	        String[] closestMovies = new String[numClosestMovies];
-	        int index = 0;
-
-	        // Iterar sobre las sesiones del cine y añadir las películas más cercanas al día actual
-	        for (Saioa saioa : saioak) {
-	            if (saioa.getDate().isAfter(today)) {
-	                closestMovies[index] = saioa.getFilma().getIzena();
-	                index++;
-	            }
-	        }
-
-	        return closestMovies;
-	    }
-=======
     public String[] getClosestMovies(Saioa[] saioak) {
         LocalDate today = LocalDate.now();
         int numClosestMovies = 0;
@@ -95,7 +68,6 @@ public class Zinema {
                 numClosestMovies++;
             }
         }
->>>>>>> 1fa3c6d9ebcb81e580fd599279e058d5d559be2c
 
         // Crear un array para almacenar las películas más cercanas
         String[] closestMovies = new String[numClosestMovies];
