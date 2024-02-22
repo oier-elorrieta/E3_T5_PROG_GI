@@ -17,7 +17,7 @@ public class SaioaDAO {
         konexioaBD = new KonexioaBD();
     }
 
-    // Método para obtener todos los Saioak
+
     public Saioa[] getAllSaioak() {
         Saioa[] saioaList = null;
         int count = 0;
@@ -61,13 +61,13 @@ public class SaioaDAO {
         return saioaList;
     }
 
-    // Método para obtener los Saioak asociados con un Zinema específico
+
     public Saioa[] getAllSaioakForZinema(String zinemaId) {
         Saioa[] saioaListForZinema = null;
         int count = 0;
 
         try (Connection con = konexioaBD.getConnection()) {
-            // Contar el número de Saioak asociados con el Zinema específico
+
             String countSql = "SELECT COUNT(*) AS total FROM SAIOA WHERE aretoa_id IN (SELECT aretoa_id FROM ARETOA WHERE zinema_id = ?)";
             try (PreparedStatement countPstmt = con.prepareStatement(countSql)) {
                 countPstmt.setString(1, zinemaId);
@@ -78,10 +78,10 @@ public class SaioaDAO {
                 }
             }
 
-            // Inicializar el array para los Saioak asociados con el Zinema específico
+
             saioaListForZinema = new Saioa[count];
 
-            // Consulta para obtener los Saioak asociados con el Zinema específico
+
             String sql = "SELECT * FROM SAIOA WHERE aretoa_id IN (SELECT aretoa_id FROM ARETOA WHERE zinema_id = ?)";
             try (PreparedStatement pstmt = con.prepareStatement(sql)) {
                 pstmt.setString(1, zinemaId);

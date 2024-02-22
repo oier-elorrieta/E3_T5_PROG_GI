@@ -1,4 +1,4 @@
-package Modelo;
+package probak;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,6 +8,9 @@ import DAO.AretoDAO;
 import DAO.KonexioaBD;
 import DAO.SaioaDAO;
 import DAO.ZinemakDAO;
+import Modelo.Filma;
+import Modelo.Saioa;
+import Modelo.Zinema;
 
 public class Kontsultak {
     private Zinema aukeratuZinema;

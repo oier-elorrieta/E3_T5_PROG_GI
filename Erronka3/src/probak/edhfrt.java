@@ -1,4 +1,4 @@
-package Vista;
+package probak;
 
 import java.awt.EventQueue;
 

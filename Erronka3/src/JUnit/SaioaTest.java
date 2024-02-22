@@ -13,11 +13,11 @@ import Modelo.Filma;
 import Modelo.Saioa;
 
 public class SaioaTest {
-
+	//gehitu behar da zinemako id eta ondo ezarri aretoan
     @Test
     public void testGetOrdua() {
         Filma filma = new Filma("Izena", 1, 120, "Generoa", 10.0);
-        Areto aretoa = new Areto("A1", "Areto Izena");
+        Areto aretoa = new Areto("A1", "Areto Izena", null);
         LocalTime ordua = LocalTime.of(10, 30);
         LocalDate date = LocalDate.of(2024, 2, 8);
         Saioa saioa = new Saioa(ordua, date, filma, aretoa);
@@ -27,7 +27,7 @@ public class SaioaTest {
     @Test
     public void testSetOrdua() {
         Filma filma = new Filma("Izena", 1, 120, "Generoa", 10.0);
-        Areto aretoa = new Areto("A1", "Areto Izena");
+        Areto aretoa = new Areto("A1", "Areto Izena", null);
         LocalTime ordua = LocalTime.of(10, 30);
         LocalDate date = LocalDate.of(2024, 2, 8);
         Saioa saioa = new Saioa(null, date, filma, aretoa);
@@ -38,7 +38,7 @@ public class SaioaTest {
     @Test
     public void testGetDate() {
         Filma filma = new Filma("Izena", 1, 120, "Generoa", 10.0);
-        Areto aretoa = new Areto("A1", "Areto Izena");
+        Areto aretoa = new Areto("A1", "Areto Izena", null);
         LocalTime ordua = LocalTime.of(10, 30);
         LocalDate date = LocalDate.of(2024, 2, 8);
         Saioa saioa = new Saioa(ordua, date, filma, aretoa);
@@ -48,7 +48,7 @@ public class SaioaTest {
     @Test
     public void testSetDate() {
         Filma filma = new Filma("Izena", 1, 120, "Generoa", 10.0);
-        Areto aretoa = new Areto("A1", "Areto Izena");
+        Areto aretoa = new Areto("A1", "Areto Izena", null);
         LocalTime ordua = LocalTime.of(10, 30);
         LocalDate date = LocalDate.of(2024, 2, 8);
         Saioa saioa = new Saioa(ordua, null, filma, aretoa);
@@ -59,7 +59,7 @@ public class SaioaTest {
     @Test
     public void testGetFilma() {
         Filma filma = new Filma("Izena", 1, 120, "Generoa", 10.0);
-        Areto aretoa = new Areto("A1", "Areto Izena");
+        Areto aretoa = new Areto("A1", "Areto Izena", null);
         LocalTime ordua = LocalTime.of(10, 30);
         LocalDate date = LocalDate.of(2024, 2, 8);
         Saioa saioa = new Saioa(ordua, date, filma, aretoa);
@@ -70,7 +70,7 @@ public class SaioaTest {
     public void testSetFilma() {
         Filma filma1 = new Filma("Izena", 1, 120, "Generoa", 10.0);
         Filma filma2 = new Filma("Beste Izena", 2, 90, "Beste Generoa", 8.0);
-        Areto aretoa = new Areto("A1", "Areto Izena");
+        Areto aretoa = new Areto("A1", "Areto Izena", null);
         LocalTime ordua = LocalTime.of(10, 30);
         LocalDate date = LocalDate.of(2024, 2, 8);
         Saioa saioa = new Saioa(ordua, date, filma1, aretoa);
@@ -81,7 +81,7 @@ public class SaioaTest {
     @Test
     public void testGetAretoa() {
         Filma filma = new Filma("Izena", 1, 120, "Generoa", 10.0);
-        Areto aretoa = new Areto("A1", "Areto Izena");
+        Areto aretoa = new Areto("A1", "Areto Izena", null);
         LocalTime ordua = LocalTime.of(10, 30);
         LocalDate date = LocalDate.of(2024, 2, 8);
         Saioa saioa = new Saioa(ordua, date, filma, aretoa);
@@ -91,8 +91,8 @@ public class SaioaTest {
     @Test
     public void testSetAretoa() {
         Filma filma = new Filma("Izena", 1, 120, "Generoa", 10.0);
-        Areto aretoa1 = new Areto("A1", "Areto Izena");
-        Areto aretoa2 = new Areto("A2", "Beste Areto Izena");
+        Areto aretoa1 = new Areto("A1", "Areto Izena", null);
+        Areto aretoa2 = new Areto("A2", "Beste Areto Izena", null);
         LocalTime ordua = LocalTime.of(10, 30);
         LocalDate date = LocalDate.of(2024, 2, 8);
         Saioa saioa = new Saioa(ordua, date, filma, aretoa1);
@@ -104,8 +104,8 @@ public class SaioaTest {
     public void testEquals() {
         Filma filma1 = new Filma("Izena", 1, 120, "Generoa", 10.0);
         Filma filma2 = new Filma("Beste Izena", 2, 90, "Beste Generoa", 8.0);
-        Areto aretoa1 = new Areto("A1", "Areto Izena");
-        Areto aretoa2 = new Areto("A2", "Beste Areto Izena");
+        Areto aretoa1 = new Areto("A1", "Areto Izena", null);
+        Areto aretoa2 = new Areto("A2", "Beste Areto Izena", null);
         LocalTime ordua = LocalTime.of(10, 30);
         LocalDate date = LocalDate.of(2024, 2, 8);
         Saioa saioa1 = new Saioa(ordua, date, filma1, aretoa1);
@@ -121,7 +121,7 @@ public class SaioaTest {
     @Test
     public void testHashCode() {
         Filma filma = new Filma("Izena", 1, 120, "Generoa", 10.0);
-        Areto aretoa = new Areto("A1", "Areto Izena");
+        Areto aretoa = new Areto("A1", "Areto Izena", null);
         LocalTime ordua = LocalTime.of(10, 30);
         LocalDate date = LocalDate.of(2024, 2, 8);
         Saioa saioa1 = new Saioa(ordua, date, filma, aretoa);
@@ -133,7 +133,7 @@ public class SaioaTest {
     @Test
     public void testToString() {
         Filma filma = new Filma("Izena", 1, 120, "Generoa", 10.0);
-        Areto aretoa = new Areto("A1", "Areto Izena");
+        Areto aretoa = new Areto("A1", "Areto Izena", null);
         LocalTime ordua = LocalTime.of(10, 30);
         LocalDate date = LocalDate.of(2024, 2, 8);
         Saioa saioa = new Saioa(ordua, date, filma, aretoa);

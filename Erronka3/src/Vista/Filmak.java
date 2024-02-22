@@ -52,14 +52,14 @@ public class Filmak extends JFrame {
         comboBoxMovies.setBounds(150, 50, 200, 30);
         contentPaneFilmak.add(comboBoxMovies);
 
-        // Utiliza un LinkedHashSet para mantener el orden de inserción y evitar saioak duplicadas
+
         Set<String> saioakSet = new LinkedHashSet<>();
         for (Saioa saioa : zinemaAukera.getSaioalist()) {
             if (saioa.getDate().isEqual(convertirDateALocalDate(selectedDate))) {
                 saioakSet.add(saioa.getFilma().getIzena());
             }
         }
-        // Agregar nombres de películas al JComboBox
+
         for (String movieName : saioakSet) {
             comboBoxMovies.addItem(movieName);
         }

@@ -42,14 +42,14 @@ public class Saioak extends JFrame {
 
         lblHorarios = new JLabel("Ordutegia");
         lblHorarios.setFont(new Font("Tahoma", Font.BOLD, 18));
-        lblHorarios.setBounds(160, 20, 100, 30); // Ajustar posición para centrarlo
+        lblHorarios.setBounds(160, 20, 100, 30); 
         contentPaneSaioak.add(lblHorarios);
 
         Filma filmaAukera = filmakZerrenda(selectedMovie, zinemakList);
 
         JLabel lblfilmaIzena = new JLabel(filmaAukera.getIzena());
         lblfilmaIzena.setFont(new Font("Tahoma", Font.BOLD, 20));
-        lblfilmaIzena.setBounds(10, 50, 350, 39); // Ajustar tamaño y posición
+        lblfilmaIzena.setBounds(10, 50, 350, 39); 
         contentPaneSaioak.add(lblfilmaIzena);
 
         int iraupena = filmaAukera.getIraupena();
@@ -84,7 +84,7 @@ public class Saioak extends JFrame {
         saioakComboBox.setBounds(160, 143, 264, 59);
         contentPaneSaioak.add(saioakComboBox);
 
-        // Utiliza un conjunto para evitar saioak duplicadas
+   
         Set<String> saioakSet = new HashSet<>();
 
         LocalDate selectedLocalDate = selectedDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
@@ -96,7 +96,7 @@ public class Saioak extends JFrame {
 
                     if (!saioaLocalDate.isBefore(selectedLocalDate)) {
                         String saioaInfo = "Hora: " + saioa.getOrdua() + " - Fecha: " + saioa.getDate();
-                        // Verifica si la saioa ya ha sido agregada al conjunto
+                     
                         if (saioakSet.add(saioaInfo)) {
                             saioakComboBox.addItem(saioaInfo);
                         }

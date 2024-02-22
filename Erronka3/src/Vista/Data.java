@@ -44,7 +44,7 @@ public class Data extends JFrame {
         contentPaneSaioak.add(lblData);
         lblData.setVisible(false);
 
-        // Crear el panel de fecha
+
         UtilDateModel model = new UtilDateModel();
         Properties properties = new Properties();
         properties.put("text.today", "Hoy");
@@ -52,13 +52,13 @@ public class Data extends JFrame {
         properties.put("text.year", "Año");
         JDatePanelImpl datePanel = new JDatePanelImpl(model, properties);
 
-        // Establecer la fecha mínima como hoy
+
         Calendar today = Calendar.getInstance();
         model.setDate(today.get(Calendar.YEAR), today.get(Calendar.MONTH), today.get(Calendar.DAY_OF_MONTH));
         model.setSelected(true);
         datePanel.getModel().setSelected(true);
 
-        // Agregar un PropertyChangeListener al modelo para validar las fechas
+
         model.addPropertyChangeListener(new PropertyChangeListener() {
             @Override
             public void propertyChange(PropertyChangeEvent evt) {
@@ -72,12 +72,12 @@ public class Data extends JFrame {
             }
         });
 
-        // Crear el picker de fecha con DateComponentFormatter
+
         JDatePickerImpl datePicker = new JDatePickerImpl(datePanel, new DateComponentFormatter());
         datePicker.setBounds(150, 100, 150, 30);
         contentPaneSaioak.add(datePicker);
 
-        // Botón Aukeratu
+
         JButton btnAukeratu = new JButton("Aukeratu");
         btnAukeratu.setBounds(310, 100, 100, 30);
         contentPaneSaioak.add(btnAukeratu);
@@ -89,7 +89,7 @@ public class Data extends JFrame {
                 if (selectedDate != null) {
                     lblData.setText(formatearFecha(selectedDate) + " Ordutegia");
                     lblData.setVisible(true);
-                    // Abrir la siguiente pestaña y pasar la fecha seleccionada
+
                     abrirSiguientePestana(selectedDate, zinemakList, bezeroak,zinemaAukera);
                 }
             }
@@ -99,7 +99,7 @@ public class Data extends JFrame {
     public void abrirSiguientePestana(Date selectedDate, Zinema[] zinemakList, Bezeroa[] bezeroak, Zinema zinemaAukera) {
         Filmak filmak = new Filmak(zinemaAukera, zinemakList, bezeroak, selectedDate);
         filmak.setVisible(true);
-        dispose(); // Cierra la ventana actual (Data)
+        dispose(); 
     }
     
     private String formatearFecha(Date fecha) {

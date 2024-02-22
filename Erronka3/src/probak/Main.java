@@ -1,4 +1,4 @@
-package DAO;
+package probak;
 
 import Modelo.Bezeroa;
 import Modelo.Zinema;
@@ -6,6 +6,8 @@ import Modelo.Zinema;
 import java.time.LocalDate;
 import java.util.Arrays;
 
+import DAO.KonexioaBD;
+import DAO.ZinemakDAO;
 import Modelo.Areto;
 import Modelo.Saioa;
 

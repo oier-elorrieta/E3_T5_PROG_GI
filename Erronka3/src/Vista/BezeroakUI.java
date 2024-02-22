@@ -28,17 +28,17 @@ public class BezeroakUI extends JFrame {
             comboBoxBezeroak.addItem(bezeroa);
         }
 
-        // Agregar un listener para el combo box para abrir una nueva ventana con los detalles del cliente seleccionado
+
         comboBoxBezeroak.addActionListener(e -> {
             Bezeroa selectedBezeroa = (Bezeroa) comboBoxBezeroak.getSelectedItem();
             if (selectedBezeroa != null) {
-                // Pedir nombre de usuario y contraseña
+
                 String username = JOptionPane.showInputDialog(this, "Introduce tu nombre de usuario:");
                 String password = JOptionPane.showInputDialog(this, "Introduce tu contraseña:");
 
-                // Validar nombre de usuario y contraseña
+
                 if (selectedBezeroa.getErabiltzailea().equals(username) && selectedBezeroa.getPasahitza().equals(password)) {
-                    // Crear una nueva ventana con detalles adicionales del cliente seleccionado
+
                     showClienteDetails(selectedBezeroa);
                 } else {
                     JOptionPane.showMessageDialog(this, "Nombre de usuario o contraseña incorrectos.");
@@ -61,10 +61,10 @@ public class BezeroakUI extends JFrame {
         textArea.append("NAN: " + bezeroa.getNan() + "\n");
         textArea.append("Sexo: " + bezeroa.getSexua() + "\n");
 
-        // Agregar el JTextArea al JFrame
+
         frame.add(new JScrollPane(textArea));
 
-        // Hacer visible la nueva ventana
+
         frame.setVisible(true);
     }
 

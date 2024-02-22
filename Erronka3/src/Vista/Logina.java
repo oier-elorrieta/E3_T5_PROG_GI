@@ -26,6 +26,8 @@ public class Logina extends JFrame {
     private JTextField textErabiltzailea;
     private JPasswordField pasahitzaField;
 
+    
+    //pasahitza eta erabiltzailea ez ba daude ezarrita sartu ahal zara
     public Logina(Zinema[] zinemakList, Bezeroa[] bezeroak) {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 450, 300);
@@ -67,12 +69,12 @@ public class Logina extends JFrame {
                 String erabiltzailea = textErabiltzailea.getText();
                 String pasahitza = new String(pasahitzaField.getPassword());
 
-                // Verificar si tanto el nombre de usuario como la contraseña están vacíos
+
                 if (erabiltzailea.isEmpty() && pasahitza.isEmpty()) {
                     JOptionPane.showMessageDialog(null, "Sesión iniciada correctamente (sin autenticación)");
                     Zinemak zinemak = new Zinemak(zinemakList, bezeroak);
                     zinemak.setVisible(true);
-                    dispose(); // Cierra la ventana de inicio de sesión después de iniciar sesión correctamente
+                    dispose(); 
                 } else {
                     BezeroaDAO bezeroaDAO = new BezeroaDAO();
                     Bezeroa[] bezeroak = bezeroaDAO.getAllBezeroak();
@@ -89,7 +91,7 @@ public class Logina extends JFrame {
                         JOptionPane.showMessageDialog(null, "Sesión iniciada correctamente");
                         Zinemak zinemak = new Zinemak(zinemakList, bezeroak);
                         zinemak.setVisible(true);
-                        dispose(); // Cierra la ventana de inicio de sesión después de iniciar sesión correctamente
+                        dispose(); 
                     } else {
                         JOptionPane.showMessageDialog(null, "Erabiltzailea edo pasahitza txarto daude");
                         datuakEzabatu(textErabiltzailea, pasahitzaField);
@@ -115,7 +117,7 @@ public class Logina extends JFrame {
 
 
 
-
+//funtzionamendu normala
 //public class Logina extends JFrame {
 //
 //    private static final long serialVersionUID = 1L;
