@@ -3,6 +3,7 @@ package Vista;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
+import Modelo.Bezeroa;
 import Modelo.Saioa;
 import Modelo.Zinema;
 
@@ -17,7 +18,7 @@ public class Zinemak extends JFrame {
     private Zinema[] zinemakList;
 
 
-    public Zinemak(Zinema[] zinemakList) {
+    public Zinemak(Zinema[] zinemakList, Bezeroa[] bezeroak) {
         this.zinemakList = zinemakList;
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -42,8 +43,9 @@ public class Zinemak extends JFrame {
         JButton btnAmaitu = new JButton("Amaitu");
         btnAmaitu.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                OngiEtorri ongiEtorri = new OngiEtorri(zinemakList);
-                ongiEtorri.setVisible(true);
+                dispose(); 
+                Logina login = new Logina(zinemakList, bezeroak); 
+                login.setVisible(true); 
             }
         });
         contentPaneZinemak.add(btnAmaitu);

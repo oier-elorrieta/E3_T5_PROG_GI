@@ -37,6 +37,15 @@ public class Saioak extends JFrame {
     private JPanel contentPaneSaioak;
     public  Zinema zinemaAukera;
     private JLabel lblData;
+    private Filma filma;
+    private Areto aretoa;
+    private LocalTime ordua;
+    private LocalDate date;
+    Saioa[] saioalist;
+    Areto[] aretolist;
+    private String id_zine;
+    private String izena;
+    private String helbidea;
  
     public Saioak(String closestMovies,Zinema[] zinemakList) { 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -50,7 +59,7 @@ public class Saioak extends JFrame {
         btnAtzeraSaioak.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                
-				Filmak filmak = new Filmak(zinemaAukera, zinemakList ); 
+                Filmak filmak = new Filmak(zinemaAukera, zinemakList ); 
                 filmak.setVisible(true);
                 dispose();
             }
@@ -64,18 +73,19 @@ public class Saioak extends JFrame {
         
         JButton btnDataAukeratu = new JButton("Aukeratu");
         btnDataAukeratu.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-				lblData.setVisible(true);
-				System.out.println(Data());
-				
-        	}
+            public void actionPerformed(ActionEvent e) {
+                lblData.setVisible(true);
+                Date selectedDate = Data();
+                System.out.println(selectedDate);
+            }
         });
         btnDataAukeratu.setBounds(317, 73, 85, 21);
         contentPaneSaioak.add(btnDataAukeratu);
         Date data = Data();
        String dataLabel = "";
+       
         
-           SimpleDateFormat dataFormatua = new SimpleDateFormat("dd/MM/YYYY");
+          SimpleDateFormat dataFormatua = new SimpleDateFormat("yyyy-MM-dd");
             dataLabel = dataFormatua.format(data);
         
         
@@ -96,9 +106,8 @@ public class Saioak extends JFrame {
         properties.put("text.today", "Hoy");
         properties.put("text.month", "Mes");
         properties.put("text.year", "Año");
-
-        // Configurar el modelo para no permitir fechas pasadas
-        model.setDate(2024, Calendar.FEBRUARY, 1);  // Configuramos la fecha mínima (1 de febrero de 2024)
+     // Configurar el modelo para no permitir fechas pasadas
+        model.setDate(2024, Calendar.FEBRUARY, 21);
         model.setSelected(true);
         SpringLayout springLayout = new SpringLayout();
         // Crear el panel de fecha
@@ -113,27 +122,27 @@ public class Saioak extends JFrame {
         // Configurar el picker de fecha
         datePicker.getJFormattedTextField().setEditable(true);
 
+        // Almacenar la fecha actual para comparar
+        Date fechaActual = model.getValue();
+
         // Añadir un PropertyChangeListener al modelo para validar las fechas
         model.addPropertyChangeListener(new PropertyChangeListener() {
             @Override
             public void propertyChange(PropertyChangeEvent evt) {
                 Date selectedDate = model.getValue();
                 Date currentDate = new Date();
-                
+                System.out.println(selectedDate);
                 if (selectedDate != null && selectedDate.before(currentDate)) {
-                     //Restablecer la fecha a la fecha mínima
-                   model.setDate(2024, Calendar.FEBRUARY, 1);
                     model.setSelected(true);
+                    System.out.println(selectedDate);
+                    
                 }
-                
             }
         });
 
         contentPaneSaioak.add(datePicker);
-        
-        
 
-        return model.getValue(); // Devolver la fecha seleccionada
+        return fechaActual; // Devolver la fecha seleccionada
     }
     
 }

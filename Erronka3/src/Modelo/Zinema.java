@@ -1,7 +1,11 @@
 package Modelo;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class Zinema {
     private String id_zine;
@@ -60,28 +64,19 @@ public class Zinema {
 
     public String[] getClosestMovies(Saioa[] saioak) {
         LocalDate today = LocalDate.now();
-        int numClosestMovies = 0;
+        Set<String> movieNamesSet = new HashSet<>(); 
+        List<String> closestMoviesList = new ArrayList<>(); 
 
-        // Contar el número de películas más cercanas al día actual
         for (Saioa saioa : saioak) {
             if (saioa.getDate().isAfter(today)) {
-                numClosestMovies++;
+                String movieName = saioa.getFilma().getIzena();
+                if (!movieNamesSet.contains(movieName)) {
+                    closestMoviesList.add(movieName);
+                    movieNamesSet.add(movieName);
+                }
             }
         }
 
-        // Crear un array para almacenar las películas más cercanas
-        String[] closestMovies = new String[numClosestMovies];
-        int index = 0;
-
-        // Iterar sobre las sesiones del cine y añadir las películas más cercanas al día actual
-        for (Saioa saioa : saioak) {
-            if (saioa.getDate().isAfter(today)) {
-                closestMovies[index] = saioa.getFilma().getIzena();
-                index++;
-            }
-        }
-
-        return closestMovies;
+        return closestMoviesList.toArray(new String[0]);
     }
-
 }

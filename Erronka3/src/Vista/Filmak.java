@@ -6,8 +6,8 @@ import javax.swing.border.EmptyBorder;
 import Modelo.Zinema;
 
 import java.awt.SystemColor;
-import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Filmak extends JFrame {
 
@@ -15,7 +15,8 @@ public class Filmak extends JFrame {
     private JPanel contentPaneFilmak;
     private Zinema zinemaAukera;
     private Zinema[] zinemakList;
-    
+    private JComboBox<String> comboBoxMovies;
+
     public Filmak(Zinema zinemaAukera, Zinema[] zinemakList) {
         this.zinemaAukera = zinemaAukera;
         this.zinemakList = zinemakList;
@@ -23,7 +24,6 @@ public class Filmak extends JFrame {
     }
 
     private void initialize() {
-
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 450, 300);
         contentPaneFilmak = new JPanel();
@@ -42,29 +42,26 @@ public class Filmak extends JFrame {
         btnAtzeraFilmak.setBackground(SystemColor.activeCaption);
         btnAtzeraFilmak.setBounds(10, 10, 85, 21);
         contentPaneFilmak.add(btnAtzeraFilmak);
-        // no vaaaaaaaaaaaa 
-        // Obtener las películas más cercanas al día actual usando el método de la clase Zinema
+
         String[] closestMovies = zinemaAukera.getClosestMovies(zinemaAukera.getSaioalistArray());
-        int i;
-        for (i = 0; i < closestMovies.length; i++) {
-            final int index = i;
-            JButton btnPelikula = new JButton(closestMovies[i]);
-            btnPelikula.addActionListener(new ActionListener() {
-                public void actionPerformed(ActionEvent e) {
-                    System.out.println("Has seleccionado la película: " + closestMovies[index]);
-                    // Aquí puedes abrir la pantalla de Saioak con la película seleccionada
+        comboBoxMovies = new JComboBox<>(closestMovies);
+        comboBoxMovies.setBounds(10, 50, 150, 25);
+        contentPaneFilmak.add(comboBoxMovies);
 
-                     Saioak saioa = new Saioak(closestMovies[index], zinemakList);  
-                     saioa.setVisible(true);
-                     dispose();
-
-                    // Saioak saioa = new Saioak(closestMovies[index]);  
-                    // saioa.setVisible(true);
-                    // dispose();
+        comboBoxMovies.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String selectedMovie = (String) comboBoxMovies.getSelectedItem();
+                if (selectedMovie != null) {
+                    System.out.println("Has seleccionado la película: " + selectedMovie);
+                    abrirVentanaSaioak(selectedMovie);
                 }
-            });
-            btnPelikula.setBounds(10, 50 + i * 30, 150, 25);
-            contentPaneFilmak.add(btnPelikula);
-        }
+            }
+        });
+    }
+
+    private void abrirVentanaSaioak(String selectedMovie) {
+        Saioak saioak = new Saioak(selectedMovie, zinemakList);
+        saioak.setVisible(true);
+        dispose();
     }
 }
