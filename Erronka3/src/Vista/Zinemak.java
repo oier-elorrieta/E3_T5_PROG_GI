@@ -16,10 +16,11 @@ public class Zinemak extends JFrame {
     private static final long serialVersionUID = 1557861239751784319L;
     private JPanel contentPaneZinemak;
     private Zinema[] zinemakList;
-
+    private Bezeroa[] bezeroak;
 
     public Zinemak(Zinema[] zinemakList, Bezeroa[] bezeroak) {
         this.zinemakList = zinemakList;
+        this.bezeroak = bezeroak; // Agregamos esta línea para inicializar bezeroak
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 450, 300);
@@ -60,7 +61,7 @@ public class Zinemak extends JFrame {
             }
         }
         if (zinemaAukera != null) {
-            Filmak filmak = new Filmak(zinemaAukera, zinemakList);
+            Filmak filmak = new Filmak(zinemaAukera, zinemakList, bezeroak);
             filmak.setVisible(true);
             dispose();
         } else {

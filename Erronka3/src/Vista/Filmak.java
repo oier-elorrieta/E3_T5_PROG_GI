@@ -3,6 +3,7 @@ package Vista;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
+import Modelo.Bezeroa;
 import Modelo.Zinema;
 
 import java.awt.SystemColor;
@@ -15,11 +16,12 @@ public class Filmak extends JFrame {
     private JPanel contentPaneFilmak;
     private Zinema zinemaAukera;
     private Zinema[] zinemakList;
-    private JComboBox<String> comboBoxMovies;
+    private Bezeroa[] bezeroak;
 
-    public Filmak(Zinema zinemaAukera, Zinema[] zinemakList) {
+    public Filmak(Zinema zinemaAukera, Zinema[] zinemakList, Bezeroa[] bezeroak) {
         this.zinemaAukera = zinemaAukera;
         this.zinemakList = zinemakList;
+        this.bezeroak = bezeroak; // Agregamos la asignación del array de bezeroak
         initialize();
     }
 
@@ -34,7 +36,7 @@ public class Filmak extends JFrame {
         JButton btnAtzeraFilmak = new JButton("Atzera");
         btnAtzeraFilmak.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                Zinemak zinemak = new Zinemak(zinemakList);
+                Zinemak zinemak = new Zinemak(zinemakList, bezeroak);
                 zinemak.setVisible(true);
                 dispose();
             }
@@ -44,7 +46,7 @@ public class Filmak extends JFrame {
         contentPaneFilmak.add(btnAtzeraFilmak);
 
         String[] closestMovies = zinemaAukera.getClosestMovies(zinemaAukera.getSaioalistArray());
-        comboBoxMovies = new JComboBox<>(closestMovies);
+        JComboBox<String> comboBoxMovies = new JComboBox<>(closestMovies); // No es necesario definirlo globalmente
         comboBoxMovies.setBounds(10, 50, 150, 25);
         contentPaneFilmak.add(comboBoxMovies);
 
@@ -60,7 +62,7 @@ public class Filmak extends JFrame {
     }
 
     private void abrirVentanaSaioak(String selectedMovie) {
-        Saioak saioak = new Saioak(selectedMovie, zinemakList);
+        Saioak saioak = new Saioak(selectedMovie, zinemakList, bezeroak);
         saioak.setVisible(true);
         dispose();
     }
