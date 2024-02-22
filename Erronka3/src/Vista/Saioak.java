@@ -13,14 +13,19 @@ import java.util.Properties;
 import org.jdatepicker.impl.*;
 
 import Modelo.Bezeroa;
+import Modelo.Filma;
+import Modelo.Saioa;
 import Modelo.Zinema;
+import java.awt.Font;
 
 public class Saioak extends JFrame {
     private Zinema zinemaAukera; 
     private JPanel contentPaneSaioak;
     private JLabel lblData;
     private Date selectedDate;
-    public Saioak(String closestMovies, Zinema[] zinemakList, Bezeroa[] bezeroak,Date selectedDate) {
+    
+    
+    public Saioak(String selectedMovie, Zinema[] zinemakList, Bezeroa[] bezeroak,Date selectedDate) {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 450, 300);
         contentPaneSaioak = new JPanel();
@@ -30,7 +35,7 @@ public class Saioak extends JFrame {
         JButton btnAtzeraSaioak = new JButton("Atzera");
         btnAtzeraSaioak.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                Filmak filmak = new Filmak(zinemaAukera, zinemakList, bezeroak);
+                Filmak filmak = new Filmak(zinemaAukera,zinemakList,bezeroak,selectedDate);
                 filmak.setVisible(true);
                 dispose();
             }
@@ -39,10 +44,12 @@ public class Saioak extends JFrame {
         contentPaneSaioak.setLayout(null);
         contentPaneSaioak.add(btnAtzeraSaioak);
 
-        lblData = new JLabel("");
-        lblData.setBounds(41, 128, 286, 13);
+        lblData = new JLabel("Ordutegia");
+        lblData.setFont(new Font("Tahoma", Font.PLAIN, 14));
+        lblData.setBounds(10, 172, 286, 21);
         contentPaneSaioak.add(lblData);
-        lblData.setVisible(false);
+        
+        
 
         // Crear el panel de fecha
         UtilDateModel model = new UtilDateModel();
@@ -74,26 +81,51 @@ public class Saioak extends JFrame {
 
         // Crear el picker de fecha con DateComponentFormatter
         JDatePickerImpl datePicker = new JDatePickerImpl(datePanel, new DateComponentFormatter());
-        datePicker.setBounds(150, 100, 150, 30);
+        datePicker.getJFormattedTextField().setBounds(0, 0, 122, 21);
+        datePicker.setBounds(132, 20, 150, 30);
         contentPaneSaioak.add(datePicker);
+        datePicker.setLayout(null);
+  
+       Filma filmaAukera = filmakZerrenda(selectedMovie,zinemakList);
 
-        // Botón Aukeratu
-        JButton btnAukeratu = new JButton("Aukeratu");
-        btnAukeratu.setBounds(310, 100, 100, 30);
-        contentPaneSaioak.add(btnAukeratu);
-        btnAukeratu.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                Date selectedDate = (Date) datePicker.getModel().getValue();
-                if (selectedDate != null) {
-                    lblData.setText(formatearFecha(selectedDate) + " Ordutegia (" + closestMovies + ")");
-                    lblData.setVisible(true);
-                }
-            }
-        });
+        
+        JLabel lblfilmaIzena = new JLabel(filmaAukera.getIzena());
+        lblfilmaIzena.setFont(new Font("Tahoma", Font.PLAIN, 16));
+        lblfilmaIzena.setBounds(108, 67, 234, 39);
+        contentPaneSaioak.add(lblfilmaIzena);
+        
+        int iraupena = filmaAukera.getIraupena();        
+        String filmaIraupena = "";
+        
+        filmaIraupena = iraupena + filmaIraupena;
+        
+        JLabel lblIraupena = new JLabel(filmaIraupena +" minutu irauten du");
+        lblIraupena.setFont(new Font("Tahoma", Font.PLAIN, 12));
+        lblIraupena.setBounds(10, 92, 174, 30);
+        contentPaneSaioak.add(lblIraupena);
+        
+        JLabel lblGeneroa = new JLabel("Generoa: " +filmaAukera.getGeneroa());
+        lblGeneroa.setFont(new Font("Tahoma", Font.PLAIN, 12));
+        lblGeneroa.setBounds(10, 132, 144, 21);
+        contentPaneSaioak.add(lblGeneroa);
     }
 
     private String formatearFecha(Date fecha) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         return dateFormat.format(fecha);
     }
+    
+    public Filma filmakZerrenda(String selectedMovie, Zinema[] zinemakList) {
+    	 Filma filmaAukera = null;
+    	for (Zinema zinema : zinemakList) {
+    	  Saioa[] saioalist = zinema.getSaioalist();
+        for (Saioa saioa : saioalist) {
+            if (saioa.getFilma().getIzena().equals(selectedMovie)) {
+            	filmaAukera = saioa.getFilma();
+                break;
+        }
+    	}
+    	}
+    	return filmaAukera;
+}
 }

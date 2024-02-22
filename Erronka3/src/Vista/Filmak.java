@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import java.util.Date;
 
 import Modelo.Bezeroa;
+import Modelo.Filma;
 import Modelo.Zinema;
 
 public class Filmak extends JFrame {
@@ -17,13 +18,13 @@ public class Filmak extends JFrame {
     private Zinema zinemaAukera;
     private Zinema[] zinemakList;
     private Bezeroa[] bezeroak;
-    private Date selectedDate; 
+    private Date selectedDate;
 
     public Filmak(Zinema zinemaAukera, Zinema[] zinemakList, Bezeroa[] bezeroak, Date selectedDate) {
         this.zinemaAukera = zinemaAukera;
         this.zinemakList = zinemakList;
         this.bezeroak = bezeroak;
-        this.selectedDate = selectedDate; // Asignar la fecha seleccionada
+        this.selectedDate = selectedDate;
         initialize();
     }
 
