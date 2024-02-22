@@ -30,18 +30,6 @@
 		</plugins>
 		<resources>
 
-			<resource>
-
-				<directory>src</directory>
-
-				<includes>
-
-					<include>Irudiak/Pelis/*.png</include>
-					<include>Irudiak/Pelis/*.jpg</include>
-			
-				</includes>
-
-			</resource>
 		</resources>
 	</build>
 </project>

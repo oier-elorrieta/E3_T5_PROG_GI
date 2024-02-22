@@ -65,18 +65,15 @@ public class Zinema {
     public String[] getClosestMovies(Saioa[] saioak) {
         LocalDate today = LocalDate.now();
         Set<String> movieNamesSet = new HashSet<>(); 
-        List<String> closestMoviesList = new ArrayList<>(); 
 
         for (Saioa saioa : saioak) {
             if (saioa.getDate().isAfter(today)) {
                 String movieName = saioa.getFilma().getIzena();
-                if (!movieNamesSet.contains(movieName)) {
-                    closestMoviesList.add(movieName);
-                    movieNamesSet.add(movieName);
-                }
+                movieNamesSet.add(movieName);
             }
         }
 
-        return closestMoviesList.toArray(new String[0]);
+        return movieNamesSet.toArray(new String[0]);
     }
+
 }

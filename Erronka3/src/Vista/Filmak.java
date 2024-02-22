@@ -2,9 +2,7 @@ package Vista;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import java.awt.SystemColor;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.*;
 import java.util.Date;
 
 import Modelo.Bezeroa;
@@ -37,12 +35,10 @@ public class Filmak extends JFrame {
         contentPaneFilmak.setLayout(null);
 
         JButton btnAtzeraFilmak = new JButton("Atzera");
-        btnAtzeraFilmak.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                Zinemak zinemak = new Zinemak(zinemakList, bezeroak);
-                zinemak.setVisible(true);
-                dispose();
-            }
+        btnAtzeraFilmak.addActionListener(e -> {
+            Zinemak zinemak = new Zinemak(zinemakList, bezeroak);
+            zinemak.setVisible(true);
+            dispose();
         });
         btnAtzeraFilmak.setBackground(SystemColor.activeCaption);
         btnAtzeraFilmak.setBounds(10, 10, 85, 21);
@@ -53,17 +49,15 @@ public class Filmak extends JFrame {
         comboBoxMovies.setBounds(10, 50, 150, 25);
         contentPaneFilmak.add(comboBoxMovies);
 
-        comboBoxMovies.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                String selectedMovie = (String) comboBoxMovies.getSelectedItem();
-                if (selectedMovie != null) {
-                    abrirVentanaSaioak(selectedMovie);
-                }
+        comboBoxMovies.addActionListener(e -> {
+            String selectedMovie = (String) comboBoxMovies.getSelectedItem();
+            if (selectedMovie != null) {
+                abrirVentanaSaioak(selectedMovie, zinemaAukera.getIzena());
             }
         });
     }
 
-    private void abrirVentanaSaioak(String selectedMovie) {
+    private void abrirVentanaSaioak(String selectedMovie, String selectedCinema) {
         Saioak saioak = new Saioak(selectedMovie, zinemakList, bezeroak, selectedDate);
         saioak.setVisible(true);
         dispose();

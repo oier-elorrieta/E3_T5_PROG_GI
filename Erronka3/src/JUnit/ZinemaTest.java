@@ -15,30 +15,30 @@ public class ZinemaTest {
 	    public void testGetSaioalistArray() {
 	        Saioa[] saioaList = new Saioa[5];
 	        Zinema zinema = new Zinema("Z1", "Zinemaldia", "Bilbao", saioaList, null);
-	        assertArrayEquals(saioaList, zinema.getSaioalistArray());
+	        assertArrayEquals(saioaList, zinema.getSaioalist());
 	    }
 
 	    @Test
 	    public void testSetSaioalistArray() {
 	        Saioa[] saioaList = new Saioa[5];
 	        Zinema zinema = new Zinema("Z1", "Zinemaldia", "Bilbao", null, null);
-	        zinema.setSaioalistArray(saioaList);
-	        assertArrayEquals(saioaList, zinema.getSaioalistArray());
+	        zinema.setSaioalist(saioaList);
+	        assertArrayEquals(saioaList, zinema.getSaioalist());
 	    }
 
 	    @Test
 	    public void testGetAretolistarray() {
 	        Areto[] aretoList = new Areto[5];
 	        Zinema zinema = new Zinema("Z1", "Zinemaldia", "Bilbao", null, aretoList);
-	        assertArrayEquals(aretoList, zinema.getAretolistarray());
+	        assertArrayEquals(aretoList, zinema.getAretolist());
 	    }
 
 	    @Test
 	    public void testSetAretolistarray() {
 	        Areto[] aretoList = new Areto[5];
 	        Zinema zinema = new Zinema("Z1", "Zinemaldia", "Bilbao", null, null);
-	        zinema.setAretolistarray(aretoList);
-	        assertArrayEquals(aretoList, zinema.getAretolistarray());
+	        zinema.setAretolist(aretoList);
+	        assertArrayEquals(aretoList, zinema.getAretolist());
 	    }
     @Test
     public void testGetId_zine() {

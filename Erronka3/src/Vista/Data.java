@@ -99,8 +99,7 @@ public class Data extends JFrame {
         filmak.setVisible(true);
         dispose(); // Cierra la ventana actual (Data)
     }
-
-
+    
     private String formatearFecha(Date fecha) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         return dateFormat.format(fecha);
