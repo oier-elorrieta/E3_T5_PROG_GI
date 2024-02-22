@@ -4,8 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 import Modelo.Filma;
 
@@ -16,13 +14,25 @@ public class FilmaDAO {
         konexioaBD = new KonexioaBD();
     }
 
-    public List<Filma> getAllFilmak() {
-        List<Filma> filmak = new ArrayList<>();
+    public Filma[] getAllFilmak() {
+        Filma[] filmak = null;
+        int count = 0;
 
         try (Connection con = konexioaBD.getConnection()) {
+            String countSql = "SELECT COUNT(*) AS total FROM FILMA";
+            try (PreparedStatement countStmt = con.prepareStatement(countSql)) {
+                try (ResultSet countRs = countStmt.executeQuery()) {
+                    if (countRs.next()) {
+                        count = countRs.getInt("total");
+                    }
+                }
+            }
+
+            filmak = new Filma[count];
             String sql = "SELECT * FROM FILMA";
             try (PreparedStatement pstmt = con.prepareStatement(sql)) {
                 try (ResultSet rs = pstmt.executeQuery()) {
+                    int index = 0;
                     while (rs.next()) {
                         String izena = rs.getString("izena");
                         int id_peli = rs.getInt("filma_id");
@@ -31,7 +41,7 @@ public class FilmaDAO {
                         double prezioa = rs.getDouble("prezioa");
 
                         Filma filma = new Filma(izena, id_peli, iraupena, generoa, prezioa);
-                        filmak.add(filma);
+                        filmak[index++] = filma;
                     }
                 }
             }

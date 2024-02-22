@@ -46,19 +46,19 @@ public class Zinema {
         this.helbidea = helbidea;
     }
 
-    public Saioa[] getSaioalistArray() {
+    public Saioa[] getSaioalist() {
         return saioalist;
     }
 
-    public void setSaioalistArray(Saioa[] saioalist) {
+    public void setSaioalist(Saioa[] saioalist) {
         this.saioalist = saioalist;
     }
 
-    public Areto[] getAretolistarray() {
+    public Areto[] getAretolist() {
         return aretolist;
     }
 
-    public void setAretolistarray(Areto[] aretolist) {
+    public void setAretolist(Areto[] aretolist) {
         this.aretolist = aretolist;
     }
 

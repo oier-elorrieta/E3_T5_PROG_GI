@@ -1,109 +1,108 @@
 package Vista;
 
-import org.jdatepicker.impl.DateComponentFormatter;
-import org.jdatepicker.impl.JDatePanelImpl;
-import org.jdatepicker.impl.JDatePickerImpl;
-import org.jdatepicker.impl.UtilDateModel;
-
 import javax.swing.*;
-import java.awt.*;
+import javax.swing.border.EmptyBorder;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Properties;
+import org.jdatepicker.impl.*;
 
-public class Data {
-    public static void main(String[] args) {
-        // Crear el frame
-        JFrame frame = new JFrame("Ejemplo de JDatePicker");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+import Modelo.Bezeroa;
+import Modelo.Zinema;
 
-        // Crear el modelo de fecha
+public class Data extends JFrame {
+    private JPanel contentPaneSaioak;
+    private JLabel lblData;
+    private Date selectedDate; 
+
+    public Data(Zinema zinemaAukera,Zinema[] zinemakList, Bezeroa[] bezeroak) {
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setBounds(100, 100, 450, 300);
+        contentPaneSaioak = new JPanel();
+        contentPaneSaioak.setBorder(new EmptyBorder(5, 5, 5, 5));
+        setContentPane(contentPaneSaioak);
+
+        JButton btnAtzeraSaioak = new JButton("Atzera");
+        btnAtzeraSaioak.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                Zinemak zinemakFrame = new Zinemak(zinemakList, bezeroak);
+                zinemakFrame.setVisible(true);
+                dispose(); 
+            }
+        });
+        btnAtzeraSaioak.setBounds(10, 10, 71, 21);
+        contentPaneSaioak.setLayout(null);
+        contentPaneSaioak.add(btnAtzeraSaioak);
+
+        lblData = new JLabel("");
+        lblData.setBounds(41, 128, 286, 13);
+        contentPaneSaioak.add(lblData);
+        lblData.setVisible(false);
+
+        // Crear el panel de fecha
         UtilDateModel model = new UtilDateModel();
         Properties properties = new Properties();
         properties.put("text.today", "Hoy");
         properties.put("text.month", "Mes");
         properties.put("text.year", "Año");
-
-        // Configurar el modelo para no permitir fechas pasadas
-        model.setDate(2024, Calendar.FEBRUARY, 1);  // Configuramos la fecha mínima (1 de febrero de 2024)
-        model.setSelected(true);
-
-        // Crear el panel de fecha
         JDatePanelImpl datePanel = new JDatePanelImpl(model, properties);
 
-        // Crear el picker de fecha con DateComponentFormatter
-        JDatePickerImpl datePicker = new JDatePickerImpl(datePanel, new DateComponentFormatter());
+        // Establecer la fecha mínima como hoy
+        Calendar today = Calendar.getInstance();
+        model.setDate(today.get(Calendar.YEAR), today.get(Calendar.MONTH), today.get(Calendar.DAY_OF_MONTH));
+        model.setSelected(true);
+        datePanel.getModel().setSelected(true);
 
-        // Configurar el picker de fecha
-        datePicker.getJFormattedTextField().setEditable(true);
-
-        // Añadir un PropertyChangeListener al modelo para validar las fechas
+        // Agregar un PropertyChangeListener al modelo para validar las fechas
         model.addPropertyChangeListener(new PropertyChangeListener() {
             @Override
             public void propertyChange(PropertyChangeEvent evt) {
-                Date selectedDate = model.getValue();
-                Date currentDate = new Date();
-                if (selectedDate != null && selectedDate.before(currentDate)) {
-                    // Restablecer la fecha a la fecha mínima
-                    model.setDate(2024, Calendar.FEBRUARY, 1);
-                    model.setSelected(true);
+                if ("value".equals(evt.getPropertyName())) {
+                    selectedDate = (Date) evt.getNewValue(); // Actualizar la fecha seleccionada
+                    if (selectedDate != null && selectedDate.before(today.getTime())) {
+                        model.setDate(today.get(Calendar.YEAR), today.get(Calendar.MONTH), today.get(Calendar.DAY_OF_MONTH));
+                        model.setSelected(true);
+                    }
                 }
             }
         });
 
-        // Añadir el picker al frame
-        Container container = frame.getContentPane();
-        container.setLayout(new FlowLayout());
-        container.add(datePicker);
+        // Crear el picker de fecha con DateComponentFormatter
+        JDatePickerImpl datePicker = new JDatePickerImpl(datePanel, new DateComponentFormatter());
+        datePicker.setBounds(150, 100, 150, 30);
+        contentPaneSaioak.add(datePicker);
 
-        // Configurar el frame
-        frame.setSize(300, 200);
-        frame.setVisible(true);
+        // Botón Aukeratu
+        JButton btnAukeratu = new JButton("Aukeratu");
+        btnAukeratu.setBounds(310, 100, 100, 30);
+        contentPaneSaioak.add(btnAukeratu);
+        btnAukeratu.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                selectedDate = 	model.getValue();
+                if (selectedDate != null) {
+                    lblData.setText(formatearFecha(selectedDate) + " Ordutegia");
+                    lblData.setVisible(true);
+                    // Abrir la siguiente pestaña y pasar la fecha seleccionada
+                    abrirSiguientePestana(selectedDate, zinemakList, bezeroak,zinemaAukera);
+                }
+            }
+        });
+    }
+
+    public void abrirSiguientePestana(Date selectedDate, Zinema[] zinemakList, Bezeroa[] bezeroak, Zinema zinemaAukera) {
+        Filmak filmak = new Filmak(zinemaAukera, zinemakList, bezeroak, selectedDate);
+        filmak.setVisible(true);
+        dispose(); // Cierra la ventana actual (Data)
+    }
+
+
+    private String formatearFecha(Date fecha) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        return dateFormat.format(fecha);
     }
 }
-
-
-//public void Data() {
-//		
-//		UtilDateModel model = new UtilDateModel();
-//        Properties properties = new Properties();
-//        properties.put("text.today", "Hoy");
-//        properties.put("text.month", "Mes");
-//        properties.put("text.year", "Año");
-//
-//        // Configurar el modelo para no permitir fechas pasadas
-//        model.setDate(2024, Calendar.FEBRUARY, 1);  // Configuramos la fecha mínima (1 de febrero de 2024)
-//        model.setSelected(true);
-//
-//        // Crear el panel de fecha
-//        JDatePanelImpl datePanel = new JDatePanelImpl(model, properties);
-//        // Crear el picker de fecha con DateComponentFormatter
-//        JDatePickerImpl datePicker = new JDatePickerImpl(datePanel, new DateComponentFormatter());
-//        SpringLayout springLayout = (SpringLayout) datePicker.getLayout();
-//        springLayout.putConstraint(SpringLayout.NORTH, datePicker.getJFormattedTextField(), 0, SpringLayout.NORTH, datePicker);
-//        datePicker.setSize(202, 26);
-//        datePicker.setLocation(117, 45);
-//
-//        // Configurar el picker de fecha
-//        datePicker.getJFormattedTextField().setEditable(true);
-//
-//        // Añadir un PropertyChangeListener al modelo para validar las fechas
-//        model.addPropertyChangeListener(new PropertyChangeListener() {
-//            @Override
-//            public void propertyChange(PropertyChangeEvent evt) {
-//                Date selectedDate = model.getValue();
-//                Date currentDate = new Date();
-//                if (selectedDate != null && selectedDate.before(currentDate)) {
-//                    // Restablecer la fecha a la fecha mínima
-//                    model.setDate(2024, Calendar.FEBRUARY, 1);
-//                    model.setSelected(true);
-//                }
-//            }
-//        });
-//        
-//       
-////        contentPaneZinemak.add(datePicker);
-//	
-//	}

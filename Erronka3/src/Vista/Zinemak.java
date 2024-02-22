@@ -4,7 +4,6 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 import Modelo.Bezeroa;
-import Modelo.Saioa;
 import Modelo.Zinema;
 
 import java.awt.*;
@@ -20,7 +19,7 @@ public class Zinemak extends JFrame {
 
     public Zinemak(Zinema[] zinemakList, Bezeroa[] bezeroak) {
         this.zinemakList = zinemakList;
-        this.bezeroak = bezeroak; // Agregamos esta línea para inicializar bezeroak
+        this.bezeroak = bezeroak; 
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 450, 300);
@@ -39,7 +38,7 @@ public class Zinemak extends JFrame {
                 }
             });
             contentPaneZinemak.add(btnCinema);
-        }
+        }   
 
         JButton btnAmaitu = new JButton("Amaitu");
         btnAmaitu.addActionListener(new ActionListener() {
@@ -61,9 +60,9 @@ public class Zinemak extends JFrame {
             }
         }
         if (zinemaAukera != null) {
-            Filmak filmak = new Filmak(zinemaAukera, zinemakList, bezeroak);
-            filmak.setVisible(true);
-            dispose();
+            Data dataFrame = new Data(zinemaAukera, zinemakList, bezeroak);
+            dataFrame.setVisible(true);
+            dispose(); 
         } else {
             System.out.println("Ez dago zinema hori");
         }

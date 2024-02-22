@@ -2,13 +2,13 @@ package Vista;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-
-import Modelo.Bezeroa;
-import Modelo.Zinema;
-
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Date;
+
+import Modelo.Bezeroa;
+import Modelo.Zinema;
 
 public class Filmak extends JFrame {
 
@@ -17,11 +17,13 @@ public class Filmak extends JFrame {
     private Zinema zinemaAukera;
     private Zinema[] zinemakList;
     private Bezeroa[] bezeroak;
+    private Date selectedDate; 
 
-    public Filmak(Zinema zinemaAukera, Zinema[] zinemakList, Bezeroa[] bezeroak) {
+    public Filmak(Zinema zinemaAukera, Zinema[] zinemakList, Bezeroa[] bezeroak, Date selectedDate) {
         this.zinemaAukera = zinemaAukera;
         this.zinemakList = zinemakList;
-        this.bezeroak = bezeroak; // Agregamos la asignación del array de bezeroak
+        this.bezeroak = bezeroak;
+        this.selectedDate = selectedDate; // Asignar la fecha seleccionada
         initialize();
     }
 
@@ -45,8 +47,8 @@ public class Filmak extends JFrame {
         btnAtzeraFilmak.setBounds(10, 10, 85, 21);
         contentPaneFilmak.add(btnAtzeraFilmak);
 
-        String[] closestMovies = zinemaAukera.getClosestMovies(zinemaAukera.getSaioalistArray());
-        JComboBox<String> comboBoxMovies = new JComboBox<>(closestMovies); // No es necesario definirlo globalmente
+        String[] closestMovies = zinemaAukera.getClosestMovies(zinemaAukera.getSaioalist());
+        JComboBox<String> comboBoxMovies = new JComboBox<>(closestMovies);
         comboBoxMovies.setBounds(10, 50, 150, 25);
         contentPaneFilmak.add(comboBoxMovies);
 
@@ -54,7 +56,6 @@ public class Filmak extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 String selectedMovie = (String) comboBoxMovies.getSelectedItem();
                 if (selectedMovie != null) {
-                    System.out.println("Has seleccionado la película: " + selectedMovie);
                     abrirVentanaSaioak(selectedMovie);
                 }
             }
@@ -62,7 +63,7 @@ public class Filmak extends JFrame {
     }
 
     private void abrirVentanaSaioak(String selectedMovie) {
-        Saioak saioak = new Saioak(selectedMovie, zinemakList, bezeroak);
+        Saioak saioak = new Saioak(selectedMovie, zinemakList, bezeroak, selectedDate);
         saioak.setVisible(true);
         dispose();
     }
