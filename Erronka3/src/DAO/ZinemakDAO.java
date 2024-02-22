@@ -40,20 +40,23 @@ public class ZinemakDAO {
                 try (ResultSet rs = pstmt.executeQuery()) {
                     int index = 0;
                     while (rs.next()) {
-                    	String id_zine = rs.getString("zinema_id");
+                        String id_zine = rs.getString("zinema_id");
                         String izena = rs.getString("izena");
+
+                       
+                        AretoDAO aretoDAO = new AretoDAO();
+                        Areto[] aretolist = aretoDAO.getAllAretoakForZinema(id_zine);
+
                         
-                        AretoDAO areto = new AretoDAO();
-                        Areto[] aretolist = areto.getAllAretoak();
-                        
-                        SaioaDAO saioa = new SaioaDAO();
-                        Saioa[] saioalist = saioa.getAllSaioak();
+                        SaioaDAO saioaDAO = new SaioaDAO();
+                        Saioa[] saioalist = saioaDAO.getAllSaioakForZinema(id_zine);
 
                         Zinema zinema = new Zinema(id_zine, izena, null, saioalist, aretolist);
 
                         zinemaList[index] = zinema;
                         index++;
                     }
+
                 }
             }
         } catch (SQLException e) {

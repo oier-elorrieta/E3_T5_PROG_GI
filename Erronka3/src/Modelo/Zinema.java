@@ -62,18 +62,13 @@ public class Zinema {
         this.aretolist = aretolist;
     }
 
-    public String[] getClosestMovies(Saioa[] saioak) {
-        LocalDate today = LocalDate.now();
-        Set<String> movieNamesSet = new HashSet<>(); 
+  
 
-        for (Saioa saioa : saioak) {
-            if (saioa.getDate().isAfter(today)) {
-                String movieName = saioa.getFilma().getIzena();
-                movieNamesSet.add(movieName);
-            }
-        }
+	@Override
+	public String toString() {
+		return "Zinema [id_zine=" + id_zine + ", izena=" + izena + ", helbidea=" + helbidea + ", saioalist="
+				+ Arrays.toString(saioalist) + ", aretolist=" + Arrays.toString(aretolist) + "]";
+	}
 
-        return movieNamesSet.toArray(new String[0]);
-    }
-
+	
 }

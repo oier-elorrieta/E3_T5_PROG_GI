@@ -3,10 +3,14 @@ package Vista;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Date;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 import Modelo.Bezeroa;
-import Modelo.Filma;
+import Modelo.Saioa;
 import Modelo.Zinema;
 
 public class Filmak extends JFrame {
@@ -44,21 +48,34 @@ public class Filmak extends JFrame {
         btnAtzeraFilmak.setBounds(10, 10, 85, 21);
         contentPaneFilmak.add(btnAtzeraFilmak);
 
-        String[] closestMovies = zinemaAukera.getClosestMovies(zinemaAukera.getSaioalist());
-        JComboBox<String> comboBoxMovies = new JComboBox<>(closestMovies);
-        comboBoxMovies.setBounds(10, 50, 150, 25);
+        JComboBox<String> comboBoxMovies = new JComboBox<>();
+        comboBoxMovies.setBounds(150, 50, 200, 30);
         contentPaneFilmak.add(comboBoxMovies);
 
-        comboBoxMovies.addActionListener(e -> {
-            String selectedMovie = (String) comboBoxMovies.getSelectedItem();
-            if (selectedMovie != null) {
-                abrirVentanaSaioak(selectedMovie, zinemaAukera.getIzena());
+        // Utiliza un LinkedHashSet para mantener el orden de inserción y evitar saioak duplicadas
+        Set<String> saioakSet = new LinkedHashSet<>();
+        for (Saioa saioa : zinemaAukera.getSaioalist()) {
+            if (saioa.getDate().isEqual(convertirDateALocalDate(selectedDate))) {
+                saioakSet.add(saioa.getFilma().getIzena());
             }
+        }
+        // Agregar nombres de películas al JComboBox
+        for (String movieName : saioakSet) {
+            comboBoxMovies.addItem(movieName);
+        }
+
+        comboBoxMovies.addActionListener(e -> {
+            String selectedMovie = comboBoxMovies.getSelectedItem().toString();
+            abrirVentanaSaioak(selectedMovie, zinemaAukera);
         });
     }
 
-    private void abrirVentanaSaioak(String selectedMovie, String selectedCinema) {
-        Saioak saioak = new Saioak(selectedMovie, zinemakList, bezeroak, selectedDate);
+    private LocalDate convertirDateALocalDate(Date date) {
+        return date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+    }
+
+    private void abrirVentanaSaioak(String selectedMovie, Zinema selectedCinema) {
+        Saioak saioak = new Saioak(selectedMovie, zinemakList, bezeroak, selectedDate, selectedCinema);
         saioak.setVisible(true);
         dispose();
     }

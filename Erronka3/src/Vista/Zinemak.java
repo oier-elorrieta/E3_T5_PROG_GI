@@ -59,12 +59,9 @@ public class Zinemak extends JFrame {
                 break;
             }
         }
-        if (zinemaAukera != null) {
+        System.out.println(zinemaAukera.getAretolist().toString());
             Data dataFrame = new Data(zinemaAukera, zinemakList, bezeroak);
             dataFrame.setVisible(true);
-            dispose(); 
-        } else {
-            System.out.println("Ez dago zinema hori");
-        }
+            dispose();  
     }
 }

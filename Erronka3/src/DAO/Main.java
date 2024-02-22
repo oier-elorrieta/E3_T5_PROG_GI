@@ -25,22 +25,23 @@ public class Main {
 //        Areto[] aretoList = dao2.getAllAretoak();
     	ZinemakDAO zinemaDAO = new ZinemakDAO();
     	Zinema[] zinemak = zinemaDAO.getAllZinemak();
-
-    	// Supongamos que el zine uno es el primer elemento del array zinemak
-    	Zinema zineUno = zinemak[0]; // Aquí estoy asumiendo que el Zine Uno está en la posición 2, ajusta según corresponda.
-    	System.out.println("ID del Zine: " + zineUno.getId_zine());
-
-    	Saioa[] saioakZineUno = zineUno.getSaioalist();
-
-    	System.out.println("Saioak del Zine Uno desde el 22 de febrero:");
-    	for (Saioa saioa : saioakZineUno) {
-    	    LocalDate fecha = saioa.getDate();
-    	    if (fecha != null && fecha.isAfter(LocalDate.of(2024, 2, 21))) {
-    	        System.out.println("    Saioa id: " + saioa.getOrdua());
-    	        System.out.println("    Saioa data: " + fecha);
-    	        System.out.println("    Película: " + saioa.getFilma().getIzena());
-    	    }
+    	Zinema zineUno = zinemak[0]; 
+    	System.out.println("ID del Zine: " + zineUno.getSaioalist().toString());
+    	for (Saioa saioa : zineUno.getSaioalist()) {
+    	    System.out.println(saioa.toString());
     	}
+
+//    	Saioa[] saioakZineUno = zineUno.getSaioalist();
+
+//    	System.out.println("Saioak del Zine Uno desde el 22 de febrero:");
+//    	for (Saioa saioa : saioakZineUno) {
+//    	    LocalDate fecha = saioa.getDate();
+//    	    if (fecha != null && fecha.isAfter(LocalDate.of(2024, 2, 21))) {
+//    	        System.out.println("    Saioa id: " + saioa.getOrdua());
+//    	        System.out.println("    Saioa data: " + fecha);
+//    	        System.out.println("    Película: " + saioa.getFilma().getIzena());
+//    	    }
+//    	}
 
 //        System.out.println("-----------------------------");
 //
