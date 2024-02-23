@@ -48,7 +48,7 @@ public class Sarrera {
 
 	@Override
 	public String toString() {
-		return "Sarrera [kantitatea=" + kantitatea + ", saioa=" + saioa + "]";
+		return "Sarrera kantitatea " + kantitatea + ", saioa " + saioa + "";
 	}
 
 	

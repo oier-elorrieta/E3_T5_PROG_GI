@@ -67,6 +67,6 @@ public class SarreraTest {
     public void testToString() {
         Saioa saioa = new Saioa(null, null, null, null);
         Sarrera sarrera = new Sarrera(5, saioa);
-        assertEquals("Sarrera [kantitatea=5, saioa=" + saioa + "]", sarrera.toString());
+        assertEquals("Sarrera kantitatea 5, saioa " + saioa + "", sarrera.toString());
     }
 }

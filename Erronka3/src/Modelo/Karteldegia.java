@@ -18,13 +18,6 @@ public class Karteldegia {
 		this.filmak = filmak;
 	}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + Arrays.hashCode(filmak);
-		return result;
-	}
 
 	@Override
 	public boolean equals(Object obj) {
@@ -40,7 +33,7 @@ public class Karteldegia {
 
 	@Override
 	public String toString() {
-		return "Karteldegia [filmak=" + Arrays.toString(filmak) + "]";
+		return "Karteldegia filmak " + Arrays.toString(filmak) + " ";
 	}
 
 }

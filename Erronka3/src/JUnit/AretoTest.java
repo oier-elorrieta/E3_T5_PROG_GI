@@ -7,50 +7,51 @@ import Modelo.Areto;
 
 public class AretoTest {
 
+	//gehitu behar da zinemako id eta ondo ezarri
     @Test
     public void testGetId_areto() {
-        Areto areto = new Areto(1, "A1");
-        assertEquals(1, areto.getId_areto());
+        Areto areto = new Areto("A1", "Areto1", null);
+        assertEquals("A1", areto.getId_areto());
     }
 
     @Test
     public void testSetId_areto() {
-        Areto areto = new Areto(1, "A1");
-        areto.setId_areto(2);
-        assertEquals(2, areto.getId_areto());
+        Areto areto = new Areto("A2", "Areto2", null);
+        areto.setId_areto("A2");
+        assertEquals("A2", areto.getId_areto());
     }
 
     @Test
     public void testGetIzena() {
-        Areto areto = new Areto(1, "A1");
-        assertEquals("A1", areto.getIzena());
+        Areto areto = new Areto("A1", "Areto1", null);
+        assertEquals("Areto1", areto.getIzena());
     }
 
     @Test
     public void testSetIzena() {
-        Areto areto = new Areto(1, "A1");
-        areto.setIzena("A2");
-        assertEquals("A2", areto.getIzena());
+        Areto areto = new Areto("A2", "Areto2", null);
+        areto.setIzena("Areto2");
+        assertEquals("Areto2", areto.getIzena());
     }
 
     @Test
     public void testToString() {
-        Areto areto = new Areto(1, "A1");
-        assertEquals("Areto [id_areto=1, izena=A1]", areto.toString());
+        Areto areto = new Areto("A1", "Areto1", null);
+        assertEquals("Areto id_areto A1, izena Areto1", areto.toString());
     }
 
     @Test
     public void testHashCode() {
-        Areto areto1 = new Areto(1, "A1");
-        Areto areto2 = new Areto(1, "A1");
+        Areto areto1 = new Areto("A1", "Areto1", null);
+        Areto areto2 = new Areto("A1", "Areto1", null);
         assertEquals(areto1.hashCode(), areto2.hashCode());
     }
 
     @Test
     public void testEquals() {
-        Areto areto1 = new Areto(1, "A1");
-        Areto areto2 = new Areto(1, "A1");
-        Areto areto3 = new Areto(2, "A2");
+        Areto areto1 = new Areto("A1", "Areto1", null);
+        Areto areto2 = new Areto("A1", "Areto1", null);
+        Areto areto3 = new Areto("A2", "Areto2", null);
 
         assertEquals(areto1, areto2);
         assertNotEquals(areto1, areto3);
