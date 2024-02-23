@@ -1,4 +1,4 @@
-package Vista;
+package probak;
 
 import javax.swing.*;
 import Modelo.Bezeroa;

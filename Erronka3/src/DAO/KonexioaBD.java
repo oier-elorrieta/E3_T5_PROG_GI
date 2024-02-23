@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class KonexioaBD {
-    private String url = "jdbc:mysql://localhost:3306/db_elorrietazinemaT5";
+    private String url = "jdbc:mysql://localhost:3307/db_elorrietazinemaT5";
     private String user = "root";
     private String pass = "";
     private Connection connection;

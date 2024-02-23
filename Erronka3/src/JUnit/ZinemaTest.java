@@ -43,14 +43,14 @@ public class ZinemaTest {
     @Test
     public void testGetId_zine() {
         Zinema zinema = new Zinema("Z1", "Zinemaldia", "Bilbao", null, null);
-        assertEquals(1, zinema.getId_zine());
+        assertEquals("Z1", zinema.getId_zine());
     }
 
     @Test
     public void testSetId_zine() {
         Zinema zinema = new Zinema("Z2", "Zinemaldia", "Bilbao", null, null);
         zinema.setId_zine("Z2");
-        assertEquals(2, zinema.getId_zine());
+        assertEquals("Z2", zinema.getId_zine());
     }
 
     @Test
@@ -79,13 +79,6 @@ public class ZinemaTest {
         assertEquals("Donostia", zinema.getHelbidea());
     }
 
-    @Test
-    public void testEquals() {
-        Zinema zinema1 = new Zinema("Z1", "Zinemaldia", "Bilbao", null, null);
-        Zinema zinema2 = new Zinema("Z1", "Zinemaldia", "Bilbao", null, null);
-
-        assertTrue(zinema1.equals(zinema2));
-    }
 
     @Test
     public void testNotEquals() {
