@@ -1,4 +1,4 @@
-package JUnit;
+ package JUnit;
 
 import static org.junit.Assert.*;
 import org.junit.Test;
@@ -36,6 +36,6 @@ public class KarteldegiaTest {
     public void testToString() {
         Filma[] filmak = {new Filma("Film1", 1, 120, "Generoa1", 10.0)};
         Karteldegia karteldegia = new Karteldegia(filmak);
-        assertEquals("Karteldegia [filmak=[Pelikula [izena=Film1, id_peli=1, iraupena=120, generoa=Generoa1, prezioa=10.0]]]", karteldegia.toString());
+        assertEquals("Karteldegia filmak Pelikula izena Film1, id_peli 1, iraupena 120, generoa Generoa1, prezioa 10.0", karteldegia.toString());
     }
 }
