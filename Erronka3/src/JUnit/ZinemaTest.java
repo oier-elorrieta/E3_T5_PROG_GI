@@ -2,8 +2,6 @@ package JUnit;
 
 import static org.junit.Assert.*;
 
-import java.util.Arrays;
-
 import org.junit.Test;
 
 import Modelo.Areto;
@@ -11,46 +9,48 @@ import Modelo.Saioa;
 import Modelo.Zinema;
 
 public class ZinemaTest {
-	  @Test
-	    public void testGetSaioalistArray() {
-	        Saioa[] saioaList = new Saioa[5];
-	        Zinema zinema = new Zinema("Z1", "Zinemaldia", "Bilbao", saioaList, null);
-	        assertArrayEquals(saioaList, zinema.getSaioalist());
-	    }
 
-	    @Test
-	    public void testSetSaioalistArray() {
-	        Saioa[] saioaList = new Saioa[5];
-	        Zinema zinema = new Zinema("Z1", "Zinemaldia", "Bilbao", null, null);
-	        zinema.setSaioalist(saioaList);
-	        assertArrayEquals(saioaList, zinema.getSaioalist());
-	    }
+    @Test
+    public void testGetSaioalistArray() {
+        Saioa[] saioaList = new Saioa[5];
+        Zinema zinema = new Zinema("Z1", "Zinemaldia", "Bilbao", saioaList, null);
+        assertArrayEquals(saioaList, zinema.getSaioalist());
+    }
 
-	    @Test
-	    public void testGetAretolistarray() {
-	        Areto[] aretoList = new Areto[5];
-	        Zinema zinema = new Zinema("Z1", "Zinemaldia", "Bilbao", null, aretoList);
-	        assertArrayEquals(aretoList, zinema.getAretolist());
-	    }
+    @Test
+    public void testSetSaioalistArray() {
+        Saioa[] saioaList = new Saioa[5];
+        Zinema zinema = new Zinema("Z1", "Zinemaldia", "Bilbao", null, null);
+        zinema.setSaioalist(saioaList);
+        assertArrayEquals(saioaList, zinema.getSaioalist());
+    }
 
-	    @Test
-	    public void testSetAretolistarray() {
-	        Areto[] aretoList = new Areto[5];
-	        Zinema zinema = new Zinema("Z1", "Zinemaldia", "Bilbao", null, null);
-	        zinema.setAretolist(aretoList);
-	        assertArrayEquals(aretoList, zinema.getAretolist());
-	    }
+    @Test
+    public void testGetAretolistarray() {
+        Areto[] aretoList = new Areto[5];
+        Zinema zinema = new Zinema("Z1", "Zinemaldia", "Bilbao", null, aretoList);
+        assertArrayEquals(aretoList, zinema.getAretolist());
+    }
+
+    @Test
+    public void testSetAretolistarray() {
+        Areto[] aretoList = new Areto[5];
+        Zinema zinema = new Zinema("Z1", "Zinemaldia", "Bilbao", null, null);
+        zinema.setAretolist(aretoList);
+        assertArrayEquals(aretoList, zinema.getAretolist());
+    }
+
     @Test
     public void testGetId_zine() {
         Zinema zinema = new Zinema("Z1", "Zinemaldia", "Bilbao", null, null);
-        assertEquals(1, zinema.getId_zine());
+        assertEquals("Z1", zinema.getId_zine());
     }
 
     @Test
     public void testSetId_zine() {
-        Zinema zinema = new Zinema("Z2", "Zinemaldia", "Bilbao", null, null);
+        Zinema zinema = new Zinema("Z1", "Zinemaldia", "Bilbao", null, null);
         zinema.setId_zine("Z2");
-        assertEquals(2, zinema.getId_zine());
+        assertEquals("Z2", zinema.getId_zine());
     }
 
     @Test
@@ -99,7 +99,7 @@ public class ZinemaTest {
     public void testToString() {
         Zinema zinema = new Zinema("Z1", "Zinemaldia", "Bilbao", null, null);
 
-        String expectedToString = "Zinema id_zine 1, izena Zinemaldia, helbidea Bilbao, Saioalist null, Aretolist null";
+        String expectedToString = "Zinema [id_zine=Z1, izena=Zinemaldia, helbidea=Bilbao, saioalist=null, aretolist=null]";
         assertEquals(expectedToString, zinema.toString());
     }
 }

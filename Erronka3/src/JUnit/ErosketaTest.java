@@ -60,12 +60,10 @@ public class ErosketaTest {
         assertEquals(erosketa1, erosketa2);
     }
 
-
-      	@Test
-        public void testToString() {
-            Sarrera[] sarreraList = {new Sarrera(1, null)};
-            Erosketa erosketa = new Erosketa(100, sarreraList, 1);
-            assertEquals("Erosketak diruTotala 100, SarreraList , id_erosketak 1", erosketa.toString());
-        }
+    @Test
+    public void testToString() {
+        Sarrera[] sarreraList = {new Sarrera(1, null)};
+        Erosketa erosketa = new Erosketa(100, sarreraList, 1);
+        assertEquals("Erosketak diruTotala 100, SarreraList , id_erosketak 1", erosketa.toString());
     }
-
+}
