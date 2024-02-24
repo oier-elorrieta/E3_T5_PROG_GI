@@ -47,7 +47,7 @@ public class SaioakV extends JFrame {
         });
         btnAtzeraSaioak.setBounds(10, 10, 106, 29);
         contentPaneSaioak.add(btnAtzeraSaioak);
-
+        
         lblOrdutegia = new JLabel("Ordutegia");
         lblOrdutegia.setFont(new Font("Tahoma", Font.BOLD, 18));
         lblOrdutegia.setBounds(258, 114, 100, 30);

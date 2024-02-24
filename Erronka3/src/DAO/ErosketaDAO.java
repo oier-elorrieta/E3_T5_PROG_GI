@@ -33,12 +33,34 @@ public class ErosketaDAO {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        } finally {
-            konexioaBD.desconectar();
+         
         }
 
         return erosketa;
     }
+    public boolean insertErosketa(Erosketa erosketa) {
+        boolean inserted = false;
+        Connection con = null;
+        try {
+            con = konexioaBD.getConnection();
+            String sql = "INSERT INTO EROSKETAK (dirutotala, erosketak_id, jatorria, Bezero_id, Deskontua) VALUES (?, ?, ?, ?, ?)";
+            try (PreparedStatement pstmt = con.prepareStatement(sql)) {
+                pstmt.setDouble(1, erosketa.getDiruTotala());
+                pstmt.setInt(2, erosketa.getId_erosketak());
+                pstmt.setString(3, "fisikoa");
+                pstmt.setInt(4, erosketa.getBezeroa().getBezero_id());
+                pstmt.setDouble(5, 30);
 
-   
+                int affectedRows = pstmt.executeUpdate();
+                if (affectedRows > 0) {
+                    inserted = true;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            // No cierres la conexión aquí
+        }
+        return inserted;
+    }
 }

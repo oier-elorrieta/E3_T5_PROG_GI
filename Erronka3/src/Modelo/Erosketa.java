@@ -13,7 +13,7 @@ public class Erosketa {
     	this.bezeroa = bezeroa;
         this.diruTotala = diruTotala;
         this.sarreraList = sarreraList;
-        this.erosketa_id = getId_erosketak();
+        this.erosketa_id = erosketa_id;
     }
 
     public Erosketa(Sarrera[] sarrerak, Bezeroa bezeroaLog) {
