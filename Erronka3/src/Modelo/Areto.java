@@ -5,12 +5,12 @@ import java.util.Objects;
 public class Areto {
     private String id_areto;
     private String izena;
-    private String zinema; // Agregar el campo Zinema
+    private String zinema_id; 
 
     public Areto(String areto_id, String izena, String zinema_id) {
         this.id_areto = areto_id;
         this.izena = izena;
-        this.zinema = zinema_id;
+        this.zinema_id = zinema_id;
     }
 
     public String getId_areto() {
@@ -29,12 +29,12 @@ public class Areto {
         this.izena = izena;
     }
 
-    public String getZinema() { // Agregar el getter para Zinema
-        return zinema;
+    public String getZinema_id() { 
+        return zinema_id;
     }
 
-    public void setZinema(String zinema) { // Agregar el setter para Zinema
-        this.zinema = zinema;
+    public void setZinema_id(String zinema) { 
+        this.zinema_id = zinema;
     }
 
     @Override

@@ -17,11 +17,12 @@ public class ZinemakV extends JFrame {
     private JPanel contentPaneZinemak;
     private Zinema[] zinemakList;
     private Bezeroa[] bezeroak;
-
-    public ZinemakV(Zinema[] zinemakList, Bezeroa[] bezeroak) {
+    private Bezeroa bezeroaLog;
+    
+    public ZinemakV(Zinema[] zinemakList, Bezeroa bezeroaLog) {
         this.zinemakList = zinemakList;
         this.bezeroak = bezeroak; 
-
+        this.bezeroaLog = bezeroaLog;
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 450, 300);
         contentPaneZinemak = new JPanel();
@@ -61,7 +62,7 @@ public class ZinemakV extends JFrame {
             }
         }
         System.out.println(zinemaAukera.getAretolist().toString());
-            DataV dataFrame = new DataV(zinemaAukera, zinemakList, bezeroak);
+            DataV dataFrame = new DataV(zinemaAukera, zinemakList, bezeroaLog);
             dataFrame.setVisible(true);
             dispose();  
     }

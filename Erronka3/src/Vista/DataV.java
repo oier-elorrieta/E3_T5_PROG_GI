@@ -21,7 +21,7 @@ public class DataV extends JFrame {
     private JLabel lblData;
     private Date selectedDate; 
 
-    public DataV(Zinema zinemaAukera,Zinema[] zinemakList, Bezeroa[] bezeroak) {
+    public DataV(Zinema zinemaAukera,Zinema[] zinemakList, Bezeroa bezeroaLog ) {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 450, 300);
         contentPaneSaioak = new JPanel();
@@ -31,7 +31,7 @@ public class DataV extends JFrame {
         JButton btnAtzeraSaioak = new JButton("Atzera");
         btnAtzeraSaioak.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                ZinemakV zinemakFrame = new ZinemakV(zinemakList, bezeroak);
+                ZinemakV zinemakFrame = new ZinemakV(zinemakList, bezeroaLog);
                 zinemakFrame.setVisible(true);
                 dispose(); 
             }
@@ -93,14 +93,14 @@ public class DataV extends JFrame {
                     lblData.setText(data + " Ordutegia");
                     lblData.setVisible(true);
 
-                    abrirSiguientePestana(selectedDate, zinemakList, bezeroak,zinemaAukera);
+                    abrirSiguientePestana(selectedDate, zinemakList, bezeroaLog ,zinemaAukera);
                 }
             }
         });
     }
 
-    public void abrirSiguientePestana(Date selectedDate, Zinema[] zinemakList, Bezeroa[] bezeroak, Zinema zinemaAukera) {
-        FilmakV filmak = new FilmakV(zinemaAukera, zinemakList, bezeroak, selectedDate);
+    public void abrirSiguientePestana(Date selectedDate, Zinema[] zinemakList, Bezeroa bezeroaLog, Zinema zinemaAukera) {
+        FilmakV filmak = new FilmakV(zinemaAukera, zinemakList, bezeroaLog, selectedDate);
         filmak.setVisible(true);
         dispose(); 
     }

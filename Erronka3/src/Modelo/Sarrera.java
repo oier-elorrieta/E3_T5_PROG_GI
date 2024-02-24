@@ -10,6 +10,7 @@ public class Sarrera {
 	public Sarrera(int kantitatea, Saioa saioa) {
 		this.kantitatea = kantitatea;
 		this.saioa = saioa;
+		
 	}
 
 	public int getKantitatea() {

@@ -20,20 +20,21 @@ public class FilmakV extends JFrame {
     private JPanel contentPaneFilmak;
     private Zinema zinemaAukera;
     private Zinema[] zinemakList;
-    private Bezeroa[] bezeroak;
+    private Bezeroa bezeroaLog;
     private Date selectedDate;
 
 
-    public FilmakV(Zinema zinemaAukera, Zinema[] zinemakList, Bezeroa[] bezeroak, Date selectedDate) {
+    public FilmakV(Zinema zinemaAukera, Zinema[] zinemakList, Bezeroa bezeroaLog, Date selectedDate) {
         this.zinemaAukera = zinemaAukera;
         this.zinemakList = zinemakList;
-        this.bezeroak = bezeroak;
+        this.bezeroaLog = bezeroaLog;
         this.selectedDate = selectedDate;
-    
+        System.out.println(bezeroaLog);
         initialize();
     }
 
     private void initialize() {
+    	
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 450, 300);
         contentPaneFilmak = new JPanel();
@@ -43,7 +44,7 @@ public class FilmakV extends JFrame {
 
         JButton btnAtzeraFilmak = new JButton("Atzera");
         btnAtzeraFilmak.addActionListener(e -> {
-            ZinemakV zinemak = new ZinemakV(zinemakList, bezeroak);
+            ZinemakV zinemak = new ZinemakV(zinemakList, bezeroaLog);
             zinemak.setVisible(true);
             dispose();
         });
@@ -78,7 +79,7 @@ public class FilmakV extends JFrame {
     }
 
     private void abrirVentanaSaioak(String selectedMovie, Zinema selectedCinema) {
-        SaioakV saioak = new SaioakV(selectedMovie, zinemakList, bezeroak, selectedDate, selectedCinema);
+        SaioakV saioak = new SaioakV(selectedMovie, zinemakList, bezeroaLog, selectedDate, selectedCinema);
         saioak.setVisible(true);
         dispose();
     }
