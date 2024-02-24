@@ -18,7 +18,7 @@ public class ZinemakV extends JFrame {
     private Zinema[] zinemakList;
     private Bezeroa[] bezeroak;
 
-    public ZinemakV(Zinema[] zinemakList, Bezeroa[] bezeroak, Erosketa erosketak) {
+    public ZinemakV(Zinema[] zinemakList, Bezeroa[] bezeroak) {
         this.zinemakList = zinemakList;
         this.bezeroak = bezeroak; 
 
@@ -35,7 +35,7 @@ public class ZinemakV extends JFrame {
                 public void actionPerformed(ActionEvent e) {
                     String zinemaAukeraID = zinema.getId_zine();
                     System.out.println(zinemaAukeraID);
-                    zinemaAukeratu(zinemaAukeraID, erosketak);
+                    zinemaAukeratu(zinemaAukeraID);
                 }
             });
             contentPaneZinemak.add(btnCinema);
@@ -45,14 +45,14 @@ public class ZinemakV extends JFrame {
         btnAmaitu.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 dispose(); 
-                LoginaV login = new LoginaV(zinemakList, bezeroak, erosketak); 
+                LoginaV login = new LoginaV(zinemakList, bezeroak); 
                 login.setVisible(true); 
             }
         });
         contentPaneZinemak.add(btnAmaitu);
     }
 
-    public void zinemaAukeratu(String zinemaAukeraID, Erosketa erosketak) {
+    public void zinemaAukeratu(String zinemaAukeraID) {
         Zinema zinemaAukera = null;
         for (Zinema zinema : zinemakList) {
             if (zinema.getId_zine().equals(zinemaAukeraID)) {
@@ -61,7 +61,7 @@ public class ZinemakV extends JFrame {
             }
         }
         System.out.println(zinemaAukera.getAretolist().toString());
-            DataV dataFrame = new DataV(zinemaAukera, zinemakList, bezeroak, erosketak);
+            DataV dataFrame = new DataV(zinemaAukera, zinemakList, bezeroak);
             dataFrame.setVisible(true);
             dispose();  
     }

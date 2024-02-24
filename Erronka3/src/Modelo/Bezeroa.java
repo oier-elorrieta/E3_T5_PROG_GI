@@ -1,99 +1,108 @@
-
 package Modelo;
 
 import java.util.Objects;
 
 public class Bezeroa {
-	private String izena;
-	private String abizena;
-	private String nan;
-	private String sexua;
-	private String pasahitza;
-	private String Erabiltzailea;
+    private int bezero_id; // Nuevo campo bezero_id
+    private String izena;
+    private String abizena;
+    private String nan;
+    private String sexua;
+    private String pasahitza;
+    private String Erabiltzailea;
 
-	public Bezeroa(String izena, String abizena, String nan, String sexua, String pasahitza, String Erabiltzailea) {
-		this.izena = izena;
-		this.abizena = abizena;
-		this.nan = nan;
-		this.sexua = sexua;
-		this.pasahitza = pasahitza;
-		this.Erabiltzailea = Erabiltzailea;
-	}
+    public Bezeroa(int bezero_id, String izena, String abizena, String nan, String sexua, String pasahitza, String Erabiltzailea) {
+        this.bezero_id = bezero_id;
+        this.izena = izena;
+        this.abizena = abizena;
+        this.nan = nan;
+        this.sexua = sexua;
+        this.pasahitza = pasahitza;
+        this.Erabiltzailea = Erabiltzailea;
+    }
 
-	public String getIzena() {
-		return izena;
-	}
+    public int getBezero_id() {
+        return bezero_id;
+    }
 
-	public void setIzena(String izena) {
-		this.izena = izena;
-	}
+    public void setBezero_id(int bezero_id) {
+        this.bezero_id = bezero_id;
+    }
 
-	public String getAbizena() {
-		return abizena;
-	}
+    public String getIzena() {
+        return izena;
+    }
 
-	public void setAbizena(String abizena) {
-		this.abizena = abizena;
-	}
+    public void setIzena(String izena) {
+        this.izena = izena;
+    }
 
-	public String getNan() {
-		return nan;
-	}
+    public String getAbizena() {
+        return abizena;
+    }
 
-	public void setNan(String nan) {
-		this.nan = nan;
-	}
+    public void setAbizena(String abizena) {
+        this.abizena = abizena;
+    }
 
-	public String getSexua() {
-		return sexua;
-	}
+    public String getNan() {
+        return nan;
+    }
 
-	public void setSexua(String sexua) {
-		this.sexua = sexua;
-	}
-	
-	public String getErabiltzailea () {
-		return Erabiltzailea;
-	}
-	
-	public void setErabiltzailea (String Erabiltzailea) {
-		this.Erabiltzailea = Erabiltzailea;
-	}
+    public void setNan(String nan) {
+        this.nan = nan;
+    }
 
-	public String getPasahitza() {
-		return pasahitza;
-	}
+    public String getSexua() {
+        return sexua;
+    }
 
-	public void setPasahitza(String pasahitza) {
-		this.pasahitza = pasahitza;
-	}
+    public void setSexua(String sexua) {
+        this.sexua = sexua;
+    }
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(Erabiltzailea, abizena, izena, nan, pasahitza, sexua);
-	}
+    public String getErabiltzailea () {
+        return Erabiltzailea;
+    }
 
-	
+    public void setErabiltzailea (String Erabiltzailea) {
+        this.Erabiltzailea = Erabiltzailea;
+    }
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Bezeroa other = (Bezeroa) obj;
-		return Objects.equals(Erabiltzailea, other.Erabiltzailea) && Objects.equals(abizena, other.abizena)
-				&& Objects.equals(izena, other.izena) && Objects.equals(nan, other.nan)
-				&& Objects.equals(pasahitza, other.pasahitza) && sexua == other.sexua;
-	}
-	
-	@Override
-	public String toString() {
-		return "Bezeroa izena " + izena + ", abizena " + abizena + ", nan " + nan + ", sexua " + sexua + ", pasahitza "
-				+ pasahitza + ", Erabiltzailea " + Erabiltzailea + " ";
-	}
+    public String getPasahitza() {
+        return pasahitza;
+    }
 
+    public void setPasahitza(String pasahitza) {
+        this.pasahitza = pasahitza;
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(Erabiltzailea, abizena, izena, nan, pasahitza, sexua);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Bezeroa other = (Bezeroa) obj;
+        return bezero_id == other.bezero_id &&
+                Objects.equals(Erabiltzailea, other.Erabiltzailea) &&
+                Objects.equals(abizena, other.abizena) &&
+                Objects.equals(izena, other.izena) &&
+                Objects.equals(nan, other.nan) &&
+                Objects.equals(pasahitza, other.pasahitza) &&
+                Objects.equals(sexua, other.sexua);
+    }
+
+    @Override
+    public String toString() {
+        return "Bezeroa izena " + izena + ", abizena " + abizena + ", nan " + nan + ", sexua " + sexua + ", pasahitza "
+                + pasahitza + ", Erabiltzailea " + Erabiltzailea + ", bezero_id " + bezero_id;
+    }
 }

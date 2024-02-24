@@ -16,9 +16,9 @@ public class Kontroladorea {
         Zinema[] zinemakList = zinemakDAO.getAllZinemak();
         BezeroaDAO bezeroaDAO = new BezeroaDAO();
         Bezeroa[] bezeroak = bezeroaDAO.getAllBezeroak();
-        Erosketa erosketak = new Erosketa();
+        
         try {
-            OngiEtorriV frame = new OngiEtorriV(zinemakList,bezeroak, erosketak);
+            OngiEtorriV frame = new OngiEtorriV(zinemakList,bezeroak);
             frame.setVisible(true);
         } catch (Exception e) {
             e.printStackTrace();

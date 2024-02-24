@@ -5,8 +5,13 @@ import static org.junit.Assert.assertNotEquals;
 
 import org.junit.Test;
 
+import Modelo.Areto;
+import Modelo.Filma;
 import Modelo.Saioa;
 import Modelo.Sarrera;
+
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 public class SarreraTest {
 
@@ -27,15 +32,27 @@ public class SarreraTest {
 
     @Test
     public void testGetSaioa() {
-        Saioa saioa = new Saioa(null, null, null, null);
+    	Filma filma = new Filma("Pelikula1", 1, 120, "Drama", 10.0);
+        Areto areto = new Areto("A1", "Areto1", "Zinema1");
+        LocalTime ordua = LocalTime.of(15, 30);
+        LocalDate date = LocalDate.of(2024, 2, 23);
+        Saioa saioa = new Saioa(ordua, date, filma, areto);
+        
         Sarrera sarrera = new Sarrera(0, saioa);
         assertEquals(saioa, sarrera.getSaioa());
     }
 
     @Test
     public void testSetSaioa() {
-        Saioa saioa1 = new Saioa(null, null, null, null);
-        Saioa saioa2 = new Saioa(null, null, null, null);
+        Filma filma1 = new Filma("Pelikula1", 1, 120, "Drama", 10.0);
+        Filma filma2 = new Filma("Pelikula2", 2, 150, "Comedia", 12.0);
+        Areto areto1 = new Areto("A1", "Areto1", "Zinema1");
+        Areto areto2 = new Areto("A2", "Areto2", "Zinema2");
+        LocalTime ordua = LocalTime.of(15, 30);
+        LocalDate date = LocalDate.of(2024, 2, 23);
+        Saioa saioa1 = new Saioa(ordua, date, filma1, areto1);
+        Saioa saioa2 = new Saioa(ordua, date, filma2, areto2);
+
         Sarrera sarrera = new Sarrera(0, saioa1);
         sarrera.setSaioa(saioa2);
         assertEquals(saioa2, sarrera.getSaioa());
@@ -43,8 +60,15 @@ public class SarreraTest {
 
     @Test
     public void testEquals() {
-        Saioa saioa1 = new Saioa(null, null, null, null);
-        Saioa saioa2 = new Saioa(null, null, null, null);
+        Filma filma1 = new Filma("Pelikula1", 1, 120, "Drama", 10.0);
+        Filma filma2 = new Filma("Pelikula2", 2, 150, "Comedia", 12.0);
+        Areto areto1 = new Areto("A1", "Areto1", "Zinema1");
+        Areto areto2 = new Areto("A2", "Areto2", "Zinema2");
+        LocalTime ordua = LocalTime.of(15, 30);
+        LocalDate date = LocalDate.of(2024, 2, 23);
+        Saioa saioa1 = new Saioa(ordua, date, filma1, areto1);
+        Saioa saioa2 = new Saioa(ordua, date, filma2, areto2);
+        
         Sarrera sarrera1 = new Sarrera(5, saioa1);
         Sarrera sarrera2 = new Sarrera(5, saioa1);
         Sarrera sarrera3 = new Sarrera(10, saioa1);
@@ -56,7 +80,12 @@ public class SarreraTest {
 
     @Test
     public void testHashCode() {
-        Saioa saioa = new Saioa(null, null, null, null);
+        Filma filma = new Filma("Pelikula1", 1, 120, "Drama", 10.0);
+        Areto areto = new Areto("A1", "Areto1", "Zinema1");
+        LocalTime ordua = LocalTime.of(15, 30);
+        LocalDate date = LocalDate.of(2024, 2, 23);
+        Saioa saioa = new Saioa(ordua, date, filma, areto);
+
         Sarrera sarrera1 = new Sarrera(5, saioa);
         Sarrera sarrera2 = new Sarrera(5, saioa);
 
@@ -65,7 +94,12 @@ public class SarreraTest {
 
     @Test
     public void testToString() {
-        Saioa saioa = new Saioa(null, null, null, null);
+        Filma filma = new Filma("Pelikula1", 1, 120, "Drama", 10.0);
+        Areto areto = new Areto("A1", "Areto1", "Zinema1");
+        LocalTime ordua = LocalTime.of(15, 30);
+        LocalDate date = LocalDate.of(2024, 2, 23);
+        Saioa saioa = new Saioa(ordua, date, filma, areto);
+        
         Sarrera sarrera = new Sarrera(5, saioa);
         assertEquals("Sarrera kantitatea 5, saioa " + saioa + "", sarrera.toString());
     }

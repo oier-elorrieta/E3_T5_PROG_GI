@@ -34,7 +34,7 @@ public class OngiEtorriV extends JFrame {
     public int tiempoCarga = 0;
 	public static int barraBat = 0;
 
-    public OngiEtorriV(Zinema[] zinemakList, Bezeroa[] bezeroak, Erosketa erosketak) {
+    public OngiEtorriV(Zinema[] zinemakList, Bezeroa[] bezeroak) {
     	
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 600, 380);
@@ -86,7 +86,6 @@ public class OngiEtorriV extends JFrame {
                                 EventQueue.invokeLater(new Runnable() {
                                     public void run() {
                                         progressBar.setValue(value);
-                                        System.out.println(value + " " + progressBar.getValue());
                                     }
                                 });
                                 try {
@@ -97,7 +96,7 @@ public class OngiEtorriV extends JFrame {
                             }
                             
                         }
-                        LoginaV frame = new LoginaV(zinemakList, bezeroak,erosketak);
+                        LoginaV frame = new LoginaV(zinemakList, bezeroak);
                         frame.setVisible(true);
                         dispose();
                     }

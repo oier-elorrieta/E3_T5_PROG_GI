@@ -34,6 +34,7 @@ public class BezeroaDAO {
             try (PreparedStatement pstmt = con.prepareStatement(sql)) {
                 try (ResultSet rs = pstmt.executeQuery()) {
                     int index = 0;
+                    int id = 1;
                     while (rs.next()) {
 
                         String izena = rs.getString("izena");
@@ -43,7 +44,7 @@ public class BezeroaDAO {
                         String erabiltzailea = rs.getString("erabiltzailea");
                         String pasahitza = rs.getString("pasahitza");
 
-                        Bezeroa bezeroa = new Bezeroa(izena, abizena, nan, sexua, pasahitza, erabiltzailea);
+                        Bezeroa bezeroa = new Bezeroa(id, izena, abizena, nan, sexua, pasahitza, erabiltzailea);
                         bezeroList[index] = bezeroa;
                         index++;
                     }
