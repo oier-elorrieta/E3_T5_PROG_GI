@@ -71,4 +71,5 @@ public class Saioa {
     public String toString() {
         return "Saioa [ordua=" + ordua + ", date=" + date + ", filma=" + filma + ", aretoa=" + aretoa + "]";
     }
+
 }

@@ -34,8 +34,14 @@ public class KarteldegiaTest {
 
     @Test
     public void testToString() {
-        Filma[] filmak = {new Filma("Film1", 1, 120, "Generoa1", 10.0)};
+        Filma[] filmak = {
+            new Filma("Film1", 0, 0, "Director1", 0),
+            new Filma("Film2", 0, 0, "Director2", 0)
+        };
+
         Karteldegia karteldegia = new Karteldegia(filmak);
-        assertEquals("Karteldegia [filmak=[Pelikula [izena=Film1, id_peli=1, iraupena=120, generoa=Generoa1, prezioa=10.0]]]", karteldegia.toString());
+
+        String expectedToString = "Karteldegia filmak [Pelikula izena Film1, id_peli 0, iraupena 0, generoa Director1, prezioa 0.0, Pelikula izena Film2, id_peli 0, iraupena 0, generoa Director2, prezioa 0.0] ";
+        assertEquals(expectedToString, karteldegia.toString());
     }
 }

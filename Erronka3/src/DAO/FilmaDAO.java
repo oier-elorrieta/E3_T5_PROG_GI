@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import Modelo.Filma;
+import Modelo.Karteldegia;
 
 public class FilmaDAO {
     private KonexioaBD konexioaBD;

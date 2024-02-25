@@ -32,14 +32,14 @@ public class ErosketaTest {
     public void testGetDiruTotala() {
         Erosketa erosketa = new Erosketa(null, null);
         erosketa.setDiruTotala(100);
-        assertEquals(100, erosketa.getDiruTotala());
-    }
+        assertEquals(100, erosketa.getDiruTotala(), 0.001);
+        }
 
     @Test
     public void testSetDiruTotala() {
         Erosketa erosketa = new Erosketa(null, null);
         erosketa.setDiruTotala(200);
-        assertEquals(200, erosketa.getDiruTotala());
+        assertEquals(200, erosketa.getDiruTotala(), 0.001);
     }
 
     @Test
@@ -75,19 +75,15 @@ public class ErosketaTest {
     @Test
     public void testEquals() {
         Bezeroa bezeroa1 = new Bezeroa(1, "Izena", "Abizena", "12345678A", "Gizona", "password", "erabiltzailea1");
-        Bezeroa bezeroa2 = new Bezeroa(2, "Izena", "Abizena", "12345678A", "Gizona", "password", "erabiltzailea1");
+        Bezeroa bezeroa2 = new Bezeroa(1, "Izena", "Abizena", "12345678A", "Gizona", "password", "erabiltzailea1");
         Sarrera[] sarreraList1 = { new Sarrera(1, null) };
         Sarrera[] sarreraList2 = { new Sarrera(2, null) };
 
         Erosketa erosketa1 = new Erosketa(sarreraList1, bezeroa1);
-        erosketa1.setBezeroa(bezeroa1);
-        erosketa1.setSarreraList(sarreraList1);
         erosketa1.setDiruTotala(100);
         erosketa1.setId_erosketak(1);
 
         Erosketa erosketa2 = new Erosketa(sarreraList2, bezeroa2);
-        erosketa2.setBezeroa(bezeroa2);
-        erosketa2.setSarreraList(sarreraList2);
         erosketa2.setDiruTotala(100);
         erosketa2.setId_erosketak(1);
 

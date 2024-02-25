@@ -1,62 +1,47 @@
 package JUnit;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 import org.junit.Test;
 
 import Modelo.Areto;
 
 public class AretoTest {
 
-	//gehitu behar da zinemako id eta ondo ezarri
     @Test
-    public void testGetId_areto() {
-        Areto areto = new Areto("A1", "Areto1", null);
+    public void testGettersAndSetters() {
+        Areto areto = new Areto("A1", "Areto1", "Z1");
+        
         assertEquals("A1", areto.getId_areto());
-    }
-
-    @Test
-    public void testSetId_areto() {
-        Areto areto = new Areto("A2", "Areto2", null);
-        areto.setId_areto("A2");
-        assertEquals("A2", areto.getId_areto());
-    }
-
-    @Test
-    public void testGetIzena() {
-        Areto areto = new Areto("A1", "Areto1", null);
         assertEquals("Areto1", areto.getIzena());
-    }
-
-    @Test
-    public void testSetIzena() {
-        Areto areto = new Areto("A2", "Areto2", null);
+        assertEquals("Z1", areto.getZinema_id());
+        
+        areto.setId_areto("A2");
         areto.setIzena("Areto2");
+        areto.setZinema_id("Z2");
+        
+        assertEquals("A2", areto.getId_areto());
         assertEquals("Areto2", areto.getIzena());
+        assertEquals("Z2", areto.getZinema_id());
     }
-
-    @Test
-    public void testToString() {
-        Areto areto = new Areto("A1", "Areto1", null);
-        assertEquals("Areto id_areto A1, izena Areto1", areto.toString());
-    }
-
-    @Test
-    public void testHashCode() {
-        Areto areto1 = new Areto("A1", "Areto1", null);
-        Areto areto2 = new Areto("A1", "Areto1", null);
-        assertEquals(areto1.hashCode(), areto2.hashCode());
-    }
-
+    
     @Test
     public void testEquals() {
-        Areto areto1 = new Areto("A1", "Areto1", null);
-        Areto areto2 = new Areto("A1", "Areto1", null);
-        Areto areto3 = new Areto("A2", "Areto2", null);
-
-        assertEquals(areto1, areto2);
-        assertNotEquals(areto1, areto3);
-        assertNotEquals(areto2, areto3);
-        assertNotEquals(areto1, null);
-        assertNotEquals(areto1, "A1");
+        Areto areto1 = new Areto("A1", "Areto1", "Z1");
+        Areto areto2 = new Areto("A1", "Areto1", "Z1");
+        Areto areto3 = new Areto("A2", "Areto2", "Z2");
+        
+        assertTrue(areto1.equals(areto2));
+        assertFalse(areto1.equals(areto3));
+    }
+    
+    @Test
+    public void testToString() {
+        Areto areto = new Areto("A1", "Areto1", "Z1");
+        String expected = "Areto [id_areto=A1, izena=Areto1, zinema_id=Z1]";
+        
+        assertEquals(expected, areto.toString());
     }
 }

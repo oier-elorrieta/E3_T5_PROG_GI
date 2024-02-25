@@ -55,10 +55,11 @@ public class Areto {
     }
 
 
-	@Override
-	public String toString() {
-		return "Areto [id_areto=" + id_areto + ", izena=" + izena + ", zinema_id=" + zinema_id + "]";
-	}
+    @Override
+    public String toString() {
+        return "Areto [id_areto=" + id_areto + ", izena=" + izena + ", zinema_id=" + zinema_id + "]";
+    }
+
 
   
   

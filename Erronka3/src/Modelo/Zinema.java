@@ -64,11 +64,12 @@ public class Zinema {
 
   
 
-	@Override
-	public String toString() {
-		return "Zinema [id_zine=" + id_zine + ", izena=" + izena + ", helbidea=" + helbidea + ", saioalist="
-				+ Arrays.toString(saioalist) + ", aretolist=" + Arrays.toString(aretolist) + "]";
-	}
+    @Override
+    public String toString() {
+        return "Zinema id_zine " + id_zine + ", izena " + izena + ", helbidea " + helbidea + ", Saioalist " + saioalist + ", Aretolist " + aretolist;
+    }
+
+
 
 	
 }

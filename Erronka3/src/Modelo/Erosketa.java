@@ -9,7 +9,7 @@ public class Erosketa {
     private double diruTotala;
     private int erosketa_id;
 
-    public Erosketa(Sarrera[] sarreraList, double diruTotala, Bezeroa bezeroa,int id_erosketa) {
+    public Erosketa(Sarrera[] sarreraList, double diruTotala, Bezeroa bezeroa,int erosketa_id) {
     	this.bezeroa = bezeroa;
         this.diruTotala = diruTotala;
         this.sarreraList = sarreraList;
