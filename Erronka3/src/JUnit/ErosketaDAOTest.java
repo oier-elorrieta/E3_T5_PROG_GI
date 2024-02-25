@@ -1,14 +1,14 @@
 package JUnit;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 import DAO.ErosketaDAO;
 import Modelo.Bezeroa;
 import Modelo.Erosketa;
+import Modelo.Sarrera;
 
 public class ErosketaDAOTest {
     private ErosketaDAO erosketaDAO;
@@ -18,17 +18,23 @@ public class ErosketaDAOTest {
         erosketaDAO = new ErosketaDAO();
     }
 
+    @Test
+    public void testAzkenErosketaIdLortu() {
+        int lastId = erosketaDAO.azkenErosketaIdLortu();
+        assertTrue(lastId > 0); 
+    }
 
     @Test
-    public void testInsertErosketa() {
-        Bezeroa bezeroa = new Bezeroa(1, "Izena", "Abizena", "12345678A", "Gizona", "password", "erabiltzailea1");
-
-        Erosketa erosketa = new Erosketa();
-        erosketa.setDiruTotala(100); 
-        erosketa.setId_erosketak(100);
-        erosketa.setBezeroa(bezeroa); 
-
+    public void testInsertErosketa() {      
+        Erosketa erosketa = new Erosketa(null, 100.0, null, 0); 
         boolean inserted = erosketaDAO.insertErosketa(erosketa);
         assertTrue(inserted);
+    }
+
+    @Test
+    public void testAzkenErosketaLortu() {
+        Erosketa erosketa = erosketaDAO.azkenErosketaLortu();
+        assertNotNull(erosketa); 
+        assertTrue(erosketa.getId_erosketak() > 0); 
     }
 }

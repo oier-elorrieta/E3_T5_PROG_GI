@@ -12,8 +12,6 @@ import Modelo.Saioa;
 
 public class ZinemakDAO {
     private KonexioaBD konexioaBD;
-    public Areto[] aretolist;
-    public Saioa[] saioalist;
 
     public ZinemakDAO() {
         konexioaBD = new KonexioaBD();
@@ -21,19 +19,17 @@ public class ZinemakDAO {
 
     public Zinema[] getAllZinemak() {
         Zinema[] zinemaList = null;
-        int count = 0;
 
         try (Connection con = konexioaBD.getConnection()) {
             String countSql = "SELECT COUNT(*) AS total FROM ZINEMA";
             try (PreparedStatement sta = con.prepareStatement(countSql)) {
                 try (ResultSet res = sta.executeQuery()) {
                     if (res.next()) {
-                        count = res.getInt("total");
+                        int count = res.getInt("total");
+                        zinemaList = new Zinema[count];
                     }
                 }
             }
-
-            zinemaList = new Zinema[count];
 
             String kontsulta = "SELECT * FROM ZINEMA";
             try (PreparedStatement pstmt = con.prepareStatement(kontsulta)) {
@@ -43,11 +39,9 @@ public class ZinemakDAO {
                         String id_zine = rs.getString("zinema_id");
                         String izena = rs.getString("izena");
 
-                       
                         AretoDAO aretoDAO = new AretoDAO();
                         Areto[] aretolist = aretoDAO.getAllAretoakForZinema(id_zine);
 
-                        
                         SaioaDAO saioaDAO = new SaioaDAO();
                         Saioa[] saioalist = saioaDAO.getAllSaioakForZinema(id_zine);
 
@@ -56,7 +50,6 @@ public class ZinemakDAO {
                         zinemaList[index] = zinema;
                         index++;
                     }
-
                 }
             }
         } catch (SQLException e) {

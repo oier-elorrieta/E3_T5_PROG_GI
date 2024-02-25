@@ -7,6 +7,15 @@ import DAO.BezeroaDAO;
 import DAO.ErosketaDAO;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import Modelo.Sarrera;
 import Modelo.Zinema;
 import Modelo.Areto;
@@ -26,6 +35,7 @@ public class ErosketaV extends JFrame {
     	Erosketa ultimaErosketa = erosketaDAO.azkenErosketaLortu();
     	  int erosketaId = ultimaErosketa.getId_erosketak() + 1;
       	Erosketa erosketa = ultimaErosketa;
+      	System.out.println(sarrerak[0]);
       	
       	int descontua= 0;
       	 if (sarrerak.length == 2) { 
@@ -145,8 +155,56 @@ public class ErosketaV extends JFrame {
         JLabel lblDiruTotala = new JLabel("" + diruTotala);
         lblDiruTotala.setBounds(774, 100 + sarrerak.length * (labelHeight + labelMargin), 100, labelHeight);
         contentPaneErosketa.add(lblDiruTotala);
-      
+        
+        JButton btnFakturaSortu = new JButton("Faktura Sortu");
+        btnFakturaSortu.setBounds(700, 120 + sarrerak.length * (labelHeight + labelMargin), 120, 30);
+        contentPaneErosketa.add(btnFakturaSortu);
+
+        btnFakturaSortu.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss");
+                String date = dateFormat.format(new Date());
+
+                String nombreCarpeta = "C:\\Fakturas";
+                File carpeta = new File(nombreCarpeta);
+
+                
+                if (!carpeta.exists()) {
+                    if (carpeta.mkdirs()) {
+                    } else {
+                        System.err.println("Error al crear la carpeta 'Fakturas'.");
+                    }
+                }
+
+
+                String rutaArchivo = nombreCarpeta + "\\faktura_" + date + ".txt";
+
+                try (BufferedWriter writer = new BufferedWriter(new FileWriter(rutaArchivo))) {
+                    writer.write("Erabiltzailea: " + bezeroaLog.getErabiltzailea() + "\n");
+                    writer.write("Izena: " + bezeroaLog.getIzena() + "\n");
+                    writer.write("NAN: " + bezeroaLog.getNan() + "\n");
+                    writer.write("Generoa: " + bezeroaLog.getSexua() + "\n\n");
+
+                    writer.write(String.format("%-30s %-20s %-20s %-20s %-20s %-20s %-20s %-20s\n", "Zinema", "Aretoa", "Filma", "Data", "Ordua", "Prezioa", "Kantitatea", "Sarrera Totala"));
+                    for (Sarrera sarrera : sarrerak) {
+                        Saioa saioa = sarrera.getSaioa();
+                        Areto aretoa = saioa.getAretoa();
+                        String zinema_id = aretoa.getZinema_id();
+                        String zinemaIzena = obtenerNombreCine(zinema_id, zinemakList);
+                        double sarreraTotala = sarreraPrezioTotala(sarrera);
+                        writer.write(String.format("%-30s %-20s %-20s %-20s %-20s %-20s %-20s %-20s\n", zinemaIzena, aretoa.getIzena(), saioa.getFilma().getIzena(), saioa.getDate().toString(), saioa.getOrdua().toString(), saioa.getFilma().getPrezioa(), sarrera.getKantitatea(), sarreraTotala));
+                    }
+
+                    writer.write("\nDiru totala: " + diruTotala);
+                    JOptionPane.showMessageDialog(null, "Faktura sortu da. Ruta: " + rutaArchivo);
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
     }
+      
+    
 
     private double erosketarenPrezioTotala(Sarrera[] sarrerak) {
         double totalPrice = 0;

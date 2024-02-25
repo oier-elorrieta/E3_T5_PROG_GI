@@ -51,11 +51,15 @@ public class Areto {
         if (getClass() != obj.getClass())
             return false;
         Areto other = (Areto) obj;
-        return id_areto == other.id_areto && Objects.equals(izena, other.izena);
+        return Objects.equals(id_areto, other.id_areto) && Objects.equals(izena, other.izena);
     }
 
-    @Override
-    public String toString() {
-        return "Areto id_areto " + id_areto + ", izena " + izena + "";
-    }
+
+	@Override
+	public String toString() {
+		return "Areto [id_areto=" + id_areto + ", izena=" + izena + ", zinema_id=" + zinema_id + "]";
+	}
+
+  
+  
 }

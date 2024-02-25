@@ -44,7 +44,7 @@ public class SaioaDAO {
                         int filmaId = rs.getInt("filma_id");
                         String aretoId = rs.getString("aretoa_id");
                         Filma filma = getFilmaById(filmaId, con);
-                        Areto areto = getAretoById(aretoId, con);
+                        Areto areto = getAretoById(aretoId, con, null);
 
                         Saioa saioa = new Saioa(ordua, date, filma, areto);
                         saioaList[index] = saioa;
@@ -67,7 +67,6 @@ public class SaioaDAO {
         int count = 0;
 
         try (Connection con = konexioaBD.getConnection()) {
-
             String countSql = "SELECT COUNT(*) AS total FROM SAIOA WHERE aretoa_id IN (SELECT aretoa_id FROM ARETOA WHERE zinema_id = ?)";
             try (PreparedStatement countPstmt = con.prepareStatement(countSql)) {
                 countPstmt.setString(1, zinemaId);
@@ -78,9 +77,7 @@ public class SaioaDAO {
                 }
             }
 
-
             saioaListForZinema = new Saioa[count];
-
 
             String sql = "SELECT * FROM SAIOA WHERE aretoa_id IN (SELECT aretoa_id FROM ARETOA WHERE zinema_id = ?)";
             try (PreparedStatement pstmt = con.prepareStatement(sql)) {
@@ -93,13 +90,15 @@ public class SaioaDAO {
                         int filmaId = rs.getInt("filma_id");
                         String aretoId = rs.getString("aretoa_id");
                         Filma filma = getFilmaById(filmaId, con);
-                        Areto areto = getAretoById(aretoId, con);
-
+                        Areto areto = getAretoById(aretoId, con, zinemaId);
+                        areto.setZinema_id(zinemaId);
                         Saioa saioa = new Saioa(ordua, date, filma, areto);
                         saioaListForZinema[index] = saioa;
                         index++;
                     }
+                    
                 }
+                
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -109,7 +108,6 @@ public class SaioaDAO {
 
         return saioaListForZinema;
     }
-
     private Filma getFilmaById(int id, Connection con) {
         Filma filma = null;
         String sql = "SELECT * FROM FILMA WHERE filma_id = ?";
@@ -132,18 +130,16 @@ public class SaioaDAO {
         return filma;
     }
 
-    private Areto getAretoById(String aretoId, Connection con) {
+    private Areto getAretoById(String aretoId, Connection con, String zinemaId) {
         Areto areto = null;
         String sql = "SELECT * FROM ARETOA WHERE aretoa_id = ?";
         try (PreparedStatement pstmt = con.prepareStatement(sql)) {
             pstmt.setString(1, aretoId);
             try (ResultSet rs = pstmt.executeQuery()) {
                 if (rs.next()) {
-                    String areto_id = rs.getString("aretoa_id");
                     String izena = rs.getString("izena");
-                    String zinema = rs.getString("zinema_id");
-
-                    areto = new Areto(areto_id, izena, zinema);
+                    String originalZinemaId = rs.getString("zinema_id"); 
+                    areto = new Areto(aretoId, izena, originalZinemaId); 
                 }
             }
         } catch (SQLException e) {
@@ -151,4 +147,5 @@ public class SaioaDAO {
         }
         return areto;
     }
+
 }

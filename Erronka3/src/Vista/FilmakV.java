@@ -56,7 +56,6 @@ public class FilmakV extends JFrame {
         comboBoxMovies.setBounds(150, 50, 200, 30);
         contentPaneFilmak.add(comboBoxMovies);
 
-
         Set<String> saioakSet = new LinkedHashSet<>();
         for (Saioa saioa : zinemaAukera.getSaioalist()) {
             if (saioa.getDate().isEqual(convertirDateALocalDate(selectedDate))) {

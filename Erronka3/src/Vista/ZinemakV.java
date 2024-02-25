@@ -3,8 +3,10 @@ package Vista;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
+import Modelo.Areto;
 import Modelo.Bezeroa;
 import Modelo.Erosketa;
+import Modelo.Saioa;
 import Modelo.Zinema;
 
 import java.awt.*;
@@ -58,10 +60,20 @@ public class ZinemakV extends JFrame {
         for (Zinema zinema : zinemakList) {
             if (zinema.getId_zine().equals(zinemaAukeraID)) {
                 zinemaAukera = zinema;
+//                Saioa[] saioaList = zinema.getSaioalist();
+//                for (Saioa saioa : saioaList) {
+//                    System.out.println("Saioa: " + saioa);
+//                    Areto areto = saioa.getAretoa();
+//                    System.out.println("Areto: " + areto);
+//                }
+                for (Areto areto : zinema.getAretolist()) {
+                    System.out.println("Areto: " + areto);
+                }
+
                 break;
             }
         }
-        System.out.println(zinemaAukera.getAretolist().toString());
+        
             DataV dataFrame = new DataV(zinemaAukera, zinemakList, bezeroaLog);
             dataFrame.setVisible(true);
             dispose();  

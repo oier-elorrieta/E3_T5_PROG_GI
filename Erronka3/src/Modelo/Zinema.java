@@ -21,7 +21,7 @@ public class Zinema {
         this.saioalist = saioalist;
         this.aretolist = aretolist;
     }
-
+    
     public String getId_zine() {
         return id_zine;
     }

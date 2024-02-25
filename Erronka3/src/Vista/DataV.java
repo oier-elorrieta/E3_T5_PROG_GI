@@ -14,6 +14,7 @@ import org.jdatepicker.impl.*;
 
 import Modelo.Bezeroa;
 import Modelo.Erosketa;
+import Modelo.Saioa;
 import Modelo.Zinema;
 
 public class DataV extends JFrame {
@@ -84,8 +85,6 @@ public class DataV extends JFrame {
         contentPaneSaioak.add(btnAukeratu);
         btnAukeratu.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-            	System.out.println(zinemaAukera.getId_zine());
-            	System.out.println(zinemakList[0]);
                 selectedDate = 	model.getValue();
                 if (selectedDate != null) {
                 	SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
