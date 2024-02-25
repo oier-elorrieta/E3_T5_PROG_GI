@@ -5,6 +5,7 @@ import javax.swing.border.EmptyBorder;
 
 import DAO.BezeroaDAO;
 import DAO.ErosketaDAO;
+import Kontroladorea.Kontroladorea;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -197,6 +198,9 @@ public class ErosketaV extends JFrame {
 
                     writer.write("\nDiru totala: " + diruTotala);
                     JOptionPane.showMessageDialog(null, "Faktura sortu da. Ruta: " + rutaArchivo);
+                    dispose();
+                    Kontroladorea kontroladorea = new Kontroladorea();
+                    Kontroladorea.main(null);
                 } catch (IOException ex) {
                     ex.printStackTrace();
                 }

@@ -94,8 +94,8 @@ public class OngiEtorriV extends JFrame {
                                     System.out.println("Algo va mal");
                                 }
                             }
-                            
                         }
+                        berrabiaraziBarra();
                         LoginaV frame = new LoginaV(zinemakList, bezeroak);
                         frame.setVisible(true);
                         dispose();
@@ -103,6 +103,10 @@ public class OngiEtorriV extends JFrame {
                 }).start();
             }
         });
-        
+    }
+    public void berrabiaraziBarra() {
+        progressBar.setValue(0);
+        barraBat = 0;
+        pProgreso.setVisible(false);
     }
 }
