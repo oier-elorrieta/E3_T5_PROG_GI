@@ -22,13 +22,14 @@ public class FilmakV extends JFrame {
     private Zinema[] zinemakList;
     private Bezeroa bezeroaLog;
     private Date selectedDate;
+    private Bezeroa[] bezeroak;
 
-
-    public FilmakV(Zinema zinemaAukera, Zinema[] zinemakList, Bezeroa bezeroaLog, Date selectedDate) {
+    public FilmakV(Zinema zinemaAukera, Zinema[] zinemakList, Bezeroa bezeroaLog, Date selectedDate, Bezeroa[] bezeroak) {
         this.zinemaAukera = zinemaAukera;
         this.zinemakList = zinemakList;
         this.bezeroaLog = bezeroaLog;
         this.selectedDate = selectedDate;
+        this.bezeroak = bezeroak;
         System.out.println(bezeroaLog);
         initialize();
     }
@@ -44,7 +45,7 @@ public class FilmakV extends JFrame {
 
         JButton btnAtzeraFilmak = new JButton("Atzera");
         btnAtzeraFilmak.addActionListener(e -> {
-            ZinemakV zinemak = new ZinemakV(zinemakList, bezeroaLog);
+            ZinemakV zinemak = new ZinemakV(zinemakList, bezeroaLog,bezeroak);
             zinemak.setVisible(true);
             dispose();
         });
@@ -78,7 +79,7 @@ public class FilmakV extends JFrame {
     }
 
     private void abrirVentanaSaioak(String selectedMovie, Zinema selectedCinema) {
-        SaioakV saioak = new SaioakV(selectedMovie, zinemakList, bezeroaLog, selectedDate, selectedCinema);
+        SaioakV saioak = new SaioakV(selectedMovie, zinemakList, bezeroaLog, selectedDate, selectedCinema,bezeroak);
         saioak.setVisible(true);
         dispose();
     }

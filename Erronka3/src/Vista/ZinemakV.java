@@ -5,9 +5,8 @@ import javax.swing.border.EmptyBorder;
 
 import Modelo.Areto;
 import Modelo.Bezeroa;
-import Modelo.Erosketa;
-import Modelo.Saioa;
 import Modelo.Zinema;
+import Modelo.SarreraFuntzioa;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -18,13 +17,14 @@ public class ZinemakV extends JFrame {
     private static final long serialVersionUID = 1557861239751784319L;
     private JPanel contentPaneZinemak;
     private Zinema[] zinemakList;
-    private Bezeroa[] bezeroak;
     private Bezeroa bezeroaLog;
-    
-    public ZinemakV(Zinema[] zinemakList, Bezeroa bezeroaLog) {
+    private Bezeroa[] bezeroak;
+
+    public ZinemakV(Zinema[] zinemakList, Bezeroa bezeroaLog, Bezeroa[] bezeroak) {
         this.zinemakList = zinemakList;
-        this.bezeroak = bezeroak; 
         this.bezeroaLog = bezeroaLog;
+        this.bezeroak = bezeroak;
+
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 450, 300);
         contentPaneZinemak = new JPanel();
@@ -42,14 +42,15 @@ public class ZinemakV extends JFrame {
                 }
             });
             contentPaneZinemak.add(btnCinema);
-        }   
+        }
 
         JButton btnAmaitu = new JButton("Amaitu");
         btnAmaitu.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                dispose(); 
-                LoginaV login = new LoginaV(zinemakList, bezeroak); 
-                login.setVisible(true); 
+                SarreraFuntzioa.getInstance().reiniciarSarrerakList();
+                dispose();
+                LoginaV login = new LoginaV(zinemakList, bezeroak);
+                login.setVisible(true);
             }
         });
         contentPaneZinemak.add(btnAmaitu);
@@ -60,22 +61,14 @@ public class ZinemakV extends JFrame {
         for (Zinema zinema : zinemakList) {
             if (zinema.getId_zine().equals(zinemaAukeraID)) {
                 zinemaAukera = zinema;
-//                Saioa[] saioaList = zinema.getSaioalist();
-//                for (Saioa saioa : saioaList) {
-//                    System.out.println("Saioa: " + saioa);
-//                    Areto areto = saioa.getAretoa();
-//                    System.out.println("Areto: " + areto);
-//                }
                 for (Areto areto : zinema.getAretolist()) {
                     System.out.println("Areto: " + areto);
                 }
-
                 break;
             }
         }
-        
-            DataV dataFrame = new DataV(zinemaAukera, zinemakList, bezeroaLog);
-            dataFrame.setVisible(true);
-            dispose();  
+        DataV dataFrame = new DataV(zinemaAukera, zinemakList, bezeroaLog, bezeroak);
+        dataFrame.setVisible(true);
+        dispose();
     }
 }

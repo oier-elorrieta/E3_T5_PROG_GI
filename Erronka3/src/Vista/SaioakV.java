@@ -8,28 +8,26 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
-import Modelo.Areto;
 import Modelo.Bezeroa;
 import Modelo.Filma;
 import Modelo.Saioa;
-import Modelo.Zinema;
 import Modelo.Sarrera;
+import Modelo.SarreraFuntzioa;
+import Modelo.Zinema;
+
 import java.awt.Font;
-import java.util.Date;
 
 public class SaioakV extends JFrame {
     private static final long serialVersionUID = 1L;
     private JPanel contentPaneSaioak;
     private JLabel lblOrdutegia;
     private JSpinner spinner;
-    private static ArrayList<Sarrera> sarrerakList = new ArrayList<>();
-
-    public SaioakV(String selectedMovie, Zinema[] zinemakList, Bezeroa bezeroaLog, Date selectedDate, Zinema selectedCinema) {
-    	System.out.println(bezeroaLog);
+    
+    public SaioakV(String selectedMovie, Zinema[] zinemakList, Bezeroa bezeroaLog, Date selectedDate, Zinema selectedCinema, Bezeroa[] bezeroak) {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 450, 300);
         contentPaneSaioak = new JPanel();
@@ -40,7 +38,7 @@ public class SaioakV extends JFrame {
         JButton btnAtzeraSaioak = new JButton("Atzera");
         btnAtzeraSaioak.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                FilmakV filmak = new FilmakV(selectedCinema, zinemakList, bezeroaLog, selectedDate);
+                FilmakV filmak = new FilmakV(selectedCinema, zinemakList, bezeroaLog, selectedDate,bezeroak);
                 filmak.setVisible(true);
                 dispose();
             }
@@ -112,9 +110,9 @@ public class SaioakV extends JFrame {
                         int kantitatea = (int) spinner.getValue();
                         Sarrera sarrera = new Sarrera(kantitatea, selectedSaioa);
 
-                        sarrerakList.add(sarrera);
+                        SarreraFuntzioa.getInstance().getSarrerakList().add(sarrera);
                         lblAreato.setText("Areato: " + selectedSaioa.getAretoa());
-                        ErosketaV erosketaV = new ErosketaV(sarrerakList.toArray(new Sarrera[0]), bezeroaLog, zinemakList);
+                        ErosketaV erosketaV = new ErosketaV(SarreraFuntzioa.getInstance().getSarrerakList().toArray(new Sarrera[0]), bezeroaLog, zinemakList);
                         erosketaV.setVisible(true);
                         dispose();
                     }
@@ -134,13 +132,13 @@ public class SaioakV extends JFrame {
                     Saioa selectedSaioa = obtenerSaioa(selectedSaioaInfo, selectedMovie, zinemakList);
                     int kantitatea = (int) spinner.getValue();
                     Sarrera sarrera = new Sarrera(kantitatea, selectedSaioa);
-                    sarrerakList.add(sarrera);
+                    SarreraFuntzioa.getInstance().getSarrerakList().add(sarrera);
                     System.out.println("Lista de Sarreras:");
-                    for (Sarrera s : sarrerakList) {
+                    for (Sarrera s : SarreraFuntzioa.getInstance().getSarrerakList()) {
                         System.out.println(s);
                     }
 
-                    ZinemakV ZinemakV = new ZinemakV(zinemakList, bezeroaLog);
+                    ZinemakV ZinemakV = new ZinemakV(zinemakList, bezeroaLog, bezeroak);
                     ZinemakV.setVisible(true);
                     dispose();
                 } else {

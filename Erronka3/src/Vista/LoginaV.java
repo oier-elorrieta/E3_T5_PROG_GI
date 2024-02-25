@@ -78,8 +78,8 @@ public class LoginaV extends JFrame {
 
 				if (authenticated) {
 					JOptionPane.showMessageDialog(null, "Saioa hasita zuzen");
-					System.out.println("Bezeroa logeatuta: " + bezeroaLog); // Imprime el usuario logeado
-					ZinemakV zinemak = new ZinemakV(zinemakList, bezeroaLog);
+					System.out.println("Bezeroa logeatuta: " + bezeroaLog); 
+					ZinemakV zinemak = new ZinemakV(zinemakList, bezeroaLog, bezeroak);
 					zinemak.setVisible(true);
 					dispose();
 				} else {
@@ -102,59 +102,3 @@ public class LoginaV extends JFrame {
 		return bezeroaLog;
 	}
 }
-
-//pasahitza eta erabiltzailea ez ba daude ezarrita sartu ahal zara
-//public LoginaV(Zinema[] zinemakList, Bezeroa[] bezeroak) {
-//    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//    setBounds(100, 100, 450, 300);
-//    contentPane = new JPanel();
-//    contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-//
-//    setContentPane(contentPane);
-//    contentPane.setLayout(null);
-//
-//    textErabiltzailea = new JTextField();
-//    textErabiltzailea.setBounds(173, 80, 118, 20);
-//    contentPane.add(textErabiltzailea);
-//    textErabiltzailea.setColumns(10);
-//
-//    pasahitzaField = new JPasswordField();
-//    pasahitzaField.setBounds(173, 120, 118, 20);
-//    contentPane.add(pasahitzaField);
-//
-//    JButton btnEzeztatu = new JButton("Ezeztatu");
-//    btnEzeztatu.addActionListener(new ActionListener() {
-//        public void actionPerformed(ActionEvent e) {
-//            datuakEzabatu(textErabiltzailea, pasahitzaField);
-//        }
-//    });
-//    btnEzeztatu.setBounds(227, 227, 89, 23);
-//    contentPane.add(btnEzeztatu);
-//
-//    JLabel lblErabiltzailea = new JLabel("Erabiltzailea");
-//    lblErabiltzailea.setBounds(93, 83, 80, 14);
-//    contentPane.add(lblErabiltzailea);
-//
-//    JLabel lblPasahitza = new JLabel("Pasahitza");
-//    lblPasahitza.setBounds(93, 123, 57, 14);
-//    contentPane.add(lblPasahitza);
-//
-//    JButton btnOndo = new JButton("Ondo");
-//    btnOndo.addActionListener(new ActionListener() {
-//        public void actionPerformed(ActionEvent e) {
-//            JOptionPane.showMessageDialog(null, "Sesión iniciada correctamente (sin autenticación)");
-//            System.out.println(bezeroaLog);
-//            ZinemakV zinemak = new ZinemakV(zinemakList, bezeroaLog);
-//            zinemak.setVisible(true);
-//            dispose(); 
-//        }
-//    });
-//    btnOndo.setBounds(95, 227, 89, 23);
-//    contentPane.add(btnOndo);
-//}
-//
-//private static void datuakEzabatu(JTextField textErabiltzailea, JPasswordField pasahitzaField) {
-//    textErabiltzailea.setText("");
-//    pasahitzaField.setText("");
-//}
-//}
