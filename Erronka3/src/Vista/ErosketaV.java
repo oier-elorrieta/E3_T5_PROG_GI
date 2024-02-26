@@ -3,11 +3,9 @@ package Vista;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
-import DAO.BezeroaDAO;
 import DAO.ErosketaDAO;
 import Kontroladorea.Kontroladorea;
 
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedWriter;
@@ -22,7 +20,6 @@ import Modelo.Zinema;
 import Modelo.Areto;
 import Modelo.Bezeroa;
 import Modelo.Erosketa;
-import Modelo.Filma;
 import Modelo.Saioa;
 
 public class ErosketaV extends JFrame {
@@ -38,12 +35,7 @@ public class ErosketaV extends JFrame {
       	Erosketa erosketa = ultimaErosketa;
       	System.out.println(sarrerak[0]);
       	
-      	int descontua= 0;
-      	 if (sarrerak.length == 2) { 
-      		 descontua = 20;
-           } else if (sarrerak.length >= 3) { 
-          	 descontua = 30;
-           }
+     
       	 erosketa.setId_erosketak(erosketaId);
       	boolean insertado = erosketaDAO.insertErosketa(erosketa);
 

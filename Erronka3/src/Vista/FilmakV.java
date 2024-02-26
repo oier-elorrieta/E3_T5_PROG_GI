@@ -30,7 +30,6 @@ public class FilmakV extends JFrame {
         this.bezeroaLog = bezeroaLog;
         this.selectedDate = selectedDate;
         this.bezeroak = bezeroak;
-        System.out.println(bezeroaLog);
         initialize();
     }
 
@@ -56,7 +55,6 @@ public class FilmakV extends JFrame {
         JComboBox<String> comboBoxMovies = new JComboBox<>();
         comboBoxMovies.setBounds(150, 50, 200, 30);
         contentPaneFilmak.add(comboBoxMovies);
-
         Set<String> saioakSet = new LinkedHashSet<>();
         for (Saioa saioa : zinemaAukera.getSaioalist()) {
             if (saioa.getDate().isEqual(convertirDateALocalDate(selectedDate))) {

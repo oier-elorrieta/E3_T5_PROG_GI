@@ -37,7 +37,6 @@ public class ZinemakV extends JFrame {
             btnCinema.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     String zinemaAukeraID = zinema.getId_zine();
-                    System.out.println(zinemaAukeraID);
                     zinemaAukeratu(zinemaAukeraID);
                 }
             });
@@ -61,9 +60,6 @@ public class ZinemakV extends JFrame {
         for (Zinema zinema : zinemakList) {
             if (zinema.getId_zine().equals(zinemaAukeraID)) {
                 zinemaAukera = zinema;
-                for (Areto areto : zinema.getAretolist()) {
-                    System.out.println("Areto: " + areto);
-                }
                 break;
             }
         }

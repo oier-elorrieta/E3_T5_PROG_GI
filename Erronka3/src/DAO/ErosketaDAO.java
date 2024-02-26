@@ -45,7 +45,7 @@ public class ErosketaDAO {
                 inserted = true;
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            e.printStackTrace();           
         }
         return inserted;
     }

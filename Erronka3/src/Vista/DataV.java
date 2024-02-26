@@ -66,7 +66,7 @@ public class DataV extends JFrame {
             @Override
             public void propertyChange(PropertyChangeEvent evt) {
                 if ("value".equals(evt.getPropertyName())) {
-                    selectedDate = (Date) evt.getNewValue(); // Actualizar la fecha seleccionada
+                    selectedDate = (Date) evt.getNewValue(); 
                     if (selectedDate != null && selectedDate.before(today.getTime())) {
                         model.setDate(today.get(Calendar.YEAR), today.get(Calendar.MONTH), today.get(Calendar.DAY_OF_MONTH));
                         model.setSelected(true);
@@ -76,6 +76,7 @@ public class DataV extends JFrame {
         });
 
 
+        
         JDatePickerImpl datePicker = new JDatePickerImpl(datePanel, new DateComponentFormatter());
         datePicker.setBounds(150, 100, 150, 30);
         contentPaneSaioak.add(datePicker);
@@ -102,7 +103,7 @@ public class DataV extends JFrame {
     public void abrirSiguientePestana(Date selectedDate, Zinema[] zinemakList, Bezeroa bezeroaLog, Zinema zinemaAukera) {
         FilmakV filmak = new FilmakV(zinemaAukera, zinemakList, bezeroaLog, selectedDate, bezeroak);
         filmak.setVisible(true);
-        dispose(); 
+        dispose();
     }
     
  

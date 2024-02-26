@@ -24,7 +24,7 @@ public class LoginaV extends JFrame {
 	private JPanel contentPane;
 	private JTextField textErabiltzailea;
 	private JPasswordField pasahitzaField;
-	private Bezeroa bezeroaLog; 
+	private Bezeroa bezeroaLog;
 
 	public LoginaV(Zinema[] zinemakList, Bezeroa[] bezeroak) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -71,14 +71,13 @@ public class LoginaV extends JFrame {
 				for (Bezeroa bezeroa : bezeroak) {
 					if (erabiltzailea.equals(bezeroa.getErabiltzailea()) && pasahitza.equals(bezeroa.getPasahitza())) {
 						authenticated = true;
-						bezeroaLog = bezeroa; 
+						bezeroaLog = bezeroa;
 						break;
 					}
 				}
 
 				if (authenticated) {
 					JOptionPane.showMessageDialog(null, "Saioa hasita zuzen");
-					System.out.println("Bezeroa logeatuta: " + bezeroaLog); 
 					ZinemakV zinemak = new ZinemakV(zinemakList, bezeroaLog, bezeroak);
 					zinemak.setVisible(true);
 					dispose();
@@ -96,7 +95,6 @@ public class LoginaV extends JFrame {
 		textErabiltzailea.setText("");
 		pasahitzaField.setText("");
 	}
-
 
 	public Bezeroa getUsuarioLogeado() {
 		return bezeroaLog;
